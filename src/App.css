@@ -1,38 +1,125 @@
-.App {
-  text-align: center;
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Hide HTML5 Up and Down arrows. */
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
 }
 
-.App-link {
-  color: #61dafb;
+input[type=date]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  display: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@font-face {
+  font-family: 'HelveticaNeueCyr-Roman';
+  src: local('HelveticaNeueCyr-Roman'), url(./fonts/HelveticaNeueCyr-Roman/HelveticaNeueCyr-Roman.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'HelveticaNeueCyr-Medium';
+  src: local('HelveticaNeueCyr-Medium'), url(./fonts/HelveticaNeueCyr-Medium/HelveticaNeueCyr-Medium.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'HelveticaNeueCyr-Light';
+  src: local('HelveticaNeueCyr-Light'), url(./fonts/HelveticaNeueCyr-Light/HelveticaNeueCyr-Light.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'HelveticaNeueCyr-Bold';
+  src: local('HelveticaNeueCyr-Bold'), url(./fonts/HelveticaNeueCyr-Bold/HelveticaNeueCyr-Bold.ttf) format('truetype');
+}
+
+body{
+  font-family: "HelveticaNeueCyr-Roman";
+}
+
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+  font-family: 'HelveticaNeueCyr-Roman';
+  background: #f7f7f7;
+  color: #151515;
+  font-size: 16px;
+}
+body.stoped {
+  overflow: hidden;
+}
+.content {
+  width: 1110px;
+  margin: 0 auto;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
+img {
+  max-width: 100%;
+}
+main.mcg-main {
+  overflow: hidden;
+}
+h1 {
+  font-size: 36px;
+  line-height: 1.2222;
+  font-family: 'HelveticaNeueCyr-Bold';
+  color: #fff;
+}
+h2 {
+  color: #151515;
+  font-family: 'HelveticaNeueCyr-Bold';
+  line-height: 1.2144;
+  font-size: 28px;
 }
