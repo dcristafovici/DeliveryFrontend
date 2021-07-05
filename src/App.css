@@ -123,3 +123,54 @@ h2 {
   line-height: 1.2144;
   font-size: 28px;
 }
+
+.button {
+  outline: none;
+  cursor: pointer;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  height: 40px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 22px;
+  padding-right: 22px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid transparent;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background: #689ae3;
+  border-radius: 3px;
+}
+.button span {
+  color: #fff;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  font-size: 13px;
+  font-family: 'HelveticaNeueCyr-Medium', sans-serif;
+}
+.button.button-transparent {
+  background: transparent;
+  border: 1px solid #689ae3;
+}
+.button.button-transparent span {
+  color: #2f66b6;
+}
+.button.button-transparent:hover {
+  background: #689ae3;
+}
+.button.button-transparent:hover span {
+  color: #fff;
+}
+.button.button-full {
+  width: 100%;
+  padding: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}

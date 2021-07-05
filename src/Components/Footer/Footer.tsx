@@ -14,35 +14,35 @@ const Footer:React.FC = () => {
             <div className="footer-menu">
               <nav className="menu">
                 <ul>
-                  <li><a href="#">О москва сити </a>
+                  <li><a href="#">About Moscow City </a>
                   </li>
-                  <li><a href="#">Еда и развлечения </a>
+                  <li><a href="#">Food and entertainment</a>
                   </li>
-                  <li><a href="#">Недвижимость</a>
+                  <li><a href="#">The property</a>
                   </li>
-                  <li><a href="#">Как добраться? </a>
+                  <li><a href="#">How to get?</a>
                   </li>
-                  <li><a href="#">Башни</a>
+                  <li><a href="#">Towers</a>
                   </li>
-                  <li><a href="#">Новости и афиша </a>
+                  <li><a href="#">News and afisha</a>
                   </li>
-                  <li><a href="#"> Компании</a>
+                  <li><a href="#">Companies</a>
                   </li>
-                  <li><a href="#">Контакты</a>
+                  <li><a href="#">Contacts</a>
                   </li>
-                  <li><a href="#">Получить услугу </a>
+                  <li><a href="#">Get Service</a>
                   </li>
-                  <li><a href="#">По вопросам рекламы</a>
+                  <li><a href="#">For advertising  </a>
                   </li>
                 </ul>
               </nav>
             </div>
             <div className="footer-jobs">
-              <strong>Хотите с нами сотрудничать?</strong>
-              <p>Мы будем рады видеть вас в
-                <br/>числе наших партнеров.
+              <strong>Do you want to work with us?</strong>
+              <p>We will be glad to see you 
+                <br/>among our partners
               </p>
-              <a href="#" className="button"><span>Стать партнером </span></a>
+              <a href="#" className="button"><span>Become a partner</span></a>
             </div>
           </div>
           <div className="footer-right">
@@ -50,7 +50,7 @@ const Footer:React.FC = () => {
             </div>
             <div className="footer-mail"><a href="mailto:welcome@moscow-city.guide">welcome@moscow-city.guide</a>
             </div>
-            <div className="footer-policy"><a href="#">Политика конфиденциальности</a>
+            <div className="footer-policy"><a href="#">Policy</a>
             </div>
           </div>
         </div>

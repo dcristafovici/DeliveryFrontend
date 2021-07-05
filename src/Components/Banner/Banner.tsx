@@ -9,12 +9,12 @@ const Banner:React.FC = () => {
         </div>
         <div className="banner-wrapper">
           <div className="banner-title">
-            <h1>Быстрая доставка вкусной еды <br />в Москва-сити</h1>
+            <h1>Fast delivery of delicious food<br />in Moscow-City</h1>
           </div>
           <div className="banner-find">
-            <select>
-              <option value="Выберите башню" selected>Выберите башню</option>
-            </select>
+            {/* <select defaultValue='test'>
+              <option defaultValue="Выберите башню" selected>Choose tower</option>
+            </select> */}
           </div>
         </div>
       </div>
