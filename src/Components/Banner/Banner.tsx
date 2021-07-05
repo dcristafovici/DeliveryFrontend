@@ -1,5 +1,5 @@
-import React from "react";
-import "./Banner.sass";
+import React from 'react';
+import './Banner.sass';
 
 const Banner:React.FC = () => (
   <section className="banner">
@@ -9,7 +9,11 @@ const Banner:React.FC = () => (
       </div>
       <div className="banner-wrapper">
         <div className="banner-title">
-          <h1>Fast delivery of delicious food<br />in Moscow-City</h1>
+          <h1>
+            Fast delivery of delicious food
+            <br />
+            in Moscow-City
+          </h1>
         </div>
         <div className="banner-find">
           {/* <select defaultValue='test'>
@@ -19,5 +23,6 @@ const Banner:React.FC = () => (
       </div>
     </div>
   </section>
-)
+);
+
 export default Banner;
