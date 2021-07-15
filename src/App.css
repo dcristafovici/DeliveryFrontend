@@ -174,3 +174,24 @@ h2 {
       -ms-flex-pack: center;
           justify-content: center;
 }
+
+.delivery-main {
+  margin-top: 30px;
+}
+.delivery-main__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.delivery-main__left {
+  width: calc(100% - 285px);
+}
+.delivery-main__right {
+  width: 255px;
+}
