@@ -16,9 +16,9 @@ const Banner:React.FC = () => (
           </h1>
         </div>
         <div className="banner-find">
-          <select defaultValue="test">
+          {/* <select defaultValue="test">
             <option defaultValue="Выберите башню" selected>Choose tower</option>
-          </select>
+          </select> */}
         </div>
       </div>
     </div>

@@ -8,4 +8,18 @@ export const CATEGORIES = gql`
       description
     }
   }
-`
+`;
+
+export const RESTAURANTS = gql`
+  query allRestaurants{
+    allRestaurants{
+      id,
+      name,
+      description,
+      minPrice,
+      saleValue,
+      deliveryTime,
+      image
+    }
+  }
+`;
