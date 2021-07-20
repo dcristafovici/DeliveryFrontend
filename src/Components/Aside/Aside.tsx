@@ -15,7 +15,7 @@ const Aside = () => (
         </div>
         <div className="aside-item__count">
           <div className="aside-plus">+</div>
-          <input type="number" value="1" />
+          <input type="number" defaultValue="1" />
           <div className="aside-minus">-</div>
         </div>
         <div className="aside-item__price">
@@ -29,7 +29,7 @@ const Aside = () => (
         </div>
         <div className="aside-item__count">
           <div className="aside-plus">+</div>
-          <input type="number" value="1" />
+          <input type="number" defaultValue="1" />
           <div className="aside-minus">-</div>
         </div>
         <div className="aside-item__price">
@@ -43,7 +43,7 @@ const Aside = () => (
         </div>
         <div className="aside-item__count">
           <div className="aside-plus">+</div>
-          <input type="number" value="1" />
+          <input type="number" defaultValue="1" />
           <div className="aside-minus">-</div>
         </div>
         <div className="aside-item__price">
@@ -57,7 +57,7 @@ const Aside = () => (
         </div>
         <div className="aside-item__count">
           <div className="aside-plus">+</div>
-          <input type="number" value="1" />
+          <input type="number" defaultValue="1" />
           <div className="aside-minus">-</div>
         </div>
         <div className="aside-item__price">

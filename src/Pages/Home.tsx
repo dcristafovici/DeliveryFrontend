@@ -6,7 +6,7 @@ import Restaurants from '../Components/Restaurants/Restaurants';
 const Home:React.FC = () => (
   <>
     <Banner />
-    <Sort />
+    {/* <Sort /> */}
     <Restaurants />
   </>
 );

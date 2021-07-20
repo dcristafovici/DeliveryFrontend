@@ -23,3 +23,17 @@ export const RESTAURANTS = gql`
     }
   }
 `;
+
+export const RESTAURANT = gql`
+  query Restaurant($id: String!){
+    Restaurant(id: $id){
+      id,
+      name,
+      description,
+      minPrice,
+      saleValue,
+      deliveryTime,
+      image
+    }
+  }
+`;
