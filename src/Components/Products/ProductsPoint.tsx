@@ -1,19 +1,21 @@
 import React from 'react';
 import ProductsItem from './ProductsItem';
 
-const ProductsPoint:React.FC = () => (
-  <div className="products-point">
-    <div className="products-title">
-      <h2>Популярные блюда</h2>
+interface ProductPointInterface {
+  name: string;
+}
+
+const ProductsPoint:React.FC<ProductPointInterface> = (props:ProductPointInterface) => {
+  const { name } = props;
+  return (
+    <div className="products-point">
+      <div className="products-title">
+        <h2>{name}</h2>
+      </div>
+      <div className="products-items">
+        <ProductsItem name="1" description="2" price="3" />
+      </div>
     </div>
-    <div className="products-items">
-      <ProductsItem />
-      <ProductsItem />
-      <ProductsItem />
-      <ProductsItem />
-      <ProductsItem />
-      <ProductsItem />
-    </div>
-  </div>
-);
+  );
+};
 export default ProductsPoint;

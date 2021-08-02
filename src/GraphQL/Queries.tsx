@@ -37,3 +37,15 @@ export const RESTAURANT = gql`
     }
   }
 `;
+
+export const PRODUCTS = gql`
+  query Products{
+    Products{
+      id,
+      name,
+      description,
+      price,
+      category
+    }
+  }
+`;
