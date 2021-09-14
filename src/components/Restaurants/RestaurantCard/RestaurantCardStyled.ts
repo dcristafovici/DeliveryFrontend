@@ -35,7 +35,28 @@ export const RestaurantCardStyled = styled.div`
   .card {
     &-top {
       &__info {
-        display: none;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 68px;
+        padding-left: 20px;
+        padding-right: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      &__item {
+        height: 29px;
+        display: inline-flex;
+        align-items: center;
+        padding-left: 11px;
+        padding-right: 11px;
+        background: rgba(0, 0, 0, 0.678021);
+        border-radius: 5px;
+        color: ${COLORS.YELLOW};
+        font-size: 13px;
+        letter-spacing: 0.236364px;
       }
       &__photo {
         position: relative;

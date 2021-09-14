@@ -8,8 +8,8 @@ const RestaurantCard:React.FC = () => (
         <img src="/images/restaurant.jpg" alt="Restaurant" />
       </div>
       <div className="card-top__info">
-        <div className="card-top__sale">-20%</div>
-        <div className="card-top__time">30-45 minutes</div>
+        <div className="card-top__sale card-top__item">-20%</div>
+        <div className="card-top__time card-top__item">30-45 minutes</div>
       </div>
     </div>
     <div className="restaurant-card__bottom">
