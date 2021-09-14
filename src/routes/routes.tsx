@@ -18,12 +18,12 @@ const routes: RouteTypes[] = [
     name: RoutesDetailes.HOME_PAGE.name,
     path: RoutesDetailes.HOME_PAGE.path,
     exact: RoutesDetailes.HOME_PAGE.exact,
-    component: lazy(() => import('../components/Home')),
+    component: lazy(() => import('../pages/Home')),
   },
   {
     name: RoutesDetailes.RESTAURANT.name,
     path: RoutesDetailes.RESTAURANT.path,
-    component: lazy(() => import('../components/Restaurant')),
+    component: lazy(() => import('../pages/Restaurant')),
   },
 ];
 
