@@ -5,6 +5,7 @@ import star from '../../../assets/img/star.svg';
 export const RestaurantCardStyled = styled.div`
   width: 31.5315315315%;
   margin-right: 2.7027027%;
+  margin-bottom: 30px;
   &:nth-child(3n) {
     margin-right: 0;
   }
@@ -109,7 +110,7 @@ export const RestaurantCardStyled = styled.div`
         }
       }
       &__price {
-        font-size: 14px;
+        font-size: 16px;
         color: ${COLORS.GRAY_1};
       }
     }
