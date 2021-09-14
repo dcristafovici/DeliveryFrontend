@@ -1,5 +1,5 @@
 import React from 'react';
-import { HasChildrenInterface } from '../../../../types/HasChildrenInterface';
+import { HasChildrenInterface } from '../../../types/HasChildrenInterface';
 
 const Main:React.FC<HasChildrenInterface> = ({ children } : HasChildrenInterface) => (
   <main>

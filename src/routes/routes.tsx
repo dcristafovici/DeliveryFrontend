@@ -13,7 +13,7 @@ const routes: RouteTypes[] = [
   {
     name: RoutesDetailes.HOME_PAGE.name,
     path: RoutesDetailes.HOME_PAGE.path,
-    component: lazy(() => import('../component/Home/')),
+    component: lazy(() => import('../components/Home')),
   },
 ];
 
