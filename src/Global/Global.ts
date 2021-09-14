@@ -11,6 +11,9 @@ export const Global = createGlobalStyle`
     font-size: 14px;
     color: ${COLORS.PRIMARY_DARK};
   }
+  body{
+    background: ${COLORS.GRAY_BG}
+  }
   a {
     text-decoration: none;
     color: inherit;
@@ -32,5 +35,28 @@ export const Global = createGlobalStyle`
     border: none;
     outline: none;
     cursor: pointer;
+  }
+
+  ::-webkit-scrollbar {
+    width: 20px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: ${COLORS.PRIMARY_BLUE};
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: ${COLORS.PRIMARY_BLUE};
+    border-radius: 20px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: ${COLORS.PRIMARY_BLUE};
+    border-radius: 20px;
+    border: 4px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
   }
 `;

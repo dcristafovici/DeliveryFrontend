@@ -5,6 +5,7 @@ export const HeaderStyled = styled.header`
   height: 82px;
   border-bottom: 1px solid rgba(27, 83, 162, 0.104267);
   box-sizing: border-box;
+  background: ${COLORS.WHITE};
   & > div{
     height: 100%;
     & > div {
