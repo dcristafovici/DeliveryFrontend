@@ -4,6 +4,7 @@ import info from '../../../assets/img/info.svg';
 
 export const RestaurantInfoStyled = styled.div`
   height: 360px;
+  margin-bottom: 25px;
   position: relative;
   .restaurant {
     &-info {

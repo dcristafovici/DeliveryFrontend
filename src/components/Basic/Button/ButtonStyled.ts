@@ -34,4 +34,7 @@ export const ButtonStyled = styled.button`
       }
     }
   }
+  &.full {
+    width: 100%;
+  }
 `;

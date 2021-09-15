@@ -14,7 +14,7 @@ const AsideSummary:React.FC = () => (
         <span>2 590 $</span>
       </div>
     </div>
-    <Button name="Checkout" />
+    <Button name="Checkout" className="full" />
   </AsideSummaryStyled>
 );
 

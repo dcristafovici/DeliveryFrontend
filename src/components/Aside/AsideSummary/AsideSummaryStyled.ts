@@ -5,7 +5,7 @@ export const AsideSummaryStyled = styled.div`
   .aside-summary__items{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
   .aside-summary__item {
     span {
