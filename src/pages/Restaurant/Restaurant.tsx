@@ -1,4 +1,5 @@
 import React from 'react';
+import Aside from '../../components/Aside';
 import Container from '../../components/Basic/Container';
 import { StyledFlex } from '../../components/Basic/Flex/StyledFlex';
 import Section from '../../components/Basic/Section';
@@ -15,6 +16,7 @@ const Restaurant:React.FC = () => (
             <RestaurantInfo />
           </MainRestaurantStyled>
 
+          <Aside />
         </StyledFlex>
       </Container>
     </Section>
