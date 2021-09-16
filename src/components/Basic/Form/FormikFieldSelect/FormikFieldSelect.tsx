@@ -6,7 +6,7 @@ import { FormikFieldStyled } from '../FormikField/FormikFieldStyled';
 const FormikFieldSelect:React.FC = () => (
   <FormikFieldStyled className="formik-field formik-field__date">
     <label>Choose Tower</label>
-    <Select className="select-dark" values={Towers} />
+    <Select initialValue="Choose Tower" className="select-dark" values={Towers} />
   </FormikFieldStyled>
 );
 
