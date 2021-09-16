@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { SelectInterface, SelectValue } from './SelectInterface';
 import { SelectStyled, SelectFieldStyled, SelectedListStyled } from './SelectStyled';
 
-const Select:React.FC<SelectInterface> = ({ values }: SelectInterface) => {
+const Select:React.FC<SelectInterface> = ({ values, className }: SelectInterface) => {
   const [choosedTower, setChoosedTower] = useState('Choise tower');
   const [statusSelect, setStatusSelect] = useState(false);
 
-  const SELECT_FIELD_STATUS = statusSelect ? 'select-open' : '';
+  const SELECT_FIELD_STATUS = statusSelect ? ' select-open' : '';
 
   const toggleSelectHandler = (event:React.MouseEvent<HTMLDivElement>) => {
     setStatusSelect((prevStatus:boolean) => !prevStatus);
@@ -17,12 +17,12 @@ const Select:React.FC<SelectInterface> = ({ values }: SelectInterface) => {
     setChoosedTower(name);
   };
   return (
-    <SelectStyled>
-      <SelectFieldStyled onClick={toggleSelectHandler} className={SELECT_FIELD_STATUS}>
+    <SelectStyled className={className}>
+      <SelectFieldStyled onClick={toggleSelectHandler} className={className + SELECT_FIELD_STATUS}>
         <span>{choosedTower}</span>
       </SelectFieldStyled>
       {statusSelect && (
-        <SelectedListStyled>
+        <SelectedListStyled className={className}>
           <ul>
             {values && values.map((value:SelectValue) => (
               <li

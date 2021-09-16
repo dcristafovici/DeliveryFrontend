@@ -39,6 +39,28 @@ export const CheckoutStyled = styled.div`
       color: ${COLORS.PRIMARY_BLUE};
     }
   }
+  .checkout-general {
+    display: flex;
+    margin-bottom: 35px;
+    &__point {
+      margin-right: 55px;
+      &:last-child {
+        margin-right: 0;
+      }
+      span {
+        display: block;
+        font-size: 12px;
+        color: ${COLORS.GRAY_3};
+        font-weight: 400;
+        &:last-child {
+          font-size: 18px;
+          color: ${COLORS.PRIMARY_DARK};
+          font-weight: 500;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
 `;
 
 export const OverlayStyled = styled.div`

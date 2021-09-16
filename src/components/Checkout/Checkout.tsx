@@ -1,11 +1,14 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
 import { CheckoutStyled, OverlayStyled } from './CheckoutStyled';
 import { CheckoutFormInterface } from './CheckoutInterface';
 import FormWrapper from '../Basic/Form/FormWrapper';
 import FormRow from '../Basic/Form/FormRow';
 import FormikField from '../Basic/Form/FormikField';
 import Button from '../Basic/Button';
+import FormikFieldDate from '../Basic/Form/FormikFieldDate';
+import FormikFieldSelect from '../Basic/Form/FormikFieldSelect';
 
 const initialValues:CheckoutFormInterface = {
   name: '',
@@ -18,6 +21,27 @@ const initialValues:CheckoutFormInterface = {
   time: '',
   additional: '',
 };
+
+const CheckoutFormSchema = Yup.object().shape({
+  name: Yup.string()
+    .required('Required'),
+  phone: Yup.string()
+    .required('Required'),
+  tower: Yup.string()
+    .required('Required'),
+  floor: Yup.string()
+    .required('Required'),
+  office: Yup.string()
+    .required('Required'),
+  apartament: Yup.string()
+    .required('Required'),
+  date: Yup.string()
+    .required('Required'),
+  time: Yup.string()
+    .required('Required'),
+  additional: Yup.string()
+    .required('Required'),
+});
 
 const Checkout:React.FC = () => {
   const handleSubmit = (values:CheckoutFormInterface, { resetForm } : any) => {
@@ -33,8 +57,9 @@ const Checkout:React.FC = () => {
           onSubmit={handleSubmit}
           validateOnChange
           validateOnBlur
+          validationSchema={CheckoutFormSchema}
         >
-          {({ dirty, isValid, errors, getFieldProps, touched }) => (
+          {({ dirty, isValid, errors, getFieldProps, setFieldValue, touched }) => (
             <Form>
               <FormWrapper title="Your contacts">
                 <FormRow>
@@ -55,6 +80,9 @@ const Checkout:React.FC = () => {
                 </FormRow>
               </FormWrapper>
               <FormWrapper title="Delivery address">
+                <FormRow className="one-element">
+                  <FormikFieldSelect />
+                </FormRow>
                 <FormRow className="three-elements">
                   <FormikField
                     {...getFieldProps('floor')}
@@ -79,6 +107,25 @@ const Checkout:React.FC = () => {
                   />
                 </FormRow>
               </FormWrapper>
+              <FormWrapper title="Delivery detailes">
+                <FormRow>
+                  <FormikFieldDate
+                    name="additional"
+                    label="Choose date"
+                    error={errors.date}
+                    onChange={(name:string, value:string) => setFieldValue(name, value)}
+                    touched={touched.date}
+                  />
+                  <FormikField
+                    {...getFieldProps('time')}
+                    name="additional"
+                    type="time"
+                    label="Choose time"
+                    error={errors.time}
+                    touched={touched.time}
+                  />
+                </FormRow>
+              </FormWrapper>
               <FormWrapper title="Additional">
                 <FormRow className="one-element">
                   <FormikField
@@ -91,6 +138,16 @@ const Checkout:React.FC = () => {
                   />
                 </FormRow>
               </FormWrapper>
+              <div className="checkout-general">
+                <div className="checkout-general__point">
+                  <span>Время доставки</span>
+                  <span>30 – 45 мин</span>
+                </div>
+                <div className="checkout-general__point">
+                  <span>Итого</span>
+                  <span>2 590 ₽</span>
+                </div>
+              </div>
               <Button name="Checkout" className="full" />
               <div className="checkout-info">
                 By sending a message you agree to

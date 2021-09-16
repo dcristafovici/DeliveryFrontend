@@ -3,5 +3,6 @@ export interface SelectValue {
   label: string;
 }
 export interface SelectInterface {
-  values: SelectValue[]
+  values: SelectValue[];
+  className?: string;
 }

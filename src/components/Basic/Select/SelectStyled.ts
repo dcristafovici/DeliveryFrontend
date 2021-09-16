@@ -35,6 +35,9 @@ export const SelectFieldStyled = styled.div`
       transform: rotate(-180deg);
     }
   }
+  &.select-dark {
+    background: ${COLORS.GRAY_4};
+  }
 `;
 
 export const SelectedListStyled = styled.div`

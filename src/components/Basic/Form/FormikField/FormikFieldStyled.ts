@@ -9,4 +9,19 @@ export const FormikFieldStyled = styled.div`
     display: block;
     margin-bottom: 7px;
   }
+  .DayPickerInput {
+    width: 100%;
+    input{
+      border: none;
+      outline: none;
+      width: 100%;
+      box-sizing: border-box;
+      height: 40px;
+      padding-left: 15px;
+      background: ${COLORS.GRAY_4};
+      cursor: pointer;
+      align-items: center;
+      display: flex;
+    }
+  } 
 `;
