@@ -11,6 +11,10 @@ export const RoutesDetailes: RoutesDetailsTypes = {
     name: 'Restaurant',
     path: '/restaurant/:slug',
   },
+  ACCOUNT: {
+    name: 'Account',
+    path: '/account',
+  },
 };
 
 const routes: RouteTypes[] = [
@@ -24,6 +28,11 @@ const routes: RouteTypes[] = [
     name: RoutesDetailes.RESTAURANT.name,
     path: RoutesDetailes.RESTAURANT.path,
     component: lazy(() => import('../pages/Restaurant')),
+  },
+  {
+    name: RoutesDetailes.ACCOUNT.name,
+    path: RoutesDetailes.ACCOUNT.path,
+    component: lazy(() => import('../pages/Account')),
   },
 ];
 

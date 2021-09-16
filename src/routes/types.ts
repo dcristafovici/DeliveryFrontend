@@ -13,4 +13,5 @@ export interface RouteTypes extends RoutesPathTypes {
 export type RoutesDetailsTypes = {
   HOME_PAGE: RoutesPathTypes,
   RESTAURANT: RoutesPathTypes,
+  ACCOUNT: RoutesPathTypes,
 }
