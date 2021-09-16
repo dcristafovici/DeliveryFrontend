@@ -25,6 +25,20 @@ export const CheckoutStyled = styled.div`
     text-align: center;
     color: ${COLORS.PRIMARY_DARK};
   }
+  .checkout-info {
+    margin-top: 20px;
+    font-size: 12px;
+    letter-spacing: 0.138462px;
+    line-height: 1.4;
+    font-weight: 400;
+    color: ${COLORS.GRAY_1};
+    span {
+      font-size: inherit;
+      font-weight: inherit;
+      letter-spacing: inherit;
+      color: ${COLORS.PRIMARY_BLUE};
+    }
+  }
 `;
 
 export const OverlayStyled = styled.div`

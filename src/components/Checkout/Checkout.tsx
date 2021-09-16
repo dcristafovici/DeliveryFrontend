@@ -5,6 +5,7 @@ import { CheckoutFormInterface } from './CheckoutInterface';
 import FormWrapper from '../Basic/Form/FormWrapper';
 import FormRow from '../Basic/Form/FormRow';
 import FormikField from '../Basic/Form/FormikField';
+import Button from '../Basic/Button';
 
 const initialValues:CheckoutFormInterface = {
   name: '',
@@ -90,6 +91,11 @@ const Checkout:React.FC = () => {
                   />
                 </FormRow>
               </FormWrapper>
+              <Button name="Checkout" className="full" />
+              <div className="checkout-info">
+                By sending a message you agree to
+                <span> the privacy policy and processing of personal data </span>
+              </div>
             </Form>
           )}
         </Formik>
