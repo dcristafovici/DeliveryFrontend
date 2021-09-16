@@ -3,6 +3,7 @@ import { COLORS } from '../../constants';
 
 export const AccountStyled = styled.div`
   padding-top: 22px;
+  padding-bottom: 50px;
   .account-title{
     font-size: 28px;
     font-weight: 700;

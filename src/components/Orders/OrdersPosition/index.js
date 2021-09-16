@@ -1,3 +1,3 @@
-import OrderPosition from './OrdersPosition';
+import OrdersPosition from './OrdersPosition';
 
-export default OrderPosition;
+export default OrdersPosition;

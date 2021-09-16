@@ -8,6 +8,11 @@ const Orders:React.FC = () => (
     <div className="orders-title">Orders</div>
     <OrdersWrapper date="03.06.2021">
       <OrdersItems />
+      <OrdersItems />
+    </OrdersWrapper>
+    <OrdersWrapper date="06.06.2021">
+      <OrdersItems />
+      <OrdersItems />
     </OrdersWrapper>
   </OrdersStyled>
 );

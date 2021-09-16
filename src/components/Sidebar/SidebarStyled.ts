@@ -7,4 +7,6 @@ export const SidebarStyled = styled.div`
   border-radius: 10px;
   padding: 35px 40px;
   box-sizing: border-box;
+  position: sticky;
+  top: 0;
 `;

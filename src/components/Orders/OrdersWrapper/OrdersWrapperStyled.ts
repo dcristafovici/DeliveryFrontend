@@ -2,7 +2,10 @@ import styled from 'styled-components';
 import { COLORS } from '../../../constants';
 
 export const OrdersWrapperStyled = styled.div`
-
+  margin-bottom: 40px;
+  &:last-child{
+    margin-bottom: 0;
+  }
   .orders-wrapper__date {
     font-size: 16px;
     color: ${COLORS.PRIMARY_DARK};
@@ -11,5 +14,5 @@ export const OrdersWrapperStyled = styled.div`
     padding-bottom: 10px;
     margin-bottom: 20px;
     border-bottom: 1px solid ${COLORS.GRAY_2};
-}
+  }
 `;
