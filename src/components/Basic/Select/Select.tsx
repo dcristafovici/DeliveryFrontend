@@ -31,6 +31,7 @@ const Select:React.FC<SelectInterface> = (
               <li
                 onClick={(event) => onChooseHandler(event, value.name)}
                 key={value.label}
+                className={value.name === choosedItem ? 'is-selected' : ''}
               >
                 {value.name}
               </li>

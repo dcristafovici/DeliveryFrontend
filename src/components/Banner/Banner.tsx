@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Container from '../Basic/Container';
 import Section from '../Basic/Section';
 import Select from '../Basic/Select';
 import { BannerStyled, BannerContainerStyled } from './BannerStyled';
 import { Towers } from './Towers';
+import { setTower } from '../../redux/actions/towerAction';
 
 const Banner:React.FC = () => {
-  const [tower, setTower] = useState('');
+  const dispatch = useDispatch();
   const onChangeSelect = (option:string) => {
-    setTower(option);
+    dispatch(setTower(option));
   };
   return (
     <BannerStyled>

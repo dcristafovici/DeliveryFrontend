@@ -68,9 +68,14 @@ export const SelectedListStyled = styled.div`
     background: none;
     color: ${COLORS.GRAY_1};
     transition: ${HELPERS.TRANSITION_FAST};
-    &:hover {
+    &:hover,
+    &.is-selected {
       background: ${COLORS.PRIMARY_BLUE};
       color: ${COLORS.WHITE}
+    }
+    &.is-selected {
+      pointer-events: none;
+      background: ${COLORS.BLUE_DARK};
     }
   }
 `;
