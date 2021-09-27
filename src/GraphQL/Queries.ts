@@ -8,7 +8,8 @@ export const RESTAURANTS = gql`
       description,
       minPrice,
       deliveryTime,
-      sale
+      discount,
+      rating
     }
   }
 `;

@@ -14,7 +14,7 @@ const Aside:React.FC = () => (
       <AsideLine />
       <AsideSummary />
     </AsideStyled>
-    <Checkout />
+    {/* <Checkout /> */}
   </>
 );
 
