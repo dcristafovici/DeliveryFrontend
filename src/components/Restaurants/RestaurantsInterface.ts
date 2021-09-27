@@ -1,11 +1,11 @@
 export interface RestaurantCardInterface {
-  id: string;
+  id?: string;
   name: string;
-  description: string;
-  minPrice: string;
-  deliveryTime: string;
-  discount: string;
-  rating: string;
+  description?: string;
+  minPrice?: string;
+  deliveryTime?: string;
+  discount?: string;
+  rating?: string;
 }
 
 export interface RestaurantItemsInterface {

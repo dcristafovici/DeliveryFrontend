@@ -9,7 +9,7 @@ export const RoutesDetailes: RoutesDetailsTypes = {
   },
   RESTAURANT: {
     name: 'Restaurant',
-    path: '/restaurant/:slug',
+    path: '/restaurant/:id',
   },
   ACCOUNT: {
     name: 'Account',

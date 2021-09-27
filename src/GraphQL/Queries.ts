@@ -13,3 +13,17 @@ export const RESTAURANTS = gql`
     }
   }
 `;
+
+export const RESTAURANT_BY_ID = gql`
+  query RestuarantByID($id: String!) {
+    RestaurantByID(id: $id) {
+      id,
+      name,
+      description,
+      minPrice,
+      deliveryTime,
+      discount,
+      rating
+    }
+  }
+`;
