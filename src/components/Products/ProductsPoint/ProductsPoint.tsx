@@ -1,7 +1,9 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import ProductsItem from '../ProductsItem/ProductsItem';
 import { ProductPointObject, ProductsPointInterface } from './ProductsPointInterface';
 import { ProductsPointStyled, ProductsItemsStyled } from './ProductsPointStyled';
+import { addProduct } from '../../../redux/actions/asideAction';
 
 const ProductsPoint:React.FC<ProductsPointInterface> = (
   { products = [] }: ProductsPointInterface,

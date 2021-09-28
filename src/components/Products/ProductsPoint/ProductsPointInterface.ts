@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface ProductPointObject {
   id: string;
   name: string;
@@ -7,10 +9,10 @@ export interface ProductPointObject {
   category: {
     id: string;
     name: string
-  }
+  };
   image: {
     medium: string;
-  }
+  };
 }
 
 export interface ProductsPointInterface {
