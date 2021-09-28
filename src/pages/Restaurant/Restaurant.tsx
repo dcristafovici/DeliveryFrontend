@@ -14,7 +14,6 @@ const Restaurant:React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { loading, data = {} } = useQuery(RESTAURANT_BY_ID, { variables: { id } });
   const { RestaurantByID: RestaurantData = [] } = data;
-  console.log(RestaurantData);
 
   return (
     <RestaurantStyled>
@@ -23,11 +22,11 @@ const Restaurant:React.FC = () => {
           <StyledFlex justify="space-between">
 
             <MainRestaurantStyled>
-              <RestaurantInfo
+              {/* <RestaurantInfo
                 name={RestaurantData.name}
                 minPrice={RestaurantData.minPrice}
                 deliveryTime={RestaurantData.deliveryTime}
-              />
+              /> */}
               <Products />
             </MainRestaurantStyled>
 

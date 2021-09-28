@@ -27,3 +27,22 @@ export const RESTAURANT_BY_ID = gql`
     }
   }
 `;
+
+export const PRODUCTS_BY_FIELD = gql`
+  query ProductsByField($data: FindByFieldInput!) {
+    ProductsByField(data: $data){
+      id,
+      name,
+      description,
+      price,
+      weight,
+      category {
+        id,
+        name
+      }
+      image {
+        medium
+      }
+    }
+  }
+`;

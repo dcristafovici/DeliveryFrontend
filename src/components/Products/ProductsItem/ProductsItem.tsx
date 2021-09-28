@@ -1,15 +1,18 @@
 import React from 'react';
+import { ProductPointObject } from '../ProductsPoint/ProductsPointInterface';
 import { ProductsItemStyled } from './ProductsItemStyled';
 
-const ProductsItem:React.FC = () => (
+const ProductsItem:React.FC<ProductPointObject> = (
+  { id, name, description, price, weight, image }: ProductPointObject,
+) => (
   <ProductsItemStyled>
     <div className="products-item__photo">
-      <img src="/images/product.jpg" alt="Product" />
+      <img src={`http://localhost:5000/${image.medium}`} alt="Product" />
     </div>
     <div className="products-item__content">
-      <div className="products-item__name">Wasabi shrimp with daikon, carrot and almond petals</div>
-      <div className="products-item__price">30 $</div>
-      <div className="products-item__description">Shrimps, Daikon, Sesame (white and black), Mint, Tobiko Caviar, Almonds, Lemon, Sichima Seasoning, Batter ...</div>
+      <div className="products-item__name">{name}</div>
+      <div className="products-item__price">{price}</div>
+      <div className="products-item__description">{description}</div>
     </div>
   </ProductsItemStyled>
 );
