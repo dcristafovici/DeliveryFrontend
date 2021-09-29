@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { COLORS, HELPERS } from '../../../constants';
+import close from '../../../assets/img/close.svg';
 
 export const AsideItemStyled = styled.div`
   display: flex;
@@ -62,6 +63,10 @@ export const AsideItemStyled = styled.div`
       }
       &:last-child {
         border-top: 1px solid transparent;
+      }
+      &.aside-controll__remove {
+        font-size: 0;
+        background: url(${close}) no-repeat center/7px;
       }
     }
     &__input {

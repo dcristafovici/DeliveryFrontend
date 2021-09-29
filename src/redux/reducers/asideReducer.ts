@@ -1,4 +1,5 @@
-import { ADD_PRODUCT, CLEAR_ASIDE } from '../actions-types/asideTypes';
+import { ADD_PRODUCT, ADD_QUANTITY, CLEAR_ASIDE, REMOVE_PRODUCT, SUB_QUANTITY } from '../actions-types/asideTypes';
+import { AsideItemInterface } from '../types/reduxTypes';
 
 const initialState = {
   minimalPrice: 0,
@@ -11,7 +12,7 @@ export const asideReducer = (state = initialState, action:any) => {
   const { payload } = action;
   switch (action.type) {
     case ADD_PRODUCT: {
-      const itemInCart = cart.find((item:any) => item.id === action.payload.id);
+      const itemInCart = cart.find((item:AsideItemInterface) => item.id === payload.id);
       if (itemInCart) {
         return {
           ...state,
@@ -39,6 +40,34 @@ export const asideReducer = (state = initialState, action:any) => {
         cart: [],
         total: 0,
       };
+
+    case ADD_QUANTITY: {
+      const itemInCart = cart.find((item:AsideItemInterface) => item.id === payload.id);
+      return {
+        ...state,
+        cart: cart.map((item:any) => (item !== itemInCart
+          ? item
+          : { ...item, quantity: item.quantity + 1 })),
+      };
+    }
+
+    case SUB_QUANTITY: {
+      const itemInCart = cart.find((item:AsideItemInterface) => item.id === payload.id);
+      return {
+        ...state,
+        cart: cart.map((item:any) => (item !== itemInCart
+          ? item
+          : { ...item, quantity: item.quantity - 1 })),
+      };
+    }
+
+    case REMOVE_PRODUCT: {
+      const itemInCart = cart.find((item:AsideItemInterface) => item.id === payload.id);
+      return {
+        ...state,
+        cart: cart.filter((item:any) => item !== itemInCart),
+      };
+    }
     default: {
       return {
         ...state,
