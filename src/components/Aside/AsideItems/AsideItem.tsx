@@ -26,7 +26,7 @@ const AsideItem:React.FC<AsideItemInterface> = (
         </div>
 
         <div className="aside-controll__input">
-          <input type="text" value={quantity} />
+          <input type="text" defaultValue={quantity} />
         </div>
 
         <div

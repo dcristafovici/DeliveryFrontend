@@ -1,19 +1,27 @@
 import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router';
+import { useDispatch } from 'react-redux';
 import Aside from '../../components/Aside';
 import Container from '../../components/Basic/Container';
 import { StyledFlex } from '../../components/Basic/Flex/StyledFlex';
 import Section from '../../components/Basic/Section';
 import Products from '../../components/Products';
-import RestaurantInfo from '../../components/Restaurant/RestaurantInfo/RestaurantInfo';
 import { RESTAURANT_BY_ID } from '../../GraphQL/Queries';
 import { MainRestaurantStyled, RestaurantStyled, AsideWrapperStyled } from './RestaurantStyled';
+import { setAsideData } from '../../redux/actions/asideAction';
 
 const Restaurant:React.FC = () => {
   const { id } = useParams<{ id: string }>();
+
   const { loading, data = {} } = useQuery(RESTAURANT_BY_ID, { variables: { id } });
   const { RestaurantByID: RestaurantData = [] } = data;
+  const { minPrice = '', deliveryTime = '' } = RestaurantData;
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (!loading && RestaurantData) dispatch(setAsideData({ minPrice, deliveryTime }));
+  }, [loading]);
 
   return (
     <RestaurantStyled>

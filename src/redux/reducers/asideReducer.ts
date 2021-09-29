@@ -1,10 +1,11 @@
-import { ADD_PRODUCT, ADD_QUANTITY, CLEAR_ASIDE, REMOVE_PRODUCT, SUB_QUANTITY } from '../actions-types/asideTypes';
+import { ADD_PRODUCT, ADD_QUANTITY, CLEAR_ASIDE, REMOVE_PRODUCT, SET_ASIDE_DATA, SET_TOTAL, SUB_QUANTITY } from '../actions-types/asideTypes';
 import { AsideItemInterface } from '../types/reduxTypes';
 
 const initialState = {
-  minimalPrice: 0,
-  cart: [],
+  minPrice: 0,
+  deliveryTime: 0,
   total: 0,
+  cart: [],
 };
 
 export const asideReducer = (state = initialState, action:any) => {
@@ -68,6 +69,19 @@ export const asideReducer = (state = initialState, action:any) => {
         cart: cart.filter((item:any) => item !== itemInCart),
       };
     }
+
+    case SET_ASIDE_DATA: {
+      return {
+        ...state,
+        deliveryTime: payload.deliveryTime,
+        minPrice: payload.minPrice,
+      };
+    }
+    case SET_TOTAL:
+      return {
+        ...state,
+        total: payload.price,
+      };
     default: {
       return {
         ...state,

@@ -1,4 +1,12 @@
-import { ADD_PRODUCT, CLEAR_ASIDE, ADD_QUANTITY, SUB_QUANTITY, REMOVE_PRODUCT } from '../actions-types/asideTypes';
+import {
+  ADD_PRODUCT,
+  CLEAR_ASIDE,
+  ADD_QUANTITY,
+  SUB_QUANTITY,
+  REMOVE_PRODUCT,
+  SET_ASIDE_DATA,
+  SET_TOTAL,
+} from '../actions-types/asideTypes';
 
 export const addProduct = (
   id:string,
@@ -37,5 +45,19 @@ export const removeProduct = (id:string) => (dispatch:any) => {
   dispatch({
     type: REMOVE_PRODUCT,
     payload: { id },
+  });
+};
+
+export const setAsideData = (data:any) => (dispatch: any) => {
+  dispatch({
+    type: SET_ASIDE_DATA,
+    payload: data,
+  });
+};
+
+export const setTotal = (price:number) => (dispatch:any) => {
+  dispatch({
+    type: SET_TOTAL,
+    payload: { price },
   });
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import Checkout from '../Checkout';
+import { AsideInterface } from './AsideInterface';
 import AsideItems from './AsideItems';
 import AsideLine from './AsideLine/AsideLine';
 import { AsideStyled } from './AsideStyled';
