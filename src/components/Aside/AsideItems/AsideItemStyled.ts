@@ -85,3 +85,10 @@ export const AsideItemStyled = styled.div`
     }
   }
 `;
+
+export const AsideItemsStyled = styled.div`
+  overflow-y: auto;
+  .aside-items {
+    max-height: calc(100vh - 320px);
+  }
+`;

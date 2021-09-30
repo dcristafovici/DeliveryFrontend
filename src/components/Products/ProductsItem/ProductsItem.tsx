@@ -15,7 +15,7 @@ const ProductsItem:React.FC<ProductPointObject> = (
       </div>
       <div className="products-item__content">
         <div className="products-item__name">{name}</div>
-        <div className="products-item__price">{price}</div>
+        <div className="products-item__price">{`${price} $`}</div>
         <div className="products-item__description">{description}</div>
       </div>
     </ProductsItemStyled>

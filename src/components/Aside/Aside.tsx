@@ -8,13 +8,22 @@ import AsideSummary from './AsideSummary/AsideSummary';
 import AsideTitle from './AsideTitle';
 
 const Aside:React.FC = () => {
-  const { checkout } = useTypeSelector((state) => state.asideReducer);
+  const {
+    checkout,
+    total,
+    minPrice,
+    percent,
+  } = useTypeSelector((state) => state.asideReducer);
   return (
     <>
       <AsideStyled>
         <AsideTitle />
         <AsideItems />
-        <AsideLine />
+        <AsideLine
+          total={total}
+          minPrice={minPrice}
+          percent={percent}
+        />
         <AsideSummary />
       </AsideStyled>
       {checkout && <Checkout />}

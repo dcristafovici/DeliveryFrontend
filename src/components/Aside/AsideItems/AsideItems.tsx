@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { setTotal } from '../../../redux/actions/asideAction';
 import { useTypeSelector } from '../../../redux/useTypeSelector';
 import AsideItem from './AsideItem';
+import { AsideItemsStyled } from './AsideItemStyled';
 
 const AsideItems:React.FC = () => {
   const { cart = [] } = useTypeSelector((state) => state.asideReducer);
@@ -17,18 +18,20 @@ const AsideItems:React.FC = () => {
   }, [cart]);
 
   return (
-    <div className="aside-items">
-      {cart.map((item:any) => (
-        <AsideItem
-          key={item.id}
-          id={item.id}
-          name={item.name}
-          price={item.price}
-          weight={item.weight}
-          quantity={item.quantity}
-        />
-      ))}
-    </div>
+    <AsideItemsStyled>
+      <div className="aside-items">
+        {cart.map((item:any) => (
+          <AsideItem
+            key={item.id}
+            id={item.id}
+            name={item.name}
+            price={item.price}
+            weight={item.weight}
+            quantity={item.quantity}
+          />
+        ))}
+      </div>
+    </AsideItemsStyled>
   );
 };
 

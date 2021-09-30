@@ -4,6 +4,7 @@ import { COLORS } from '../../../constants';
 export const AsideLineStyled = styled.div`
   margin-top: 40px;
   margin-bottom: 40px;
+  height: 75px;
   .aside-line {
     &__summs {
       display: flex;

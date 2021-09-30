@@ -7,6 +7,7 @@ import {
   SET_TOTAL,
   SUB_QUANTITY,
   CHECKOUT_STATUS,
+  UPDATE_PERCENT,
 } from '../actions-types/asideTypes';
 import { AsideItemInterface } from '../types/reduxTypes';
 
@@ -16,6 +17,7 @@ const initialState = {
   total: 0,
   cart: [],
   checkout: false,
+  percent: 0,
 };
 
 export const asideReducer = (state = initialState, action:any) => {
@@ -84,7 +86,7 @@ export const asideReducer = (state = initialState, action:any) => {
       return {
         ...state,
         deliveryTime: payload.deliveryTime,
-        minPrice: payload.minPrice,
+        minPrice: parseFloat(payload.minPrice),
       };
     }
     case SET_TOTAL:
@@ -96,6 +98,11 @@ export const asideReducer = (state = initialState, action:any) => {
       return {
         ...state,
         checkout: payload.status,
+      };
+    case UPDATE_PERCENT:
+      return {
+        ...state,
+        percent: payload.percent,
       };
     default: {
       return {

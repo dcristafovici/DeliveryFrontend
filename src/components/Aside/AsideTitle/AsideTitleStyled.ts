@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { COLORS } from '../../../constants';
+import { COLORS, HELPERS } from '../../../constants';
 
 export const AsideTitleStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
+  height: 25px;
   .aside-title {
     &__name {
      font-size: 18px;
@@ -16,6 +16,11 @@ export const AsideTitleStyled = styled.div`
       font-size: 12px;
       color: ${COLORS.GRAY_3};
       text-decoration: underline;
+      cursor: pointer;
+      transition: ${HELPERS.TRANSITION};
+      &:hover {
+        color: ${COLORS.PRIMARY_BLUE};
+      }
     }
   }
 `;

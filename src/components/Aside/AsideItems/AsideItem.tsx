@@ -42,7 +42,7 @@ const AsideItem:React.FC<AsideItemInterface> = (
 
       </div>
       <div className="aside-item__price">
-        <span>{price}</span>
+        <span>{`${price} $`}</span>
       </div>
     </AsideItemStyled>
   );

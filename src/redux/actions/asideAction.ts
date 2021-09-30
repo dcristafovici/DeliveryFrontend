@@ -7,6 +7,7 @@ import {
   SET_ASIDE_DATA,
   SET_TOTAL,
   CHECKOUT_STATUS,
+  UPDATE_PERCENT,
 } from '../actions-types/asideTypes';
 
 export const addProduct = (
@@ -24,7 +25,6 @@ export const addProduct = (
 export const clearAside = () => (dispatch:any) => {
   dispatch({
     type: CLEAR_ASIDE,
-    payload: true,
   });
 };
 
@@ -67,5 +67,12 @@ export const setCheckoutStatus = (status:boolean) => (dispatch:any) => {
   dispatch({
     type: CHECKOUT_STATUS,
     payload: { status },
+  });
+};
+
+export const updatePercent = (percent: number) => (dispatch:any) => {
+  dispatch({
+    type: UPDATE_PERCENT,
+    payload: { percent },
   });
 };

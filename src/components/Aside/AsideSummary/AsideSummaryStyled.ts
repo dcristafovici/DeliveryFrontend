@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { COLORS } from '../../../constants';
 
 export const AsideSummaryStyled = styled.div`
+  height: 110px;
   .aside-summary__items{
     display: flex;
     justify-content: space-between;
