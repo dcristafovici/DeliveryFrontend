@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { COLORS } from '../../../../constants';
 
 export const FormikFieldStyled = styled.div`
+  margin-bottom: 25px;
   label {
     font-size: 12px;
     line-height: 1.3;

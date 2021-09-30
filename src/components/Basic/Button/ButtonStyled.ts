@@ -1,5 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { COLORS, HELPERS } from '../../../constants';
+import { ButtonStyledInterface } from './ButtonInterface';
 
 export const ButtonStyled = styled.button`
   height: 40px;
@@ -37,4 +38,9 @@ export const ButtonStyled = styled.button`
   &.full {
     width: 100%;
   }
+  ${(props:ButtonStyledInterface) => props.disabled && css`
+    background ${COLORS.GRAY_5};
+    color: ${COLORS.GRAY_1};
+    pointer-events: none;
+  `}
 `;

@@ -20,7 +20,7 @@ const AsideSummary:React.FC = () => {
           <span>{`${total} $`}</span>
         </div>
       </div>
-      <Button name="Checkout" onClickEvent={() => dispatch(setCheckoutStatus(true))} className="full" />
+      <Button disabled={false} name="Checkout" onClickEvent={() => dispatch(setCheckoutStatus(true))} className="full" />
     </AsideSummaryStyled>
   );
 };

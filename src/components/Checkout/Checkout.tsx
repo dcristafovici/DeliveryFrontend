@@ -148,7 +148,7 @@ const Checkout:React.FC = () => {
                   <span>2 590 ₽</span>
                 </div>
               </div>
-              <Button name="Checkout" className="full" />
+              <Button name="Checkout" className="full" disabled={!dirty || !isValid} />
               <div className="checkout-info">
                 By sending a message you agree to
                 <span> the privacy policy and processing of personal data </span>

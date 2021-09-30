@@ -1,4 +1,5 @@
 import React from 'react';
+import Authentication from '../../Authentication/Authentication';
 import Button from '../Button';
 import { ContainerStyled } from '../Container/ContainerStyled';
 import { StyledFlex } from '../Flex/StyledFlex';
@@ -6,7 +7,7 @@ import { HeaderStyled } from './HeaderStyled';
 
 const Header:React.FC = () => (
   <HeaderStyled>
-    <ContainerStyled>
+    <ContainerStyled className="container-styled">
       <StyledFlex align="center" justify="space-between">
 
         <div className="header-logo">
@@ -30,11 +31,12 @@ const Header:React.FC = () => (
         </div>
 
         <div className="header-account">
-          <Button name="Sign In" className="transparent" />
+          <Button disabled={false} name="Sign In" className="transparent" />
         </div>
 
       </StyledFlex>
     </ContainerStyled>
+    <Authentication />
   </HeaderStyled>
 );
 

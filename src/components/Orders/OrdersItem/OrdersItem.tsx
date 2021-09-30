@@ -37,7 +37,7 @@ const OrdersItem:React.FC = () => (
       </div>
       <div className="orders-actions">
         <div className="orders-repeat">
-          <Button name="Repeat" className="transparent" />
+          <Button name="Repeat" disabled={false} className="transparent" />
         </div>
         <div className="orders-total">
           <span>Итого:</span>

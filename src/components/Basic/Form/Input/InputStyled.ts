@@ -1,5 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { COLORS } from '../../../../constants';
+import { InputStyledInterface } from './InputInterface';
 
 export const InputStyled = styled.input`
   border: none;
@@ -14,4 +15,8 @@ export const InputStyled = styled.input`
     font-weight: 400;
     color: ${COLORS.GRAY_1};
   }
+  ${(props:InputStyledInterface) => props.disabled && css`
+    pointer-events: none;
+    background: #cccccc;
+  `}
 `;
