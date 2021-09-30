@@ -22,7 +22,7 @@ const Select:React.FC<SelectInterface> = (
   };
 
   const wrapperRef = useRef(null);
-  useOutsideEvent(wrapperRef, toggleSelectHandler);
+  useOutsideEvent(wrapperRef, () => setStatusSelect(false));
 
   return (
     <SelectStyled ref={wrapperRef} className={className}>
