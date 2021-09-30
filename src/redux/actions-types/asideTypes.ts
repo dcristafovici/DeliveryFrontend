@@ -5,3 +5,4 @@ export const SUB_QUANTITY = 'SUB_QUANTITY';
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
 export const SET_ASIDE_DATA = 'SET_ASIDE_DATA';
 export const SET_TOTAL = 'SET_TOTAL';
+export const CHECKOUT_STATUS = 'CHECKOUT_STATUS';

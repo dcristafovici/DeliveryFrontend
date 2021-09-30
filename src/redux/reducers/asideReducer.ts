@@ -1,4 +1,13 @@
-import { ADD_PRODUCT, ADD_QUANTITY, CLEAR_ASIDE, REMOVE_PRODUCT, SET_ASIDE_DATA, SET_TOTAL, SUB_QUANTITY } from '../actions-types/asideTypes';
+import {
+  ADD_PRODUCT,
+  ADD_QUANTITY,
+  CLEAR_ASIDE,
+  REMOVE_PRODUCT,
+  SET_ASIDE_DATA,
+  SET_TOTAL,
+  SUB_QUANTITY,
+  CHECKOUT_STATUS,
+} from '../actions-types/asideTypes';
 import { AsideItemInterface } from '../types/reduxTypes';
 
 const initialState = {
@@ -6,6 +15,7 @@ const initialState = {
   deliveryTime: 0,
   total: 0,
   cart: [],
+  checkout: false,
 };
 
 export const asideReducer = (state = initialState, action:any) => {
@@ -81,6 +91,11 @@ export const asideReducer = (state = initialState, action:any) => {
       return {
         ...state,
         total: payload.price,
+      };
+    case CHECKOUT_STATUS:
+      return {
+        ...state,
+        checkout: payload.status,
       };
     default: {
       return {

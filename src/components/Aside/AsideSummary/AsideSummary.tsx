@@ -1,10 +1,13 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { setCheckoutStatus } from '../../../redux/actions/asideAction';
 import { useTypeSelector } from '../../../redux/useTypeSelector';
 import Button from '../../Basic/Button';
 import { AsideSummaryStyled } from './AsideSummaryStyled';
 
 const AsideSummary:React.FC = () => {
   const { deliveryTime = '', total = 0 } = useTypeSelector((state) => state.asideReducer);
+  const dispatch = useDispatch();
   return (
     <AsideSummaryStyled>
       <div className="aside-summary__items">
@@ -17,7 +20,7 @@ const AsideSummary:React.FC = () => {
           <span>{`${total} $`}</span>
         </div>
       </div>
-      <Button name="Checkout" className="full" />
+      <Button name="Checkout" onClickEvent={() => dispatch(setCheckoutStatus(true))} className="full" />
     </AsideSummaryStyled>
   );
 };

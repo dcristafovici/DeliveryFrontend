@@ -6,6 +6,7 @@ import {
   REMOVE_PRODUCT,
   SET_ASIDE_DATA,
   SET_TOTAL,
+  CHECKOUT_STATUS,
 } from '../actions-types/asideTypes';
 
 export const addProduct = (
@@ -59,5 +60,12 @@ export const setTotal = (price:number) => (dispatch:any) => {
   dispatch({
     type: SET_TOTAL,
     payload: { price },
+  });
+};
+
+export const setCheckoutStatus = (status:boolean) => (dispatch:any) => {
+  dispatch({
+    type: CHECKOUT_STATUS,
+    payload: { status },
   });
 };
