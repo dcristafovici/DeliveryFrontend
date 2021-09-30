@@ -7,9 +7,9 @@ const RestaurantsItems:React.FC<RestaurantItemsInterface> = (
   { restaurants }: RestaurantItemsInterface,
 ) => (
   <RestaurantItemsStyled>
-    {console.log(restaurants)}
     {restaurants.map((restaurant:RestaurantCardInterface) => (
       <RestaurantCard
+        key={restaurant.id}
         id={restaurant.id}
         name={restaurant.name}
         description={restaurant.description}

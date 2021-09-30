@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import { useOutsideEvent } from '../../../utils/useOutsideEvent';
 import { SelectInterface, SelectValue } from './SelectInterface';
 import { SelectStyled, SelectFieldStyled, SelectedListStyled } from './SelectStyled';
 
@@ -19,8 +20,12 @@ const Select:React.FC<SelectInterface> = (
     setChoosedItem(name);
     onChangeEvent(name);
   };
+
+  const wrapperRef = useRef(null);
+  useOutsideEvent(wrapperRef, toggleSelectHandler);
+
   return (
-    <SelectStyled className={className}>
+    <SelectStyled ref={wrapperRef} className={className}>
       <SelectFieldStyled onClick={toggleSelectHandler} className={className + SELECT_FIELD_STATUS}>
         <span>{choosedItem}</span>
       </SelectFieldStyled>
