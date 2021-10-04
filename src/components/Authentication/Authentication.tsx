@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
 import { useMutation } from '@apollo/client';
+import { useDispatch } from 'react-redux';
 import Button from '../Basic/Button';
 import FormikField from '../Basic/Form/FormikField';
 import { OverlayStyled } from '../Checkout/CheckoutStyled';
 import { AuthenticationFormInterface } from './AuthenticationInterface';
 import { AuthenticationStyled } from './AuthenticationStyled';
 import { ADD_USER, CHECK_CODE, SEND_PHONE } from '../../GraphQL/Mutations';
+import { changePopupStatus } from '../../redux/actions/authAction';
 
 const initialValues:AuthenticationFormInterface = {
   phone: '',
@@ -24,6 +26,7 @@ const Authentication:React.FC = () => {
   const [sendPhone] = useMutation(SEND_PHONE);
   const [checkCode] = useMutation(CHECK_CODE);
   const [addUser] = useMutation(ADD_USER);
+  const dispatch = useDispatch();
 
   const handleSubmit = (values:AuthenticationFormInterface, { resetForm } : any) => {
     if (values.code === '') {
@@ -42,7 +45,7 @@ const Authentication:React.FC = () => {
             addUser({ variables: { data: { phone: values.phone } } })
               .then(({ data: AddUserStatus }) => {
                 if (AddUserStatus) {
-                  console.log('close popup');
+                  dispatch(changePopupStatus(false));
                 }
               });
           }
@@ -51,7 +54,7 @@ const Authentication:React.FC = () => {
   };
   return (
     <>
-      <OverlayStyled />
+      <OverlayStyled onClick={() => dispatch(changePopupStatus(false))} />
       <AuthenticationStyled>
         <div className="authentication-title">Sign in</div>
         <Formik
