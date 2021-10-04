@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { changePopupStatus } from '../../../redux/actions/authAction';
 import { useTypeSelector } from '../../../redux/useTypeSelector';
 import Authentication from '../../Authentication/Authentication';
@@ -40,7 +41,9 @@ const Header:React.FC = () => {
               className="header-account"
               role="button"
             >
-              <Button disabled={false} name="Account" className="transparent" />
+              <Link to="/account" className="transparent button">
+                <span>Account</span>
+              </Link>
             </div>
           ) : (
             <div

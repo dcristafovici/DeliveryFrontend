@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { SidebarStyled } from './SidebarStyled';
@@ -6,16 +6,7 @@ import { SidebarFormInterface } from './SidebarInterface';
 import FormWrapper from '../Basic/Form/FormWrapper';
 import FormRow from '../Basic/Form/FormRow';
 import FormikField from '../Basic/Form/FormikField';
-
-const initialValues:SidebarFormInterface = {
-  name: '',
-  phone: '',
-  email: '',
-  address: '',
-  floor: '',
-  office: '',
-  apartament: '',
-};
+import { useTypeSelector } from '../../redux/useTypeSelector';
 
 const SidebarFormSchema = Yup.object().shape({
   name: Yup.string()
@@ -38,6 +29,12 @@ const Sidebar:React.FC = () => {
   const handleSubmit = (values:SidebarFormInterface, { resetForm }:any) => {
     console.log(values);
   };
+
+  const { user } = useTypeSelector((state) => state.authReducer);
+  const [initialValues, setInitialValues] = useState<SidebarFormInterface>(user);
+  useEffect(() => {
+    setInitialValues((prev) => ({ ...initialValues, ...user }));
+  }, [user]);
   return (
     <SidebarStyled>
       <Formik
@@ -46,6 +43,7 @@ const Sidebar:React.FC = () => {
         validateOnChange
         validateOnBlur
         validationSchema={SidebarFormSchema}
+        enableReinitialize
       >
         {({ dirty, isValid, errors, getFieldProps, setFieldValue, touched }) => (
           <Form>

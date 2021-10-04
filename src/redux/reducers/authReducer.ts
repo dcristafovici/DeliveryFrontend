@@ -3,7 +3,15 @@ import { CHANGE_POPUP_STATUS, SET_USER } from '../actions-types/authTypes';
 const initialState = {
   popupStatus: false,
   token: null,
-  user: {},
+  user: {
+    name: '',
+    phone: '',
+    email: '',
+    address: '',
+    floor: '',
+    office: '',
+    apartament: '',
+  },
 };
 
 export const authReducer = (state = initialState, action:any) => {
@@ -18,7 +26,7 @@ export const authReducer = (state = initialState, action:any) => {
       return {
         ...state,
         token: payload.token,
-        user: payload.user,
+        user: { ...state.user, ...payload.user },
       };
     default: {
       return {
