@@ -46,3 +46,12 @@ export const PRODUCTS_BY_FIELD = gql`
     }
   }
 `;
+
+export const CHECK_TOKEN = gql`
+  query CheckToken($token: String!) {
+    CheckToken(token: $token) {
+      phone,
+      created_at
+    }
+  }
+`;

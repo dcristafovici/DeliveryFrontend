@@ -9,7 +9,7 @@ import { OverlayStyled } from '../Checkout/CheckoutStyled';
 import { AuthenticationFormInterface } from './AuthenticationInterface';
 import { AuthenticationStyled } from './AuthenticationStyled';
 import { ADD_USER, CHECK_CODE, SEND_PHONE } from '../../GraphQL/Mutations';
-import { changePopupStatus } from '../../redux/actions/authAction';
+import { changePopupStatus, setUser } from '../../redux/actions/authAction';
 
 const initialValues:AuthenticationFormInterface = {
   phone: '',
@@ -45,7 +45,10 @@ const Authentication:React.FC = () => {
             addUser({ variables: { data: { phone: values.phone } } })
               .then(({ data: AddUserStatus }) => {
                 if (AddUserStatus) {
+                  const { token, ...user } = AddUserStatus.AddUser;
+                  localStorage.setItem('token', token);
                   dispatch(changePopupStatus(false));
+                  dispatch(setUser(token, user));
                 }
               });
           }
