@@ -7,7 +7,7 @@ import FormikField from '../Basic/Form/FormikField';
 import { OverlayStyled } from '../Checkout/CheckoutStyled';
 import { AuthenticationFormInterface } from './AuthenticationInterface';
 import { AuthenticationStyled } from './AuthenticationStyled';
-import { SEND_PHONE } from '../../GraphQL/Mutations';
+import { ADD_USER, CHECK_CODE, SEND_PHONE } from '../../GraphQL/Mutations';
 
 const initialValues:AuthenticationFormInterface = {
   phone: '',
@@ -22,6 +22,8 @@ const AuthenticationFormScheme = Yup.object().shape({
 const Authentication:React.FC = () => {
   const [isCodeField, setIsCodeField] = useState(false);
   const [sendPhone] = useMutation(SEND_PHONE);
+  const [checkCode] = useMutation(CHECK_CODE);
+  const [addUser] = useMutation(ADD_USER);
 
   const handleSubmit = (values:AuthenticationFormInterface, { resetForm } : any) => {
     if (values.code === '') {
@@ -31,7 +33,20 @@ const Authentication:React.FC = () => {
           setIsCodeField(status);
         });
     } else {
-      console.log(values, 'send for check');
+      checkCode({ variables: {
+        data: { phone: values.phone, code: parseFloat(values.code) },
+      } })
+        .then(({ data }) => {
+          const { checkCode: codeIsValid } = data;
+          if (codeIsValid) {
+            addUser({ variables: { data: { phone: values.phone } } })
+              .then(({ data: AddUserStatus }) => {
+                if (AddUserStatus) {
+                  console.log('close popup');
+                }
+              });
+          }
+        });
     }
   };
   return (
