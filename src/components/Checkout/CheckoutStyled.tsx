@@ -15,7 +15,32 @@ export const CheckoutStyled = styled.div`
   box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.0979294), 0px 1px 3px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   transform: translateX(-50%);
-  padding: 33px 50px 60px 50px;
+  padding: 33px 50px 30px 50px;
+  height: auto;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: ${COLORS.PRIMARY_BLUE};
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: ${COLORS.PRIMARY_BLUE};
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: ${COLORS.PRIMARY_BLUE};
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
+  }
   .checkout-title {
     font-size: 28px;
     line-height: 1.2;

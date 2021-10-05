@@ -11,6 +11,7 @@ const initialState = {
     floor: '',
     office: '',
     apartament: '',
+    tower: '',
   },
 };
 

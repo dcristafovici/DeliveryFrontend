@@ -11,7 +11,6 @@ const AsideItem:React.FC<AsideItemInterface> = (
 
   const onChangeHandler = (event:any) => {
     const newQuantity = parseFloat(event.target.value);
-    console.log(newQuantity < 1);
     dispatch(updateQuantity(id, (newQuantity < 1) ? 1 : newQuantity));
   };
   return (

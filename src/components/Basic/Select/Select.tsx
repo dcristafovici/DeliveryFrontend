@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useOutsideEvent } from '../../../utils/useOutsideEvent';
 import { SelectInterface, SelectValue } from './SelectInterface';
 import { SelectStyled, SelectFieldStyled, SelectedListStyled } from './SelectStyled';
@@ -20,6 +20,10 @@ const Select:React.FC<SelectInterface> = (
     setChoosedItem(name);
     onChangeEvent(name);
   };
+
+  useEffect(() => {
+    setChoosedItem(initialValue);
+  }, [initialValue]);
 
   const wrapperRef = useRef(null);
   useOutsideEvent(wrapperRef, () => setStatusSelect(false));

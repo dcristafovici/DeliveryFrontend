@@ -1,16 +1,26 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useMutation } from '@apollo/client';
 import Container from '../Basic/Container';
 import Section from '../Basic/Section';
 import Select from '../Basic/Select';
 import { BannerStyled, BannerContainerStyled } from './BannerStyled';
 import { Towers } from './Towers';
 import { setTower } from '../../redux/actions/towerAction';
+import { UPDATE_USER } from '../../GraphQL/Mutations';
+import { useTypeSelector } from '../../redux/useTypeSelector';
 
 const Banner:React.FC = () => {
   const dispatch = useDispatch();
+  const [updateUser] = useMutation(UPDATE_USER);
+  const { user = {} } = useTypeSelector((state) => state.authReducer);
+  const { id, tower } = user;
+  const initialTower = tower || 'Choose Tower';
   const onChangeSelect = (option:string) => {
     dispatch(setTower(option));
+    if (id) {
+      updateUser({ variables: { data: { id: user.id, field: 'tower', value: option } } });
+    }
   };
   return (
     <BannerStyled>
@@ -27,7 +37,7 @@ const Banner:React.FC = () => {
               <Select
                 onChangeEvent={(option:string) => onChangeSelect(option)}
                 values={Towers}
-                initialValue="Choose tower"
+                initialValue={initialTower}
               />
             </div>
           </BannerContainerStyled>
