@@ -15,13 +15,13 @@ const Sidebar:React.FC = () => {
     name: '',
     phone: '',
     email: '',
-    address: '',
+    tower: '',
     floor: '',
     office: '',
     apartment: '',
   });
   useEffect(() => {
-    const { id, tower, ...filteredUser } = user;
+    const { id, ...filteredUser } = user;
     setInitialValues((prev) => ({ ...initialValues, ...filteredUser }));
   }, [user]);
 
@@ -30,6 +30,7 @@ const Sidebar:React.FC = () => {
   };
 
   const onSubmitHandler = (name:string) => {
+    console.log(name);
     updateUser({ variables: { data: { id: user.id, field: name, value: initialValues.name } } });
   };
   return (
@@ -41,20 +42,22 @@ const Sidebar:React.FC = () => {
             label="Your name"
             onChange={onChangeEvent}
             defaultValue={initialValues.name}
-            isEdit={initialValues.name !== ''}
+            requireEdit
+            clickEvent={() => onSubmitHandler('name')}
           />
           <FormikField
             name="phone"
             label="Your phone"
             onChange={onChangeEvent}
             defaultValue={initialValues.phone}
-            isEdit={initialValues.phone !== ''}
           />
           <FormikField
             name="email"
             label="Your email"
             type="Email"
             defaultValue={initialValues.email}
+            requireEdit
+            clickEvent={() => onSubmitHandler('email')}
           />
         </FormRow>
       </FormWrapper>
@@ -62,9 +65,11 @@ const Sidebar:React.FC = () => {
       <FormWrapper title="Delivery data">
         <FormRow className="one-element">
           <FormikField
-            name="address"
-            label="Delivery address"
-            defaultValue={initialValues.address}
+            name="tower"
+            label="Delivery tower"
+            defaultValue={initialValues.tower}
+            requireEdit
+            clickEvent={() => onSubmitHandler('tower')}
           />
         </FormRow>
         <FormRow>
@@ -72,11 +77,15 @@ const Sidebar:React.FC = () => {
             name="floor"
             label="Your floor"
             defaultValue={initialValues.floor}
+            requireEdit
+            clickEvent={() => onSubmitHandler('floor')}
           />
           <FormikField
             name="office"
             label="Your office"
             defaultValue={initialValues.office}
+            requireEdit
+            clickEvent={() => onSubmitHandler('office')}
           />
         </FormRow>
         <FormRow className="one-element">
@@ -84,6 +93,8 @@ const Sidebar:React.FC = () => {
             name="apartment"
             label="Your apartament"
             defaultValue={initialValues.apartment}
+            requireEdit
+            clickEvent={() => onSubmitHandler('apartment')}
           />
         </FormRow>
       </FormWrapper>

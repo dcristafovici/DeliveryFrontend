@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Input from '../Input';
 import Textarea from '../Textarea';
 import { FormikFieldInterface } from './FormikFieldInterface';
@@ -7,12 +7,16 @@ import { FormikFieldStyled } from './FormikFieldStyled';
 const FormikField:React.FC<FormikFieldInterface> = (
   { name, label, type, error, touched, isTextarea, ...rest }: FormikFieldInterface,
 ) => {
-  const { single, clickEvent, isEdit } = rest;
+  const { requireEdit, clickEvent } = rest;
+  const [isEditable, setIsEditable] = useState(requireEdit || false);
+  const [isSingle, setIsSingle] = useState(false);
+
   const onClickHandler = (e:any) => {
-    console.log(isEdit);
+    setIsEditable(false);
+    setIsSingle(true);
   };
   return (
-    <FormikFieldStyled className={isEdit || single ? 'is-edit formik-field' : 'formik-field'}>
+    <FormikFieldStyled className={`formik-field ${isEditable && 'editable'}`}>
       <label>{label}</label>
       {isTextarea ? (
         <Textarea
@@ -31,7 +35,7 @@ const FormikField:React.FC<FormikFieldInterface> = (
           {...rest}
         />
       )}
-      {single && (
+      {isSingle && (
         <div
           className="send-icon"
           role="button"
@@ -41,7 +45,7 @@ const FormikField:React.FC<FormikFieldInterface> = (
           Submit
         </div>
       )}
-      {isEdit && (
+      {isEditable && (
         <div
           className="edit-field"
           role="button"

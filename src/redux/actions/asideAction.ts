@@ -72,6 +72,11 @@ export const setTotal = (price:number) => (dispatch:any) => {
 };
 
 export const setCheckoutStatus = (status:boolean) => (dispatch:any) => {
+  if (status) {
+    document.body.classList.add('modal-open');
+  } else {
+    document.body.classList.remove('modal-open');
+  }
   dispatch({
     type: CHECKOUT_STATUS,
     payload: { status },

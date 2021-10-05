@@ -121,21 +121,13 @@ const Checkout:React.FC = () => {
                 </FormRow>
               </FormWrapper>
               <FormWrapper title="Delivery detailes">
-                <FormRow>
+                <FormRow className="one-element">
                   <FormikFieldDate
                     name="additional"
                     label="Choose date"
                     error={errors.date}
                     onChange={(name:string, value:string) => setFieldValue(name, value)}
                     touched={touched.date}
-                  />
-                  <FormikField
-                    {...getFieldProps('time')}
-                    name="additional"
-                    type="time"
-                    label="Choose time"
-                    error={errors.time}
-                    touched={touched.time}
                   />
                 </FormRow>
               </FormWrapper>
@@ -153,11 +145,11 @@ const Checkout:React.FC = () => {
               </FormWrapper>
               <div className="checkout-general">
                 <div className="checkout-general__point">
-                  <span>Время доставки</span>
+                  <span>Delivery Time</span>
                   <span>{deliveryTime}</span>
                 </div>
                 <div className="checkout-general__point">
-                  <span>Итого</span>
+                  <span>Total</span>
                   <span>{total}</span>
                 </div>
               </div>

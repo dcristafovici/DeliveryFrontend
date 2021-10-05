@@ -49,6 +49,7 @@ export const SelectedListStyled = styled.div`
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
   width: 100%;
+  z-index: 5;
   padding-top: 5px;
   border-top: 1px solid ${COLORS.GRAY_2};
   ul {

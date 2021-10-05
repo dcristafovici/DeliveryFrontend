@@ -32,10 +32,11 @@ export const FormikFieldStyled = styled.div`
   .edit-field {
     background: url(${edit}) no-repeat center/17px;
   }
-  &.is-edit {
+  &.editable {
     input {
       padding-right: 45px;
-      background: #cccccc;
+      opacity: 0.7;
+      background: #ccc;
       pointer-events: none;
       box-sizing: border-box;
     }

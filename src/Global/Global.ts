@@ -70,4 +70,8 @@ export const Global = createGlobalStyle`
   input[type=number] {
     -moz-appearance: textfield;
   }
+
+  body.modal-open {
+    overflow: hidden;
+  }
 `;
