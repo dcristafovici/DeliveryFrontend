@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
+import { useMutation } from '@apollo/client';
 import { CheckoutStyled, OverlayStyled } from './CheckoutStyled';
 import { CheckoutFormInterface } from './CheckoutInterface';
 import FormWrapper from '../Basic/Form/FormWrapper';
@@ -11,25 +12,13 @@ import Button from '../Basic/Button';
 import FormikFieldDate from '../Basic/Form/FormikFieldDate';
 import FormikFieldSelect from '../Basic/Form/FormikFieldSelect';
 import { setCheckoutStatus } from '../../redux/actions/asideAction';
-
-const initialValues:CheckoutFormInterface = {
-  name: '',
-  phone: '',
-  tower: '',
-  floor: '',
-  office: '',
-  apartament: '',
-  date: '',
-  time: '',
-  additional: '',
-};
+import { CREATE_ORDER } from '../../GraphQL/Mutations';
+import { useTypeSelector } from '../../redux/useTypeSelector';
 
 const CheckoutFormSchema = Yup.object().shape({
   name: Yup.string()
     .required('Required'),
   phone: Yup.string()
-    .required('Required'),
-  tower: Yup.string()
     .required('Required'),
   floor: Yup.string()
     .required('Required'),
@@ -47,6 +36,26 @@ const CheckoutFormSchema = Yup.object().shape({
 
 const Checkout:React.FC = () => {
   const dispatch = useDispatch();
+  const { user } = useTypeSelector((state) => state.authReducer);
+  const { total, deliveryTime } = useTypeSelector((state) => state.asideReducer);
+
+  const [createOrder] = useMutation(CREATE_ORDER);
+  const [initialValues, setInitialValues] = useState<CheckoutFormInterface>({
+    name: '',
+    phone: '',
+    tower: '',
+    floor: '',
+    office: '',
+    apartament: '',
+    date: '',
+    time: '',
+    additional: '',
+  });
+
+  // useEffect(() => {
+  //   setInitialValues((prev) => ({ ...initialValues .tower.}));
+  // }, [user]);
+
   const handleSubmit = (values:CheckoutFormInterface, { resetForm } : any) => {
     console.log(values);
   };
@@ -61,6 +70,7 @@ const Checkout:React.FC = () => {
           validateOnChange
           validateOnBlur
           validationSchema={CheckoutFormSchema}
+          enableReinitialize
         >
           {({ dirty, isValid, errors, getFieldProps, setFieldValue, touched }) => (
             <Form>
@@ -84,7 +94,7 @@ const Checkout:React.FC = () => {
               </FormWrapper>
               <FormWrapper title="Delivery address">
                 <FormRow className="one-element">
-                  <FormikFieldSelect />
+                  <FormikFieldSelect selectDefault={initialValues.tower} />
                 </FormRow>
                 <FormRow className="three-elements">
                   <FormikField
@@ -144,11 +154,11 @@ const Checkout:React.FC = () => {
               <div className="checkout-general">
                 <div className="checkout-general__point">
                   <span>Время доставки</span>
-                  <span>30 – 45 мин</span>
+                  <span>{deliveryTime}</span>
                 </div>
                 <div className="checkout-general__point">
                   <span>Итого</span>
-                  <span>2 590 ₽</span>
+                  <span>{total}</span>
                 </div>
               </div>
               <Button name="Checkout" className="full" disabled={!dirty || !isValid} />

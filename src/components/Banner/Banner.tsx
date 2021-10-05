@@ -6,7 +6,6 @@ import Section from '../Basic/Section';
 import Select from '../Basic/Select';
 import { BannerStyled, BannerContainerStyled } from './BannerStyled';
 import { Towers } from './Towers';
-import { setTower } from '../../redux/actions/towerAction';
 import { UPDATE_USER } from '../../GraphQL/Mutations';
 import { useTypeSelector } from '../../redux/useTypeSelector';
 
@@ -17,7 +16,6 @@ const Banner:React.FC = () => {
   const { id, tower } = user;
   const initialTower = tower || 'Choose Tower';
   const onChangeSelect = (option:string) => {
-    dispatch(setTower(option));
     if (id) {
       updateUser({ variables: { data: { id: user.id, field: 'tower', value: option } } });
     }

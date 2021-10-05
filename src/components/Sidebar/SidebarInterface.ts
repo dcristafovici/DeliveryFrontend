@@ -5,5 +5,5 @@ export interface SidebarFormInterface {
   address?: string;
   floor?: string;
   office?: string;
-  apartament?: string;
+  apartment?: string;
 }

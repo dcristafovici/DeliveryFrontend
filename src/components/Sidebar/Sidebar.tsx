@@ -1,118 +1,92 @@
 import React, { useEffect, useState } from 'react';
-import { Formik, Form } from 'formik';
-import * as Yup from 'yup';
+import { useMutation } from '@apollo/client';
 import { SidebarStyled } from './SidebarStyled';
 import { SidebarFormInterface } from './SidebarInterface';
+import { useTypeSelector } from '../../redux/useTypeSelector';
 import FormWrapper from '../Basic/Form/FormWrapper';
 import FormRow from '../Basic/Form/FormRow';
 import FormikField from '../Basic/Form/FormikField';
-import { useTypeSelector } from '../../redux/useTypeSelector';
-
-const SidebarFormSchema = Yup.object().shape({
-  name: Yup.string()
-    .required('Required'),
-  phone: Yup.string()
-    .required('Required'),
-  email: Yup.string()
-    .required('Required'),
-  address: Yup.string()
-    .required('Required'),
-  floor: Yup.string()
-    .required('Required'),
-  office: Yup.string()
-    .required('Required'),
-  apartament: Yup.string()
-    .required('Required'),
-});
+import { UPDATE_USER } from '../../GraphQL/Mutations';
 
 const Sidebar:React.FC = () => {
-  const handleSubmit = (values:SidebarFormInterface, { resetForm }:any) => {
-    console.log(values);
+  const [updateUser] = useMutation(UPDATE_USER);
+  const { user } = useTypeSelector((state) => state.authReducer);
+  const [initialValues, setInitialValues] = useState<SidebarFormInterface>({
+    name: '',
+    phone: '',
+    email: '',
+    address: '',
+    floor: '',
+    office: '',
+    apartment: '',
+  });
+  useEffect(() => {
+    const { id, tower, ...filteredUser } = user;
+    setInitialValues((prev) => ({ ...initialValues, ...filteredUser }));
+  }, [user]);
+
+  const onChangeEvent = (event:React.FormEvent<HTMLInputElement>) => {
+    setInitialValues({ ...initialValues, [event.currentTarget.name]: event.currentTarget.value });
   };
 
-  const { user } = useTypeSelector((state) => state.authReducer);
-  const [initialValues, setInitialValues] = useState<SidebarFormInterface>(user);
-  useEffect(() => {
-    setInitialValues((prev) => ({ ...initialValues, ...user }));
-  }, [user]);
+  const onSubmitHandler = (name:string) => {
+    updateUser({ variables: { data: { id: user.id, field: name, value: initialValues.name } } });
+  };
   return (
     <SidebarStyled>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={handleSubmit}
-        validateOnChange
-        validateOnBlur
-        validationSchema={SidebarFormSchema}
-        enableReinitialize
-      >
-        {({ dirty, isValid, errors, getFieldProps, setFieldValue, touched }) => (
-          <Form>
-            <FormWrapper title="Personal data">
-              <FormRow className="one-element">
-                <FormikField
-                  {...getFieldProps('name')}
-                  name="name"
-                  label="Your name"
-                  error={errors.name}
-                  touched={touched.name}
-                />
-                <FormikField
-                  {...getFieldProps('phone')}
-                  name="phone"
-                  label="Your phone"
-                  error={errors.phone}
-                  touched={touched.phone}
-                />
-                <FormikField
-                  {...getFieldProps('email')}
-                  name="email"
-                  label="Your email"
-                  type="Email"
-                  error={errors.email}
-                  touched={touched.email}
-                />
-              </FormRow>
-            </FormWrapper>
+      <FormWrapper title="Personal data">
+        <FormRow className="one-element">
+          <FormikField
+            name="name"
+            label="Your name"
+            onChange={onChangeEvent}
+            defaultValue={initialValues.name}
+            isEdit={initialValues.name !== ''}
+          />
+          <FormikField
+            name="phone"
+            label="Your phone"
+            onChange={onChangeEvent}
+            defaultValue={initialValues.phone}
+            isEdit={initialValues.phone !== ''}
+          />
+          <FormikField
+            name="email"
+            label="Your email"
+            type="Email"
+            defaultValue={initialValues.email}
+          />
+        </FormRow>
+      </FormWrapper>
 
-            <FormWrapper title="Delivery data">
-              <FormRow className="one-element">
-                <FormikField
-                  {...getFieldProps('address')}
-                  name="address"
-                  label="Delivery address"
-                  error={errors.address}
-                  touched={touched.address}
-                />
-              </FormRow>
-              <FormRow>
-                <FormikField
-                  {...getFieldProps('floor')}
-                  name="floor"
-                  label="Your floor"
-                  error={errors.floor}
-                  touched={touched.floor}
-                />
-                <FormikField
-                  {...getFieldProps('office')}
-                  name="office"
-                  label="Your office"
-                  error={errors.office}
-                  touched={touched.office}
-                />
-              </FormRow>
-              <FormRow className="one-element">
-                <FormikField
-                  {...getFieldProps('apartament')}
-                  name="apartament"
-                  label="Your apartament"
-                  error={errors.apartament}
-                  touched={touched.apartament}
-                />
-              </FormRow>
-            </FormWrapper>
-          </Form>
-        )}
-      </Formik>
+      <FormWrapper title="Delivery data">
+        <FormRow className="one-element">
+          <FormikField
+            name="address"
+            label="Delivery address"
+            defaultValue={initialValues.address}
+          />
+        </FormRow>
+        <FormRow>
+          <FormikField
+            name="floor"
+            label="Your floor"
+            defaultValue={initialValues.floor}
+          />
+          <FormikField
+            name="office"
+            label="Your office"
+            defaultValue={initialValues.office}
+          />
+        </FormRow>
+        <FormRow className="one-element">
+          <FormikField
+            name="apartment"
+            label="Your apartament"
+            defaultValue={initialValues.apartment}
+          />
+        </FormRow>
+      </FormWrapper>
     </SidebarStyled>
   );
 };

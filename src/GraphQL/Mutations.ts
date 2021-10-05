@@ -26,3 +26,12 @@ export const UPDATE_USER = gql`
     updateUser(data: $data) 
   }
 `;
+
+export const CREATE_ORDER = gql`
+  mutation CreateOrder($data: AddOrderInput!) {
+    CreateOrder(data: $data) {
+      name,
+      phone,
+    }
+  }
+`;

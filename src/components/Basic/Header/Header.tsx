@@ -10,7 +10,7 @@ import { StyledFlex } from '../Flex/StyledFlex';
 import { HeaderStyled } from './HeaderStyled';
 
 const Header:React.FC = () => {
-  const { popupStatus, user } = useTypeSelector((state) => state.authReducer);
+  const { popupStatus, user, token } = useTypeSelector((state) => state.authReducer);
   const dispatch = useDispatch();
   return (
     <HeaderStyled>
@@ -38,7 +38,7 @@ const Header:React.FC = () => {
           <div className="header-status">
             Online
           </div>
-          {(Object.keys(user).length !== 0) ? (
+          {token ? (
             <div
               className="header-account"
               role="button"

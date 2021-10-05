@@ -1,14 +1,44 @@
 import styled from 'styled-components';
 import { COLORS } from '../../../../constants';
+import check from '../../../../assets/img/check.svg';
+import edit from '../../../../assets/img/edit.svg';
 
 export const FormikFieldStyled = styled.div`
   margin-bottom: 25px;
+  position: relative;
   label {
     font-size: 12px;
     line-height: 1.3;
     color: ${COLORS.GRAY_3};
     display: block;
     margin-bottom: 7px;
+  }
+  .send-icon,
+  .edit-field {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    cursor: pointer;
+    font-size: 0;
+    z-index: 5;
+    justify-content: center;
+    align-items: center;
+    right: 5px;
+    background: url(${check}) no-repeat center/25px;
+  }
+  .edit-field {
+    background: url(${edit}) no-repeat center/17px;
+  }
+  &.is-edit {
+    input {
+      padding-right: 45px;
+      background: #cccccc;
+      pointer-events: none;
+      box-sizing: border-box;
+    }
   }
   .DayPickerInput {
     width: 100%;
