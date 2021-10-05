@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { COLORS } from '../../../constants';
 
 export const AsideLineStyled = styled.div`
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   height: 75px;
   .aside-line {
     &__summs {
@@ -38,6 +38,9 @@ export const AsideLineStyled = styled.div`
       font-size: 11px;
       color: ${COLORS.PRIMARY_BLUE};
       font-weight: 400;
+      > span {
+        margin-left: 5px;
+      }
     }
   }
 `;

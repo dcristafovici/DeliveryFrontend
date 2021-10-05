@@ -25,7 +25,7 @@ const AsideLine:React.FC<AsideLineInterface> = (
         <div className="aside-line__last">
           <span>
             For free delivery you need to purchase additional
-            {`${minPrice - total} $`}
+            <span>{`${minPrice - total} $`}</span>
           </span>
         </div>
       )}

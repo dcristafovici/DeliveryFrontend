@@ -8,6 +8,7 @@ import {
   SET_TOTAL,
   CHECKOUT_STATUS,
   UPDATE_PERCENT,
+  UPDATE_QUANTITY,
 } from '../actions-types/asideTypes';
 
 export const addProduct = (
@@ -39,6 +40,13 @@ export const subQuantity = (id:string) => (dispatch:any) => {
   dispatch({
     type: SUB_QUANTITY,
     payload: { id },
+  });
+};
+
+export const updateQuantity = (id:string, quantity: number) => (dispatch:any) => {
+  dispatch({
+    type: UPDATE_QUANTITY,
+    payload: { id, quantity },
   });
 };
 

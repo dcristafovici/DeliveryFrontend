@@ -8,6 +8,7 @@ import {
   SUB_QUANTITY,
   CHECKOUT_STATUS,
   UPDATE_PERCENT,
+  UPDATE_QUANTITY,
 } from '../actions-types/asideTypes';
 import { AsideItemInterface } from '../types/reduxTypes';
 
@@ -71,6 +72,17 @@ export const asideReducer = (state = initialState, action:any) => {
         cart: cart.map((item:any) => (item !== itemInCart
           ? item
           : { ...item, quantity: item.quantity - 1 })),
+      };
+    }
+
+    case UPDATE_QUANTITY: {
+      const { id, quantity } = payload;
+      const itemInCart = cart.find((item:AsideItemInterface) => item.id === id);
+      return {
+        ...state,
+        cart: cart.map((item:any) => (item !== itemInCart
+          ? item
+          : { ...item, quantity })),
       };
     }
 

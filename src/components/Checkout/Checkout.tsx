@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
 import { CheckoutStyled, OverlayStyled } from './CheckoutStyled';
 import { CheckoutFormInterface } from './CheckoutInterface';
 import FormWrapper from '../Basic/Form/FormWrapper';
@@ -9,6 +10,7 @@ import FormikField from '../Basic/Form/FormikField';
 import Button from '../Basic/Button';
 import FormikFieldDate from '../Basic/Form/FormikFieldDate';
 import FormikFieldSelect from '../Basic/Form/FormikFieldSelect';
+import { setCheckoutStatus } from '../../redux/actions/asideAction';
 
 const initialValues:CheckoutFormInterface = {
   name: '',
@@ -44,12 +46,13 @@ const CheckoutFormSchema = Yup.object().shape({
 });
 
 const Checkout:React.FC = () => {
+  const dispatch = useDispatch();
   const handleSubmit = (values:CheckoutFormInterface, { resetForm } : any) => {
     console.log(values);
   };
   return (
     <>
-      <OverlayStyled />
+      <OverlayStyled onClick={() => dispatch(setCheckoutStatus(false))} />
       <CheckoutStyled>
         <div className="checkout-title">Checkout</div>
         <Formik

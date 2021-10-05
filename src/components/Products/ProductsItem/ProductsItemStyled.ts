@@ -25,6 +25,7 @@ export const ProductsItemStyled = styled.div`
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       overflow: hidden;
+      user-select: none;
       position: relative;
       &::before {
         content: '';

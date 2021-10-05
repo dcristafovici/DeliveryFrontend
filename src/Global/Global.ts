@@ -59,4 +59,15 @@ export const Global = createGlobalStyle`
   ::-webkit-scrollbar-thumb:hover {
     background-color: #a8bbbf;
   }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
 `;

@@ -6,7 +6,6 @@ const Input:React.FC<InputInterface> = (
   { name, error, disabled = false, type, ...rest }: InputInterface,
 ) => (
   <>
-    {/* {console.log(rest)} */}
     <InputStyled disabled={disabled} type={type} name={name} autoComplete="off" {...rest} />
   </>
 );

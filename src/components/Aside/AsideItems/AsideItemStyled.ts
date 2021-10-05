@@ -54,7 +54,6 @@ export const AsideItemStyled = styled.div`
       cursor: pointer;
       height: 25px;
       color: ${COLORS.GRAY_3};
-      transition: ${HELPERS.TRANSITION};
       &:hover {
         color: ${COLORS.PRIMARY_BLUE};
       }
@@ -88,7 +87,29 @@ export const AsideItemStyled = styled.div`
 
 export const AsideItemsStyled = styled.div`
   overflow-y: auto;
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: ${COLORS.PRIMARY_BLUE};
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: ${COLORS.PRIMARY_BLUE};
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: ${COLORS.PRIMARY_BLUE};
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
+  }
   .aside-items {
-    max-height: calc(100vh - 320px);
+    max-height: calc(100vh - 360px);
   }
 `;

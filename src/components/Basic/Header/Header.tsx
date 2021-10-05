@@ -18,7 +18,9 @@ const Header:React.FC = () => {
         <StyledFlex align="center" justify="space-between">
 
           <div className="header-logo">
-            logo
+            <Link to="/">
+              logo
+            </Link>
           </div>
 
           <div className="header-navigation">

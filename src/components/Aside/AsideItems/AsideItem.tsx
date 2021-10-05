@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { addQuantity, removeProduct, subQuantity } from '../../../redux/actions/asideAction';
+import { addQuantity, removeProduct, subQuantity, updateQuantity } from '../../../redux/actions/asideAction';
 import { AsideItemInterface } from './AsideItemInterface';
 import { AsideItemStyled } from './AsideItemStyled';
 
@@ -9,6 +9,11 @@ const AsideItem:React.FC<AsideItemInterface> = (
 ) => {
   const dispatch = useDispatch();
 
+  const onChangeHandler = (event:any) => {
+    const newQuantity = parseFloat(event.target.value);
+    console.log(newQuantity < 1);
+    dispatch(updateQuantity(id, (newQuantity < 1) ? 1 : newQuantity));
+  };
   return (
     <AsideItemStyled>
       <div className="aside-item__name">
@@ -25,8 +30,8 @@ const AsideItem:React.FC<AsideItemInterface> = (
           +
         </div>
 
-        <div className="aside-controll__input">
-          <input type="text" defaultValue={quantity} />
+        <div key={quantity} className="aside-controll__input">
+          <input type="number" min={0} onBlur={(e) => onChangeHandler(e)} defaultValue={quantity} />
         </div>
 
         <div
@@ -42,7 +47,7 @@ const AsideItem:React.FC<AsideItemInterface> = (
 
       </div>
       <div className="aside-item__price">
-        <span>{`${price} $`}</span>
+        <span>{`${quantity * parseFloat(price)} $`}</span>
       </div>
     </AsideItemStyled>
   );
