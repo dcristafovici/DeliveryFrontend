@@ -30,7 +30,6 @@ const Sidebar:React.FC = () => {
   };
 
   const onSubmitHandler = (name:string) => {
-    console.log(name);
     updateUser({ variables: { data: { id: user.id, field: name, value: initialValues.name } } });
   };
   return (
@@ -91,7 +90,7 @@ const Sidebar:React.FC = () => {
         <FormRow className="one-element">
           <FormikField
             name="apartment"
-            label="Your apartament"
+            label="Your apartment"
             defaultValue={initialValues.apartment}
             requireEdit
             clickEvent={() => onSubmitHandler('apartment')}

@@ -4,7 +4,7 @@ export interface CheckoutFormInterface {
   tower: string;
   floor: string;
   office: string;
-  apartament: string;
+  apartment: string;
   date: string;
   time: string;
   additional: string;

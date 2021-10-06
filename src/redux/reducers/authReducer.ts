@@ -10,7 +10,7 @@ const initialState = {
     address: '',
     floor: '',
     office: '',
-    apartament: '',
+    apartment: '',
     tower: '',
   },
 };
