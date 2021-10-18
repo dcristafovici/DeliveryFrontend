@@ -60,3 +60,34 @@ export const CHECK_TOKEN = gql`
     }
   }
 `;
+
+export const GET_ORDERS_BY_USER = gql`
+  query GetOrderByUser($user: String!){
+    GetOrderByUser(user: $user){
+      id,
+      totalPrice,
+      restaurant {
+        name,
+        rating
+      }
+      created_at,
+    }
+  }
+`;
+
+export const GET_CART = gql`
+  query GetCart($orderID : String!){
+    GetCart(orderID: $orderID){
+      id,
+      productID{
+        name,
+        weight,
+        price,
+        image{
+          small
+        }
+      }
+      quantity
+    }
+  }
+`;

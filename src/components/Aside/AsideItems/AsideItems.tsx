@@ -12,13 +12,14 @@ const AsideItems:React.FC = () => {
 
   useEffect(() => {
     let totalPrice = 0;
-    // eslint-disable-next-line no-unused-expressions
-    cart.length
-      ? cart.forEach((item: AsideItemInterface) => {
+    if (cart.length) {
+      cart.forEach((item: AsideItemInterface) => {
         totalPrice += item.quantity * item.price;
         dispatch(setTotal(totalPrice));
-      })
-      : dispatch(setTotal(0));
+      });
+    } else {
+      dispatch(setTotal(0));
+    }
   }, [cart]);
 
   return (

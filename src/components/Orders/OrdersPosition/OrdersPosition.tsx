@@ -1,20 +1,22 @@
 import React from 'react';
+import { OrderPositionInterface } from './OrderPositionInterface';
 import { OrderPositionStyled } from './OrderPositionStyled';
 
-const OrdersPosition:React.FC = () => (
+const OrdersPosition:React.FC<OrderPositionInterface> = (
+  { quantity, product }: OrderPositionInterface,
+) => (
   <OrderPositionStyled className="orders-position">
     <div className="orders-position__image">
-      <img src="/images/p1.jpg" alt="P1" />
+      <img src={`http://localhost:5000/${product.image.small}`} alt="P1" />
     </div>
     <div className="orders-position__name">
       <span>
-        Wasabi shrimp with daikon, carrot and almond petals
-        Wasabi shrimp with daikon, carrot and almond petals
+        {product.name}
       </span>
-      <span>150 G</span>
+      <span>{product.weight}</span>
     </div>
-    <div className="orders-position__quantity">1</div>
-    <div className="orders-position__price">1 590 ₽</div>
+    <div className="orders-position__quantity">{quantity}</div>
+    <div className="orders-position__price">{product.price * quantity}</div>
   </OrderPositionStyled>
 );
 

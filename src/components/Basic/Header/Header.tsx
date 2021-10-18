@@ -43,7 +43,7 @@ const Header:React.FC = () => {
               className="header-account"
               role="button"
             >
-              <Link to="/account" className="transparent button">
+              <Link to={`/account/${user.id}`} className="transparent button">
                 <span>Account</span>
               </Link>
             </div>

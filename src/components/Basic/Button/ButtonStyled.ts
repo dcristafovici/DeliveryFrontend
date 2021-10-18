@@ -42,5 +42,6 @@ export const ButtonStyled = styled.button`
     background ${COLORS.GRAY_5};
     color: ${COLORS.GRAY_1};
     pointer-events: none;
+    opacity: 0.5;
   `}
 `;

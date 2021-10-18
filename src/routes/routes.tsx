@@ -13,7 +13,7 @@ export const RoutesDetailes: RoutesDetailsTypes = {
   },
   ACCOUNT: {
     name: 'Account',
-    path: '/account',
+    path: '/account/:id',
   },
 };
 

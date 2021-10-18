@@ -1,51 +1,62 @@
+import { useQuery } from '@apollo/client';
 import React from 'react';
+import { GET_CART } from '../../../GraphQL/Queries';
 import Button from '../../Basic/Button';
 import { OrdersItemsStyled } from '../OrdersItems/OrdersItemStyled';
 import OrdersPosition from '../OrdersPosition';
+import { OrdersItemInterface } from './OrdersItemInterface';
 
-const OrdersItem:React.FC = () => (
-  <OrdersItemsStyled>
-    <div className="orders-item__top">
-      <div className="orders-top__left">
-        <div className="orders-top__number">
-          Order 238
+const OrdersItem:React.FC<OrdersItemInterface> = (
+  { id, totalPrice, restaurant }: OrdersItemInterface,
+) => {
+  const { loading, data = {} } = useQuery(GET_CART, { variables: { orderID: id } });
+  const { GetCart: Cart = [] } = data;
+  return (
+    <OrdersItemsStyled>
+      <div className="orders-item__top">
+        <div className="orders-top__left">
+          <div className="orders-top__number">
+            {`Order: ${id}`}
+          </div>
+          <div className="orders-top__status">
+            <span>Status: </span>
+            <span>Delivered</span>
+          </div>
         </div>
-        <div className="orders-top__status">
-          <span>Status: </span>
-          <span>Delivered</span>
+        <div className="orders-top__right">
+          <div className="orders-top__toggle">
+            <span>Details</span>
+          </div>
         </div>
       </div>
-      <div className="orders-top__right">
-        <div className="orders-top__toggle">
-          <span>Details</span>
-        </div>
-      </div>
-    </div>
 
-    <div className="orders-item__bottom">
-      <div className="orders-general">
-        <div className="orders-general__restaurant">Bamboo Bar</div>
-        <div className="orders-general__rating">4.6</div>
-      </div>
-      <div className="orders-positions">
-        <OrdersPosition />
-        <OrdersPosition />
-        <OrdersPosition />
-        <OrdersPosition />
-        <OrdersPosition />
-        <OrdersPosition />
-      </div>
-      <div className="orders-actions">
-        <div className="orders-repeat">
-          <Button name="Repeat" disabled={false} className="transparent" />
+      <div className="orders-item__bottom">
+        <div className="orders-general">
+          <div className="orders-general__restaurant">{restaurant.name}</div>
+          <div className="orders-general__rating">{restaurant.rating}</div>
         </div>
-        <div className="orders-total">
-          <span>Итого:</span>
-          <span>2 590 ₽</span>
+        <div className="orders-positions">
+          {Cart.map((position: any) => (
+            <OrdersPosition
+              quantity={position.quantity}
+              product={position.productID}
+              key={position.id}
+            />
+          ))}
+
+        </div>
+        <div className="orders-actions">
+          <div className="orders-repeat">
+            <Button name="Repeat" disabled className="transparent" />
+          </div>
+          <div className="orders-total">
+            <span>Total:</span>
+            <span>{totalPrice}</span>
+          </div>
         </div>
       </div>
-    </div>
-  </OrdersItemsStyled>
-);
+    </OrdersItemsStyled>
+  );
+};
 
 export default OrdersItem;
