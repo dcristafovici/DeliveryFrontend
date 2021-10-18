@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setTotal } from '../../../redux/actions/asideAction';
+import { AsideItemInterface } from '../../../redux/types/reduxTypes';
 import { useTypeSelector } from '../../../redux/useTypeSelector';
 import AsideItem from './AsideItem';
 import { AsideItemsStyled } from './AsideItemStyled';
@@ -11,10 +12,13 @@ const AsideItems:React.FC = () => {
 
   useEffect(() => {
     let totalPrice = 0;
-    cart.forEach((item:any) => {
-      totalPrice += item.quantity * parseFloat(item.price);
-      dispatch(setTotal(totalPrice));
-    });
+    // eslint-disable-next-line no-unused-expressions
+    cart.length
+      ? cart.forEach((item: AsideItemInterface) => {
+        totalPrice += item.quantity * item.price;
+        dispatch(setTotal(totalPrice));
+      })
+      : dispatch(setTotal(0));
   }, [cart]);
 
   return (

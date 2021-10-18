@@ -11,7 +11,7 @@ const AsideLine:React.FC<AsideLineInterface> = (
   useEffect(() => {
     const calculatedPercent = (total / minPrice) * 100;
     dispatch(updatePercent(calculatedPercent <= 100 ? calculatedPercent : 100));
-  }, [total, minPrice]);
+  }, [minPrice, total]);
   return (
     <AsideLineStyled>
       <div className="aside-line__summs">

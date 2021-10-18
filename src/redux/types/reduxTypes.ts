@@ -1,7 +1,7 @@
 export interface AsideItemInterface {
   id: string;
   name: string;
-  price: string;
+  price: number;
   weight: string;
   quantity: number
 }
