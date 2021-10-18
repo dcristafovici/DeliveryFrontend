@@ -6,7 +6,7 @@ import Button from '../../Basic/Button';
 import { AsideSummaryStyled } from './AsideSummaryStyled';
 
 const AsideSummary:React.FC = () => {
-  const { deliveryTime = '', total = 0 } = useTypeSelector((state) => state.asideReducer);
+  const { deliveryTime = '', total = 0, minPrice } = useTypeSelector((state) => state.asideReducer);
   const dispatch = useDispatch();
   return (
     <AsideSummaryStyled>
@@ -20,7 +20,7 @@ const AsideSummary:React.FC = () => {
           <span>{`${total} $`}</span>
         </div>
       </div>
-      <Button disabled={false} name="Checkout" onClickEvent={() => dispatch(setCheckoutStatus(true))} className="full" />
+      <Button disabled={total < minPrice} name="Checkout" onClickEvent={() => dispatch(setCheckoutStatus(true))} className="full" />
     </AsideSummaryStyled>
   );
 };
