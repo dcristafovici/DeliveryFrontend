@@ -20,7 +20,7 @@ const Checkout:React.FC = () => {
   const { id: restaurantID } = useParams<{ id: string }>();
 
   const { user } = useTypeSelector((state) => state.authReducer);
-  const { total, deliveryTime } = useTypeSelector((state) => state.asideReducer);
+  const { total, deliveryTime, cart = [] } = useTypeSelector((state) => state.asideReducer);
   const { id, email, address, ...filteredUser } = user;
 
   const [createOrder] = useMutation(CREATE_ORDER);
@@ -35,6 +35,11 @@ const Checkout:React.FC = () => {
     time: '',
     additional: '',
   });
+
+  const CartWithIDs = cart.map((item:any) => ({
+    productID: parseFloat(item.id),
+    quantity: parseFloat(item.quantity),
+  }));
 
   useEffect(() => {
     setInitialValues((prev) => ({ ...initialValues, ...filteredUser }));
@@ -56,9 +61,10 @@ const Checkout:React.FC = () => {
   const onSendHandle = (e:React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     createOrder({ variables:
-      { data: { ...initialValues, user: id, restaurant: restaurantID, totalPrice: `${total}$` } },
+      { data: { ...initialValues, user: id, restaurant: restaurantID, totalPrice: `${total}$`, cart: CartWithIDs } },
     });
   };
+
   return (
     <>
       <OverlayStyled onClick={() => dispatch(setCheckoutStatus(false))} />
