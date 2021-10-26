@@ -6,11 +6,11 @@ import { ProductsPointStyled, ProductsItemsStyled } from './ProductsPointStyled'
 import { addProduct } from '../../../redux/actions/asideAction';
 
 const ProductsPoint:React.FC<ProductsPointInterface> = (
-  { products = [] }: ProductsPointInterface,
+  { products = [], category = '' }: ProductsPointInterface,
 ) => (
   <ProductsPointStyled>
     <div className="products-point__category">
-      {products[0].category.name}
+      { category }
     </div>
     <ProductsItemsStyled>
       {products.map((product:ProductPointObject) => (
@@ -21,7 +21,7 @@ const ProductsPoint:React.FC<ProductsPointInterface> = (
           description={product.description}
           price={product.price}
           weight={product.weight}
-          category={product.category}
+          categories={product.categories}
           image={product.image}
         />
       ))}

@@ -36,9 +36,8 @@ export const PRODUCTS_BY_FIELD = gql`
       description,
       price,
       weight,
-      category {
-        id,
-        name
+      categories {
+        id
       }
       image {
         medium
@@ -88,6 +87,17 @@ export const GET_CART = gql`
         }
       }
       quantity
+    }
+  }
+`;
+
+export const GET_CATEGORY_BY_RESTAURANT = gql`
+  query CategoryOrderfindByKey($data: FindByKeyInput!) {
+    CategoryOrderfindByKey(data: $data) {
+      category {
+        id
+        name,
+      }
     }
   }
 `;

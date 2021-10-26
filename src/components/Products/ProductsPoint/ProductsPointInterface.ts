@@ -6,10 +6,10 @@ export interface ProductPointObject {
   description: string;
   price: string;
   weight: string;
-  category: {
+  categories: [{
     id: string;
     name: string
-  };
+  }];
   image: {
     medium: string;
   };
@@ -17,4 +17,14 @@ export interface ProductPointObject {
 
 export interface ProductsPointInterface {
   products?: ProductPointObject[];
+  category: string;
+}
+
+export interface CategoryInterface {
+  id: string;
+  name: string;
+}
+
+export class CategoryWrapperInterface {
+  category!: CategoryInterface;
 }
