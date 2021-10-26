@@ -1,5 +1,3 @@
-import React from 'react';
-
 export interface ProductsComponentInterface {
   categories: CategoryWrapperInterface[]
 }
@@ -21,7 +19,7 @@ export interface ProductPointObject {
 
 export interface ProductsPointInterface {
   products?: ProductPointObject[];
-  category: string;
+  category: CategoryInterface;
 }
 
 export interface CategoryInterface {

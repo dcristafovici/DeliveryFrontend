@@ -1,16 +1,19 @@
 import styled from 'styled-components';
 import { COLORS, HELPERS } from '../../constants';
-import { BLUE_DARK, PRIMARY_BLUE } from '../../constants/colors';
 
 export const CategoriesStyled = styled.div`
-  margin-bottom: 30px;
   display: flex;
   align-items: center;
+  height: 40px;
   justify-content: space-between;
   > ul {
     display: flex;
     align-items: center;
     flex: auto;
+    position: fixed;
+    top: 0;
+    z-index: 20;
+    width: 1110px;
     li {
       flex: auto;
       display: inline-flex;
@@ -30,6 +33,10 @@ export const CategoriesStyled = styled.div`
       }
       &:last-child {
         margin-right: 0;
+      }
+      &.category-active {
+        background: ${COLORS.BLUE_DARK};
+        color: ${COLORS.WHITE};
       }
     }
   }

@@ -20,12 +20,12 @@ const Products:React.FC<ProductsComponentInterface> = (
 
   return (
     <ProductsStyled>
-      {categories.map(({ category }: CategoryWrapperInterface) => {
+      {categories.slice(0, 5).map(({ category }: CategoryWrapperInterface, index:number) => {
         const prods = ProductsData.filter((product:ProductPointObject) => (
           product.categories.some((cat: CategoryInterface) => cat.id === category.id)
             ? product : false));
         return (
-          <ProductsPoint key={category.id} category={category.name} products={prods} />
+          <ProductsPoint key={category.id} category={category} products={prods} />
         );
       })}
     </ProductsStyled>
