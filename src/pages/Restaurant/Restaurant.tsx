@@ -7,9 +7,10 @@ import Container from '../../components/Basic/Container';
 import { StyledFlex } from '../../components/Basic/Flex/StyledFlex';
 import Section from '../../components/Basic/Section';
 import Products from '../../components/Products';
-import { RESTAURANT_BY_ID } from '../../GraphQL/Queries';
+import { GET_CATEGORY_BY_RESTAURANT, RESTAURANT_BY_ID } from '../../GraphQL/Queries';
 import { MainRestaurantStyled, RestaurantStyled, AsideWrapperStyled } from './RestaurantStyled';
 import { setAsideData } from '../../redux/actions/asideAction';
+import Categories from '../../components/Categories';
 
 const Restaurant:React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -17,6 +18,9 @@ const Restaurant:React.FC = () => {
   const { loading, data = {} } = useQuery(RESTAURANT_BY_ID, { variables: { id } });
   const { RestaurantByID: RestaurantData = [] } = data;
   const { minPrice = '', deliveryTime = '' } = RestaurantData;
+
+  const { data: CategoryData = {} } = useQuery(GET_CATEGORY_BY_RESTAURANT, { variables: { data: { field: 'restaurant', value: id } } });
+  const { CategoryOrderfindByKey: CategoriesGet = [] } = CategoryData;
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -35,7 +39,8 @@ const Restaurant:React.FC = () => {
                 minPrice={RestaurantData.minPrice}
                 deliveryTime={RestaurantData.deliveryTime}
               /> */}
-              <Products />
+              <Categories categories={CategoriesGet} />
+              <Products categories={CategoriesGet} />
             </MainRestaurantStyled>
 
             <AsideWrapperStyled>

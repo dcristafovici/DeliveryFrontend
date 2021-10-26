@@ -1,5 +1,9 @@
 import React from 'react';
 
+export interface ProductsComponentInterface {
+  categories: CategoryWrapperInterface[]
+}
+
 export interface ProductPointObject {
   id: string;
   name: string;
