@@ -12,6 +12,8 @@ const GRAY_2 = '#eeeeee';
 const GRAY_3 = '#959595';
 const GRAY_4 = '#f8f8f8';
 const GRAY_5 = '#F0F0F0';
+const GRAY_6 = '#7c7c7c';
+const GRAY_7 = '#f5f4f2';
 
 export {
   PRIMARY_BLUE,
@@ -24,5 +26,7 @@ export {
   GRAY_3,
   GRAY_4,
   GRAY_5,
+  GRAY_6,
+  GRAY_7,
   YELLOW,
 };
