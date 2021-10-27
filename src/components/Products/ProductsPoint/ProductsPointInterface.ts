@@ -20,6 +20,7 @@ export interface ProductPointObject {
 export interface ProductsPointInterface {
   products?: ProductPointObject[];
   category: CategoryInterface;
+  nextCategory: CategoryWrapperInterface;
 }
 
 export interface CategoryInterface {

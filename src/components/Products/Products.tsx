@@ -25,7 +25,12 @@ const Products:React.FC<ProductsComponentInterface> = (
           product.categories.some((cat: CategoryInterface) => cat.id === category.id)
             ? product : false));
         return (
-          <ProductsPoint key={category.id} category={category} products={prods} />
+          <ProductsPoint
+            key={category.id}
+            nextCategory={categories[index + 1]}
+            category={category}
+            products={prods}
+          />
         );
       })}
     </ProductsStyled>

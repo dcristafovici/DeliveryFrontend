@@ -7,19 +7,42 @@ import { ProductPointObject, ProductsPointInterface } from './ProductsPointInter
 import { ProductsPointStyled, ProductsItemsStyled } from './ProductsPointStyled';
 
 const ProductsPoint:React.FC<ProductsPointInterface> = (
-  { products = [], category }: ProductsPointInterface,
+  { products = [], category, nextCategory }: ProductsPointInterface,
 ) => {
-  const { ref, inView, entry } = useInView();
-  const { ref: ref2, inView: inView2, entry: entry2 } = useInView();
+  const { ref, inView, entry } = useInView({ initialInView: false, threshold: 0.07 });
   const dispatch = useDispatch();
 
+  const [initial, setInitial] = useState({
+    previousY: 0,
+    previousRatio: 0,
+  });
+
   useEffect(() => {
-    console.log(inView);
+    if (entry) {
+      const currentY = entry!.boundingClientRect.y;
+      const currentRatio = entry.intersectionRatio;
+      const { isIntersecting } = entry;
+      let direction = 0;
+      if (currentY < initial.previousY) {
+        direction = 1;
+      } else {
+        direction = -1;
+      }
+      setInitial({ previousY: currentY, previousRatio: currentRatio });
+      /* Scroll down */
+      if (!inView && direction === 1) {
+        dispatch(setCategoryVisible(nextCategory.category.id));
+      }
+      /* Scroll Up */
+      if (inView && direction === -1) {
+        dispatch(setCategoryVisible(category.id));
+      }
+    }
   }, [inView]);
 
   return (
     <ProductsPointStyled ref={ref}>
-      <div className="products-point__category" ref={ref2}>
+      <div className="products-point__category">
         { category.name }
         { category.id }
       </div>
