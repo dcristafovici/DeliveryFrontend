@@ -6,6 +6,11 @@ export interface RestaurantCardInterface {
   deliveryTime?: string;
   discount?: string;
   rating?: string;
+  image: {
+    medium: string;
+    medium_large: string;
+    large: string;
+  };
 }
 
 export interface RestaurantItemsInterface {

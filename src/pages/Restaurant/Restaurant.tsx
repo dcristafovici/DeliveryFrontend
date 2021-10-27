@@ -11,6 +11,7 @@ import { GET_CATEGORY_BY_RESTAURANT, RESTAURANT_BY_ID } from '../../GraphQL/Quer
 import { MainRestaurantStyled, RestaurantStyled, AsideWrapperStyled } from './RestaurantStyled';
 import { setAsideData } from '../../redux/actions/asideAction';
 import Categories from '../../components/Categories';
+import RestaurantInfo from '../../components/Restaurant/RestaurantInfo';
 
 const Restaurant:React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -34,11 +35,12 @@ const Restaurant:React.FC = () => {
           <StyledFlex justify="space-between">
 
             <MainRestaurantStyled>
-              {/* <RestaurantInfo
+              <RestaurantInfo
                 name={RestaurantData.name}
                 minPrice={RestaurantData.minPrice}
                 deliveryTime={RestaurantData.deliveryTime}
-              /> */}
+                image={RestaurantData.image}
+              />
               <Categories categories={CategoriesGet} />
               <Products categories={CategoriesGet} />
             </MainRestaurantStyled>

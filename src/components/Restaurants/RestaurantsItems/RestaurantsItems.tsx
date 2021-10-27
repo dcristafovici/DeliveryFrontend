@@ -17,6 +17,7 @@ const RestaurantsItems:React.FC<RestaurantItemsInterface> = (
         deliveryTime={restaurant.deliveryTime}
         discount={restaurant.discount}
         rating={restaurant.rating}
+        image={restaurant.image}
       />
     ))}
   </RestaurantItemsStyled>

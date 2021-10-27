@@ -4,13 +4,13 @@ import { RestaurantCardInterface } from '../RestaurantsInterface';
 import { RestaurantCardStyled } from './RestaurantCardStyled';
 
 const RestaurantCard:React.FC<RestaurantCardInterface> = (
-  { id, name, minPrice, deliveryTime, discount, rating }: RestaurantCardInterface,
+  { id, name, minPrice, deliveryTime, discount, rating, image }: RestaurantCardInterface,
 ) => (
   <RestaurantCardStyled>
     <Link to={{ pathname: `restaurant/${id}` }}>
       <div className="restaurant-card__top">
         <div className="card-top__photo">
-          <img src="/images/restaurant.jpg" alt="Restaurant" />
+          <img src={`http://localhost:5000/${image.medium_large}`} alt={name} />
         </div>
         <div className="card-top__info">
           <div className="card-top__sale card-top__item">{discount}</div>

@@ -10,7 +10,6 @@ export const CategoriesStyled = styled.div`
     display: flex;
     align-items: center;
     flex: auto;
-    position: fixed;
     top: 0;
     z-index: 20;
     width: 1110px;

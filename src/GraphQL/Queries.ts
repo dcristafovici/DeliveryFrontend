@@ -9,7 +9,12 @@ export const RESTAURANTS = gql`
       minPrice,
       deliveryTime,
       discount,
-      rating
+      rating,
+      image {
+        medium,
+        medium_large,
+        large
+      }
     }
   }
 `;
@@ -23,7 +28,12 @@ export const RESTAURANT_BY_ID = gql`
       minPrice,
       deliveryTime,
       discount,
-      rating
+      rating,
+      image {
+        medium,
+        medium_large,
+        large
+      }
     }
   }
 `;
