@@ -27,6 +27,13 @@ export const CategoriesStyled = styled.div`
         cursor: pointer;
         transition: ${HELPERS.TRANSITION};
         margin-right: 10px;
+        a {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
         &:hover {
           background: ${COLORS.PRIMARY_BLUE};
           color: ${COLORS.WHITE}
@@ -144,6 +151,10 @@ export const CategoriesStyled = styled.div`
           &.category-active {
             background: ${COLORS.PRIMARY_BLUE};
             color: ${COLORS.WHITE};
+            &:hover {
+              background: ${COLORS.BLUE_DARK};
+              color: ${COLORS.WHITE};
+            }
           }
           &:hover {
             background: ${COLORS.GRAY_7}

@@ -6,17 +6,22 @@ import ProductsItem from '../ProductsItem/ProductsItem';
 import { ProductPointObject, ProductsPointInterface } from './ProductsPointInterface';
 import { ProductsPointStyled, ProductsItemsStyled } from './ProductsPointStyled';
 import { ProductsPlaceholder } from '../ProductsPlaceholder';
+import { useTypeSelector } from '../../../redux/useTypeSelector';
 
 const ProductsPoint:React.FC<ProductsPointInterface> = (
   { products = ProductsPlaceholder, category, nextCategory }: ProductsPointInterface,
 ) => {
   const { ref, inView, entry } = useInView({ initialInView: false, threshold: 0.07 });
+  const pointRef = useRef(null);
+
   const dispatch = useDispatch();
 
   const [initial, setInitial] = useState({
     previousY: 0,
     previousRatio: 0,
   });
+
+  const { categoryClicked } = useTypeSelector((state) => state.restaurantReducer);
 
   const [productsRender, setProductsRender] = useState<ProductPointObject[]>(ProductsPlaceholder);
 
@@ -47,8 +52,15 @@ const ProductsPoint:React.FC<ProductsPointInterface> = (
       }
     }
   }, [products, inView]);
+
+  useEffect(() => {
+    if (categoryClicked === category.id) {
+      entry?.target.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [categoryClicked]);
+
   return (
-    <ProductsPointStyled ref={ref}>
+    <ProductsPointStyled ref={ref} id={category.id}>
       <div className="products-point__category">
         { category.name }
       </div>

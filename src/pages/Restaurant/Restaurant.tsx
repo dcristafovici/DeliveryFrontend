@@ -25,19 +25,9 @@ const Restaurant:React.FC = () => {
 
   const dispatch = useDispatch();
 
-  const [selectedCategory, setSelectedCategory] = useState('0');
-
   useEffect(() => {
     if (!loading && RestaurantData) dispatch(setAsideData({ minPrice, deliveryTime }));
   }, [loading]);
-
-  const onScrollStart = (categoryID: string) => {
-    setSelectedCategory(categoryID);
-  };
-
-  const onScrollEnd = (ref: any) => {
-    console.log(ref);
-  };
 
   return (
     <RestaurantStyled>

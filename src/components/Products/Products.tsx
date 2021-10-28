@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router';
 import { PRODUCTS_BY_FIELD } from '../../GraphQL/Queries';
 import ProductsPoint from './ProductsPoint/ProductsPoint';

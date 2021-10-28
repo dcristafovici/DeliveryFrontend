@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
+import { useDispatch } from 'react-redux';
+import { setCategoryClicked } from '../../redux/actions/restaurantAction';
 import { useTypeSelector } from '../../redux/useTypeSelector';
 import { useOutsideEvent } from '../../utils/useOutsideEvent';
 import { ArrowIcon } from '../Basic/Icons';
@@ -14,6 +16,8 @@ export const Categories:React.FC<CategoryComponentInterface> = (
 
   const { categoryVisible } = useTypeSelector((state) => state.restaurantReducer);
   const { ref, inView, entry } = useInView({ initialInView: false, threshold: 0.07 });
+
+  const dispatch = useDispatch();
 
   const showRef = useRef(null);
   useOutsideEvent(showRef, () => setShowMore(false));
@@ -45,6 +49,7 @@ export const Categories:React.FC<CategoryComponentInterface> = (
                 <li
                   key={category.id}
                   className={`${categoryVisible === category.id ? 'category-active' : ''}`}
+                  onClick={() => dispatch(setCategoryClicked(category.id))}
                 >
                   {category.name}
                 </li>
@@ -65,7 +70,14 @@ export const Categories:React.FC<CategoryComponentInterface> = (
                   {categories
                     .slice(5, categories.length)
                     .map(({ category }: CategoryWrapperInterface) => (
-                      <li key={category.id} className={`${categoryVisible === category.id ? 'category-active' : ''}`}>{category.name}</li>))}
+                      <li
+                        key={category.id}
+                        className={`${categoryVisible === category.id ? 'category-active' : ''}`}
+                        onClick={() => dispatch(setCategoryClicked(category.id))}
+                      >
+                        {category.name}
+                      </li>
+                    ))}
                 </ul>
               </div>
             </div>
