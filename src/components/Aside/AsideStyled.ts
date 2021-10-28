@@ -7,8 +7,8 @@ export const AsideStyled = styled.aside`
   border-radius: 3px;
   padding: 14px;
   box-sizing: border-box;
-  max-height: 100vh;
+  max-height: calc(100vh - 40px);
   box-sizing: border-box;
   position: sticky;
-  top: 0;
+  top: 40px;
 `;

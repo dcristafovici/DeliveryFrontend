@@ -27,6 +27,15 @@ export const ProductsItemStyled = styled.div`
       overflow: hidden;
       user-select: none;
       position: relative;
+      &.product-photo__placeholder {
+        background-color: #eeeeee;
+        &::before {
+          content: none;
+        }
+        img {
+          object-fit: contain;
+        }
+      }
       &::before {
         content: '';
         position: absolute;

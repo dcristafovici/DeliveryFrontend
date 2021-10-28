@@ -8,13 +8,13 @@ export interface ProductPointObject {
   description: string;
   price: string;
   weight: string;
-  categories: [{
+  categories: {
     id: string;
     name: string
-  }];
+  }[];
   image: {
     medium: string;
-  };
+  } | null;
 }
 
 export interface ProductsPointInterface {
