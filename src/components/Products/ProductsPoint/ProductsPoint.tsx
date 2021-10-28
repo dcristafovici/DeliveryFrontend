@@ -18,11 +18,11 @@ const ProductsPoint:React.FC<ProductsPointInterface> = (
     previousRatio: 0,
   });
 
-  const [prods, setProds] = useState<ProductPointObject[]>(ProductsPlaceholder);
+  const [productsRender, setProductsRender] = useState<ProductPointObject[]>(ProductsPlaceholder);
 
   useEffect(() => {
     if (products.length && inView) {
-      setProds(products);
+      setProductsRender(products);
     }
   }, [products, inView]);
 
@@ -46,14 +46,14 @@ const ProductsPoint:React.FC<ProductsPointInterface> = (
         dispatch(setCategoryVisible(category.id));
       }
     }
-  }, [inView]);
+  }, [products, inView]);
   return (
     <ProductsPointStyled ref={ref}>
       <div className="products-point__category">
         { category.name }
       </div>
       <ProductsItemsStyled>
-        {prods.map((product:ProductPointObject) => (
+        {productsRender.map((product:ProductPointObject) => (
           <ProductsItem
             key={product.id}
             id={product.id}

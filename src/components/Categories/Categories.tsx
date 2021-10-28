@@ -9,8 +9,25 @@ export const Categories:React.FC<ProductsComponentInterface> = (
   { categories = [] } : ProductsComponentInterface,
 ) => {
   const [showMore, setShowMore] = useState(false);
+  const [moreText, setMoreText] = useState('More');
   const { categoryVisible } = useTypeSelector((state) => state.restaurantReducer);
   const { ref, inView, entry } = useInView({ initialInView: false, threshold: 0.07 });
+
+  useEffect(() => {
+    if (categoryVisible) {
+      const findItem = categories.find(({ category }: CategoryWrapperInterface, index: number) => {
+        if (category.id === categoryVisible && index > 4) {
+          return category;
+        }
+        return null;
+      });
+      if (findItem) {
+        setMoreText(findItem.category.name);
+      } else {
+        setMoreText('More');
+      }
+    }
+  }, [categoryVisible]);
 
   return (
     <>
@@ -24,12 +41,12 @@ export const Categories:React.FC<ProductsComponentInterface> = (
             </ul>
             <div className="categories-others">
               <div
-                className={`categories-others__name ${showMore && 'show'}`}
+                className={`categories-others__name ${showMore && 'show'} ${moreText !== 'More' && 'is-category'}`}
                 onClick={() => setShowMore((prev) => !prev)}
                 role="button"
                 tabIndex={0}
               >
-                <span>More</span>
+                <span>{moreText}</span>
                 <ArrowIcon />
               </div>
               <div className={`categories-others__list ${showMore && 'show'}`}>

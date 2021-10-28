@@ -75,12 +75,21 @@ export const CategoriesStyled = styled.div`
           svg {
             fill: ${COLORS.WHITE};
           }
+        }
         &.show {
           background: ${COLORS.BLUE_DARK};
           svg {
             transform: rotate(180deg);
           }
         }
+        &.is-category {
+          background: ${COLORS.BLUE_DARK};
+          span {
+            color: ${COLORS.WHITE}
+          }
+          svg {
+            fill: ${COLORS.WHITE}
+          }
         }
         span {
           color: ${COLORS.GRAY_6};
