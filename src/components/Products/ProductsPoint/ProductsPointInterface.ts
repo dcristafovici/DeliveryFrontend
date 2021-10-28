@@ -1,5 +1,9 @@
 export interface ProductsComponentInterface {
-  categories: CategoryWrapperInterface[]
+  categories: CategoryWrapperInterface[];
+}
+
+export interface CategoryComponentInterface{
+  categories: CategoryWrapperInterface[];
 }
 
 export interface ProductPointObject {

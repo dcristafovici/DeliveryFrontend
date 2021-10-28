@@ -1,17 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useTypeSelector } from '../../redux/useTypeSelector';
+import { useOutsideEvent } from '../../utils/useOutsideEvent';
 import { ArrowIcon } from '../Basic/Icons';
-import { CategoryWrapperInterface, ProductsComponentInterface } from '../Products/ProductsPoint/ProductsPointInterface';
+import { CategoryWrapperInterface, CategoryComponentInterface } from '../Products/ProductsPoint/ProductsPointInterface';
 import { CategoriesStyled } from './CategoriesStyled';
 
-export const Categories:React.FC<ProductsComponentInterface> = (
-  { categories = [] } : ProductsComponentInterface,
+export const Categories:React.FC<CategoryComponentInterface> = (
+  { categories = [] } : CategoryComponentInterface,
 ) => {
   const [showMore, setShowMore] = useState(false);
   const [moreText, setMoreText] = useState('More');
+
   const { categoryVisible } = useTypeSelector((state) => state.restaurantReducer);
   const { ref, inView, entry } = useInView({ initialInView: false, threshold: 0.07 });
+
+  const showRef = useRef(null);
+  useOutsideEvent(showRef, () => setShowMore(false));
 
   useEffect(() => {
     if (categoryVisible) {
@@ -37,9 +42,15 @@ export const Categories:React.FC<ProductsComponentInterface> = (
           <div className="categories-wrapper">
             <ul>
               {categories.slice(0, 5).map(({ category }: CategoryWrapperInterface) => (
-                <li className={`${categoryVisible === category.id ? 'category-active' : ''}`} key={category.id}>{category.name}</li>))}
+                <li
+                  key={category.id}
+                  className={`${categoryVisible === category.id ? 'category-active' : ''}`}
+                >
+                  {category.name}
+                </li>
+              ))}
             </ul>
-            <div className="categories-others">
+            <div className="categories-others" ref={showRef}>
               <div
                 className={`categories-others__name ${showMore && 'show'} ${moreText !== 'More' && 'is-category'}`}
                 onClick={() => setShowMore((prev) => !prev)}
