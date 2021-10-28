@@ -18,11 +18,18 @@ const ProductsPoint:React.FC<ProductsPointInterface> = (
     previousRatio: 0,
   });
 
+  const [prods, setProds] = useState<ProductPointObject[]>(ProductsPlaceholder);
+
+  useEffect(() => {
+    if (products.length && inView) {
+      setProds(products);
+    }
+  }, [products, inView]);
+
   useEffect(() => {
     if (entry) {
       const currentY = entry!.boundingClientRect.y;
       const currentRatio = entry.intersectionRatio;
-      const { isIntersecting } = entry;
       let direction = 0;
       if (currentY < initial.previousY) {
         direction = 1;
@@ -46,7 +53,7 @@ const ProductsPoint:React.FC<ProductsPointInterface> = (
         { category.name }
       </div>
       <ProductsItemsStyled>
-        {ProductsPlaceholder.map((product:ProductPointObject) => (
+        {prods.map((product:ProductPointObject) => (
           <ProductsItem
             key={product.id}
             id={product.id}
