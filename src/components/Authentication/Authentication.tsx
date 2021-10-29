@@ -15,20 +15,26 @@ const initialValues:AuthenticationFormInterface = {
   phone: '',
   code: '',
 };
+const phoneRegExp = new RegExp('^(\\+7|8)?[\\s\\-]?\\(?[489][0-9]{2}\\)?[\\s\\-]?[0-9]{3}[\\s\\-]?[0-9]{2}[\\s\\-]?[0-9]{2}$');
 const AuthenticationFormScheme = Yup.object().shape({
   phone: Yup.string()
-    .min(6, 'Too short')
-    .required('Required'),
+    .required('Required')
+    .matches(phoneRegExp, 'Phone numbers is not valid'),
+  // code: Yup.number()
+  //   .test('length', 'Must be exactly 4 digits', (val) => String(val).length === 4)
+  //   .typeError('Code must be a number type'),
 });
 
 const Authentication:React.FC = () => {
   const [isCodeField, setIsCodeField] = useState(false);
+
   const [sendPhone] = useMutation(SEND_PHONE);
   const [checkCode] = useMutation(CHECK_CODE);
   const [addUser] = useMutation(ADD_USER);
+
   const dispatch = useDispatch();
 
-  const handleSubmit = (values:AuthenticationFormInterface, { resetForm } : any) => {
+  const handleSubmit = (values:AuthenticationFormInterface, { resetForm, setErrors } : any) => {
     if (values.code === '') {
       sendPhone({ variables: { phone: values.phone } })
         .then(({ data }) => {
@@ -40,19 +46,17 @@ const Authentication:React.FC = () => {
         data: { phone: values.phone, code: parseFloat(values.code) },
       } })
         .then(({ data }) => {
-          const { checkCode: codeIsValid } = data;
-          if (codeIsValid) {
-            addUser({ variables: { data: { phone: values.phone } } })
-              .then(({ data: AddUserStatus }) => {
-                if (AddUserStatus) {
-                  const { token, ...user } = AddUserStatus.AddUser;
-                  localStorage.setItem('token', token);
-                  dispatch(changePopupStatus(false));
-                  dispatch(setUser(token, user));
-                }
-              });
-          }
-        });
+          addUser({ variables: { data: { phone: values.phone } } })
+            .then(({ data: AddUserStatus }) => {
+              if (AddUserStatus) {
+                const { token, ...user } = AddUserStatus.AddUser;
+                localStorage.setItem('token', token);
+                dispatch(changePopupStatus(false));
+                dispatch(setUser(token, user));
+              }
+            });
+        })
+        .catch((err) => setErrors({ code: err.message }));
     }
   };
   return (
@@ -81,6 +85,7 @@ const Authentication:React.FC = () => {
                 <FormikField
                   {...getFieldProps('code')}
                   name="code"
+                  type="number"
                   label="Code"
                   error={errors.code}
                   touched={touched.code}

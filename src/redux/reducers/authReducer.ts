@@ -4,14 +4,8 @@ const initialState = {
   popupStatus: false,
   token: null,
   user: {
-    name: '',
+    id: '',
     phone: '',
-    email: '',
-    address: '',
-    floor: '',
-    office: '',
-    apartment: '',
-    tower: '',
   },
 };
 

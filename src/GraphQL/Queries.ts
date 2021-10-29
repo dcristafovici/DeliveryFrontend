@@ -60,12 +60,7 @@ export const CHECK_TOKEN = gql`
   query CheckToken($token: String!) {
     CheckToken(token: $token) {
       id,
-      name,
       phone,
-      tower,
-      floor,
-      office,
-      apartment
     }
   }
 `;

@@ -45,17 +45,9 @@ const Checkout:React.FC = () => {
     setInitialValues((prev) => ({ ...initialValues, ...filteredUser }));
   }, [user]);
 
-  const onChangeEvent = (event:React.FormEvent<HTMLInputElement>) => {
-    setInitialValues({ ...initialValues, [event.currentTarget.name]: event.currentTarget.value });
-  };
-
   const onChangeDate = (name:any, date:any) => {
     const newDateFormat = date.toISOString().slice(0, 10);
     setInitialValues({ ...initialValues, [name]: newDateFormat });
-  };
-
-  const onSubmitHandler = (name:string) => {
-    updateUser({ variables: { data: { id: user.id, field: name, value: initialValues.name } } });
   };
 
   const onSendHandle = (e:React.FormEvent<HTMLButtonElement>) => {
@@ -75,18 +67,12 @@ const Checkout:React.FC = () => {
             <FormikField
               name="name"
               label="Your name"
-              onChange={onChangeEvent}
               defaultValue={initialValues.name}
-              requireEdit
-              clickEvent={() => onSubmitHandler('name')}
             />
             <FormikField
               name="phone"
               label="Your phone"
-              onChange={onChangeEvent}
               defaultValue={initialValues.phone}
-              requireEdit
-              clickEvent={() => onSubmitHandler('phone')}
             />
           </FormRow>
         </FormWrapper>
@@ -95,36 +81,24 @@ const Checkout:React.FC = () => {
             <FormikField
               name="tower"
               label="Tower"
-              onChange={onChangeEvent}
               defaultValue={initialValues.tower}
-              requireEdit
-              clickEvent={() => onSubmitHandler('tower')}
             />
           </FormRow>
           <FormRow className="three-elements">
             <FormikField
               name="floor"
               label="Floor"
-              onChange={onChangeEvent}
               defaultValue={initialValues.floor}
-              requireEdit
-              clickEvent={() => onSubmitHandler('floor')}
             />
             <FormikField
               name="office"
               label="Office"
-              onChange={onChangeEvent}
               defaultValue={initialValues.office}
-              requireEdit
-              clickEvent={() => onSubmitHandler('office')}
             />
             <FormikField
               name="apartment"
               label="Apartment"
-              onChange={onChangeEvent}
               defaultValue={initialValues.apartment}
-              requireEdit
-              clickEvent={() => onSubmitHandler('apartment')}
             />
           </FormRow>
         </FormWrapper>
@@ -140,7 +114,6 @@ const Checkout:React.FC = () => {
               name="time"
               label="Choose time"
               type="time"
-              onChange={onChangeEvent}
             />
           </FormRow>
         </FormWrapper>
@@ -150,7 +123,6 @@ const Checkout:React.FC = () => {
               name="additional"
               isTextarea
               label="Your comment"
-              onChange={onChangeEvent}
             />
           </FormRow>
         </FormWrapper>

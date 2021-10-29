@@ -3,6 +3,8 @@ const PRIMARY_DARK = '#151515';
 
 const WHITE = '#ffffff';
 const YELLOW = '#FFD600';
+const RED = '#EE6161';
+const RED_DARK = '#f32323';
 
 const BLUE_DARK = '#2F66B6';
 const GRAY_BG = '#F7F7F7';
@@ -20,6 +22,8 @@ export {
   PRIMARY_DARK,
   WHITE,
   BLUE_DARK,
+  RED,
+  RED_DARK,
   GRAY_BG,
   GRAY_1,
   GRAY_2,

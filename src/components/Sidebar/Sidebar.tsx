@@ -25,13 +25,6 @@ const Sidebar:React.FC = () => {
     setInitialValues((prev) => ({ ...initialValues, ...filteredUser }));
   }, [user]);
 
-  const onChangeEvent = (event:React.FormEvent<HTMLInputElement>) => {
-    setInitialValues({ ...initialValues, [event.currentTarget.name]: event.currentTarget.value });
-  };
-
-  const onSubmitHandler = (name:string) => {
-    updateUser({ variables: { data: { id: user.id, field: name, value: initialValues.name } } });
-  };
   return (
     <SidebarStyled>
       <FormWrapper title="Personal data">
@@ -39,15 +32,11 @@ const Sidebar:React.FC = () => {
           <FormikField
             name="name"
             label="Your name"
-            onChange={onChangeEvent}
             defaultValue={initialValues.name}
-            requireEdit
-            clickEvent={() => onSubmitHandler('name')}
           />
           <FormikField
             name="phone"
             label="Your phone"
-            onChange={onChangeEvent}
             defaultValue={initialValues.phone}
           />
           <FormikField
@@ -55,8 +44,6 @@ const Sidebar:React.FC = () => {
             label="Your email"
             type="Email"
             defaultValue={initialValues.email}
-            requireEdit
-            clickEvent={() => onSubmitHandler('email')}
           />
         </FormRow>
       </FormWrapper>
@@ -67,8 +54,6 @@ const Sidebar:React.FC = () => {
             name="tower"
             label="Delivery tower"
             defaultValue={initialValues.tower}
-            requireEdit
-            clickEvent={() => onSubmitHandler('tower')}
           />
         </FormRow>
         <FormRow>
@@ -76,15 +61,11 @@ const Sidebar:React.FC = () => {
             name="floor"
             label="Your floor"
             defaultValue={initialValues.floor}
-            requireEdit
-            clickEvent={() => onSubmitHandler('floor')}
           />
           <FormikField
             name="office"
             label="Your office"
             defaultValue={initialValues.office}
-            requireEdit
-            clickEvent={() => onSubmitHandler('office')}
           />
         </FormRow>
         <FormRow className="one-element">
@@ -92,8 +73,6 @@ const Sidebar:React.FC = () => {
             name="apartment"
             label="Your apartment"
             defaultValue={initialValues.apartment}
-            requireEdit
-            clickEvent={() => onSubmitHandler('apartment')}
           />
         </FormRow>
       </FormWrapper>
