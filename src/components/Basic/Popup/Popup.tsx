@@ -8,7 +8,7 @@ import Button from '../Button';
 import { PopupStyled } from './PopupStyled';
 
 const Popup:React.FC = () => {
-  const { textPopup } = useTypeSelector((state) => state.popupReducer);
+  const { statusPopup, textPopup } = useTypeSelector((state) => state.popupReducer);
   const dispatch = useDispatch();
   const onClickHandler = () => {
     dispatch(showPopup(false, ''));
@@ -17,14 +17,18 @@ const Popup:React.FC = () => {
 
   return (
     <>
-      <OverlayStyled onClick={() => dispatch(showPopup(false, ''))} />
-      <PopupStyled>
-        <div className="popup-title">Please sing in</div>
-        <div className="popup-text">{textPopup}</div>
-        <div className="popup-button">
-          <Button disabled={false} name="Sign in" onClickEvent={onClickHandler} />
-        </div>
-      </PopupStyled>
+      {statusPopup && (
+        <>
+          <OverlayStyled onClick={() => dispatch(showPopup(false, ''))} />
+          <PopupStyled>
+            <div className="popup-title">Please sing in</div>
+            <div className="popup-text">{textPopup}</div>
+            <div className="popup-button">
+              <Button disabled={false} name="Sign in" onClickEvent={onClickHandler} />
+            </div>
+          </PopupStyled>
+        </>
+      )}
     </>
   );
 };

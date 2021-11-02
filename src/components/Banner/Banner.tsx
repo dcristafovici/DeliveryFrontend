@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import Container from '../Basic/Container';
@@ -14,7 +14,6 @@ import Popup from '../Basic/Popup';
 const Banner:React.FC = () => {
   const dispatch = useDispatch();
   const [updateUser] = useMutation(UPDATE_USER);
-  const { statusPopup } = useTypeSelector((state) => state.popupReducer);
 
   const { user = {} } = useTypeSelector((state) => state.authReducer);
   const { id, tower } = user;
@@ -49,9 +48,6 @@ const Banner:React.FC = () => {
           </Container>
         </Section>
       </BannerStyled>
-      {statusPopup && (
-        <Popup />
-      )}
     </>
   );
 };
