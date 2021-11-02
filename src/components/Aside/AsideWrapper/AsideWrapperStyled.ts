@@ -15,7 +15,7 @@ export const AsideWrapperStyled = styled.div`
     z-index: -1;
     visibility: hidden;
     pointer-events: none;
-    transition: ${HELPERS.TRANSITION_FAST};
+    transition: ${HELPERS.TRANSITION};
     &.aside-mobile__show {
       transform: translateX(0);
       opacity: 1;

@@ -89,6 +89,11 @@ export const AsideItemStyled = styled.div`
     .aside-controll__element {
       opacity: 1;
     }
+    .aside-item__controll {
+      background: #FFFFFF;
+      box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.0979294), 0px 1px 3px rgba(0, 0, 0, 0.1);
+      border-radius: 3px;
+    }
   }
 `;
 
@@ -118,5 +123,11 @@ export const AsideItemsStyled = styled.div`
   }
   .aside-items {
     max-height: calc(100vh - 360px);
+  }
+
+  @media only screen and (${device.xs}){
+    .aside-items {
+      max-height: calc(100vh - 300px)
+    }
   }
 `;
