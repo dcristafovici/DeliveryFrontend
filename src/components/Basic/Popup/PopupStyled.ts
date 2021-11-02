@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { COLORS } from '../../../constants';
+import { device } from '../../../utils/breakpoints';
 
 export const PopupStyled = styled.div`
   box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.0979294), 0px 1px 3px rgba(0, 0, 0, 0.1); 
@@ -33,6 +34,26 @@ export const PopupStyled = styled.div`
         height: 50px;
         span {
           font-size: 16px;
+        }
+      }
+    }
+  }
+  @media only screen and (${device.xs}){
+    max-width: calc(100% - 30px);
+    .popup {
+      &-title {
+        font-size: 25px;
+      }
+      &-text {
+        font-size: 14px;
+      }
+      &-button {
+        button {
+          height: 40px;
+          width: auto;
+          span {
+            font-size: 14px;
+          }
         }
       }
     }

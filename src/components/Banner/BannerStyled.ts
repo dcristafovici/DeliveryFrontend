@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants';
+import { device } from '../../utils/breakpoints';
 
 export const BannerContainerStyled = styled.div`
   position: relative;
@@ -16,6 +17,7 @@ export const BannerContainerStyled = styled.div`
     img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
     }
     &::before{
       content: '';
@@ -40,9 +42,23 @@ export const BannerContainerStyled = styled.div`
     color: ${COLORS.WHITE};
     font-weight: 700;
   }
+  @media only screen and (${device.xs}){ 
+    padding: 30px 20px;
+    height: auto;
+    .banner {
+      &-title {
+        font-size: 25px;
+        margin-bottom: 20px;
+      }
+    }
+  }
 `;
 
 export const BannerStyled = styled.div`
   margin-top: 30px;
   margin-bottom: 50px;
+  @media only screen and (${device.xs}){
+    margin-bottom: 30px;
+    margin-top: 20px;
+  }
 `;

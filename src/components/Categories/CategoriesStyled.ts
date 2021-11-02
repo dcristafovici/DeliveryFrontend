@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { COLORS, HELPERS } from '../../constants';
+import { device } from '../../utils/breakpoints';
 
 export const CategoriesStyled = styled.div`
   .categories-wrapper {
@@ -183,5 +184,9 @@ export const CategoriesStyled = styled.div`
       max-width: 1110px;
       margin: 0 auto;
     }
+  }
+
+  @media only screen and (${device.xs}){
+   display: none;
   }
 `;

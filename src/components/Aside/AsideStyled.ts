@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../utils/breakpoints';
 
 export const AsideStyled = styled.aside`
   width: 100%;
@@ -11,4 +12,10 @@ export const AsideStyled = styled.aside`
   box-sizing: border-box;
   position: sticky;
   top: 40px;
+  @media only screen and (${device.xs}){
+    position: absolute;
+    top: 0;
+    height: 100%;
+    max-height: 100%;
+  }
 `;

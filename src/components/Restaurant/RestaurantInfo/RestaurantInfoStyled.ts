@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { COLORS, HELPERS } from '../../../constants';
 import info from '../../../assets/img/info.svg';
+import { device } from '../../../utils/breakpoints';
 
 export const RestaurantInfoStyled = styled.div`
   height: 360px;
@@ -95,5 +96,29 @@ export const RestaurantInfoStyled = styled.div`
         }
       }
     }
+  }
+
+  @media only screen and (${device.xs}){
+   height: auto;
+   .restaurant {
+     &-info {
+       &__content {
+         padding: 20px;
+         position: relative
+       }
+     }
+     &-content {
+       &__name {
+         font-size: 25px;
+       }
+       &__bottom {
+         flex-wrap: wrap;
+       }
+       &__link{
+         width: 100%;
+         margin-top: 10px;
+       }
+     }
+   }
   }
 `;

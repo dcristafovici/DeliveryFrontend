@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { COLORS, HELPERS } from '../../../constants';
+import { device } from '../../../utils/breakpoints';
 
 export const ProductsItemStyled = styled.div`
   width: 30.9090909091%;
@@ -75,6 +76,23 @@ export const ProductsItemStyled = styled.div`
       padding: 15px;
       box-sizing: border-box;
 
+    }
+  }
+  @media only screen and (${device.xs}){
+    width: calc(50% - 5px);
+    margin-right: 0;
+    .products {
+      &-item {
+        &__photo {
+          height: 150px;
+        }
+        &__name {
+          font-size: 14px;
+        }
+        &__price {
+          font-size: 16px;
+        }
+      }
     }
   }
 `;

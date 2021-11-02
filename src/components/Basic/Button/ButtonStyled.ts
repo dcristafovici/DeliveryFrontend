@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { COLORS, HELPERS } from '../../../constants';
 import { ButtonStyledInterface } from './ButtonInterface';
+import { device } from '../../../utils/breakpoints';
 
 export const ButtonStyled = styled.button`
   height: 40px;
@@ -42,6 +43,10 @@ export const ButtonStyled = styled.button`
     background ${COLORS.GRAY_5};
     color: ${COLORS.GRAY_1};
     pointer-events: none;
-    opacity: 0.5;
+    opacity: 1;
   `}
+  
+  @media only screen and (${device.xs}){
+   min-width: 100px;
+  }
 `;

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { COLORS } from '../../../constants';
+import { device } from '../../../utils/breakpoints';
 
 export const ProductsPointStyled = styled.div`
   .products-point{
@@ -16,4 +17,7 @@ export const ProductsPointStyled = styled.div`
 export const ProductsItemsStyled = styled.div`
   display: flex;
   flex-wrap: wrap;
+  @media only screen and (${device.xs}){
+   justify-content: space-between;
+  }
 `;

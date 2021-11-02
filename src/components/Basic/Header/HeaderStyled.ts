@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { COLORS, HELPERS } from '../../../constants';
+import { device } from '../../../utils/breakpoints';
 
 export const HeaderStyled = styled.header`
   height: 82px;
@@ -34,5 +35,14 @@ export const HeaderStyled = styled.header`
   }
   .header-status{
     font-weight: 400;
+  }
+  @media only screen and (${device.xs}){
+    .header {
+      &-navigation,
+      &-phone,
+      &-status {
+        display: none;
+      }
+    }
   }
 `;

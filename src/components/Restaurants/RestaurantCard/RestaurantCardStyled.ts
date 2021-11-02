@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { COLORS } from '../../../constants';
 import star from '../../../assets/img/star.svg';
+import { device } from '../../../utils/breakpoints';
 
 export const RestaurantCardStyled = styled.div`
   width: 31.5315315315%;
@@ -114,5 +115,10 @@ export const RestaurantCardStyled = styled.div`
         color: ${COLORS.GRAY_1};
       }
     }
+  }
+
+  @media only screen and (${device.xs}){
+    width: 100%;
+    margin-right: 0%;
   }
 `;

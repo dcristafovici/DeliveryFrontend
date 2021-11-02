@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { COLORS, HELPERS } from '../../../constants';
 import down from '../../../assets/img/down.svg';
+import { device } from '../../../utils/breakpoints';
 
 export const SelectStyled = styled.div`
   position: relative;
@@ -37,6 +38,12 @@ export const SelectFieldStyled = styled.div`
   }
   &.select-dark {
     background: ${COLORS.GRAY_4};
+  }
+  @media only screen and (${device.xs}){
+   height: 40px;
+   span {
+     font-size: 14px;
+   } 
   }
 `;
 
@@ -79,4 +86,5 @@ export const SelectedListStyled = styled.div`
       background: ${COLORS.BLUE_DARK};
     }
   }
+
 `;
