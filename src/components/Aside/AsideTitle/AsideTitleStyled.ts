@@ -23,4 +23,17 @@ export const AsideTitleStyled = styled.div`
       }
     }
   }
+
+  .aside {
+    &-back {
+      display: flex;
+      align-items: center;
+      svg {
+        transform: rotate(-90deg);
+        width: 14px;
+        height: 14px;
+        margin-right: 5px;
+      }
+    }
+  }
 `;

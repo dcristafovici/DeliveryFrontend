@@ -12,7 +12,10 @@ export const Global = createGlobalStyle`
     color: ${COLORS.PRIMARY_DARK};
   }
   body{
-    background: ${COLORS.GRAY_BG}
+    background: ${COLORS.GRAY_BG};
+    &.stoped {
+      overflow: hidden;
+    }
   }
   a {
     text-decoration: none;

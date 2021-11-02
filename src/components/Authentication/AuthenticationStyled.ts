@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants';
+import { device } from '../../utils/breakpoints';
 
 export const AuthenticationStyled = styled.div`
   max-width: 540px;
@@ -25,5 +26,15 @@ export const AuthenticationStyled = styled.div`
     font-weight: 700;
     text-align: center;
     color: ${COLORS.PRIMARY_DARK};
+  }
+  @media only screen and (${device.xs}){
+    max-width: calc(100% - 30px);
+    padding: 30px;
+    .authentication {
+      &-title {
+        font-size: 25px;
+        margin-bottom: 20px;
+      }
+    }
   }
 `;

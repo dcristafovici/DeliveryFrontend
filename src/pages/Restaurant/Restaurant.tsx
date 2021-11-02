@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router';
 import { useDispatch } from 'react-redux';
-import Aside from '../../components/Aside';
 import Container from '../../components/Basic/Container';
 import { StyledFlex } from '../../components/Basic/Flex/StyledFlex';
 import Section from '../../components/Basic/Section';
 import Products from '../../components/Products';
 import { GET_CATEGORY_BY_RESTAURANT, RESTAURANT_BY_ID } from '../../GraphQL/Queries';
-import { MainRestaurantStyled, RestaurantStyled, AsideWrapperStyled } from './RestaurantStyled';
+import { MainRestaurantStyled, RestaurantStyled } from './RestaurantStyled';
 import { setAsideData } from '../../redux/actions/asideAction';
 import Categories from '../../components/Categories';
 import RestaurantInfo from '../../components/Restaurant/RestaurantInfo';
+import Bar from '../../components/Bar';
+import AsideWrapper from '../../components/Aside/AsideWrapper';
 
 const Restaurant:React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -46,9 +47,11 @@ const Restaurant:React.FC = () => {
               <Products categories={CategoriesGet} />
             </MainRestaurantStyled>
 
-            <AsideWrapperStyled>
-              <Aside />
-            </AsideWrapperStyled>
+            <AsideWrapper />
+
+            {(window.innerWidth <= 480) && (
+              <Bar />
+            )}
           </StyledFlex>
         </Container>
       </Section>

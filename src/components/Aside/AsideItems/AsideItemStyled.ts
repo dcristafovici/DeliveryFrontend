@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { COLORS, HELPERS } from '../../../constants';
 import close from '../../../assets/img/close.svg';
+import { device } from '../../../utils/breakpoints';
 
 export const AsideItemStyled = styled.div`
   display: flex;
@@ -81,6 +82,12 @@ export const AsideItemStyled = styled.div`
         font-size: 13px;
         color: ${COLORS.PRIMARY_BLUE};
       }
+    }
+  }
+
+  @media only screen and (${device.xs}){
+    .aside-controll__element {
+      opacity: 1;
     }
   }
 `;
