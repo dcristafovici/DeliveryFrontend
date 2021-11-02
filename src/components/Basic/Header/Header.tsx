@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { changePopupStatus } from '../../../redux/actions/authAction';
+import { changePopupStatus, signOut } from '../../../redux/actions/authAction';
 import { useTypeSelector } from '../../../redux/useTypeSelector';
 import Authentication from '../../Authentication/Authentication';
 import Button from '../Button';
@@ -28,6 +28,13 @@ const Header:React.FC = () => {
               <li><a href="/1">Restaurants</a></li>
               <li><a href="/2">Companies</a></li>
               <li><a href="/3">Discounts</a></li>
+              {token && (
+                <li>
+                  <Link to={`/account/${user.id}`} className="transparent button">
+                    Account
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
 
@@ -43,9 +50,14 @@ const Header:React.FC = () => {
               className="header-account"
               role="button"
             >
-              <Link to={`/account/${user.id}`} className="transparent button">
-                <span>Account</span>
-              </Link>
+              <div
+                className="header-account"
+                role="button"
+                tabIndex={0}
+                onClick={() => dispatch(signOut())}
+              >
+                <Button disabled={false} name="Sign Out" className="transparent" />
+              </div>
             </div>
           ) : (
             <div
