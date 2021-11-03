@@ -23,24 +23,9 @@ const Header:React.FC = () => {
             </Link>
           </div>
 
-          <div className="header-navigation">
-            <ul>
-              <li><a href="/1">Restaurants</a></li>
-              <li><a href="/2">Companies</a></li>
-              <li><a href="/3">Discounts</a></li>
-              {token && (
-                <li>
-                  <Link to={`/account/${user.id}`} className="transparent button">
-                    Account
-                  </Link>
-                </li>
-              )}
-            </ul>
-          </div>
-
-          <div className="header-phone">
+          {/* <div className="header-phone">
             <a href="tel:+1 (985) 766-49-62">+1 (985) 766-49-62</a>
-          </div>
+          </div> */}
           {token ? (
             <div className="header-right">
               <div className="header-personal">

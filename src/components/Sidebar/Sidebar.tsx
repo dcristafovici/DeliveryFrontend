@@ -8,6 +8,7 @@ import FormRow from '../Basic/Form/FormRow';
 import FormikField from '../Basic/Form/FormikField';
 import { UPDATE_USER } from '../../GraphQL/Mutations';
 import Button from '../Basic/Button';
+import FieldUpdate from '../Basic/Form/FieldUpdate';
 
 const Sidebar:React.FC = () => {
   const [updateUser] = useMutation(UPDATE_USER);
@@ -29,21 +30,14 @@ const Sidebar:React.FC = () => {
   return (
     <SidebarStyled>
       <FormWrapper title="Personal data">
+        {/* Todo Name and phone */}
         <FormRow className="one-element">
-          <FormikField
-            name="name"
-            label="Your name"
-            defaultValue={initialValues.name}
-          />
-          <FormikField
-            name="phone"
-            label="Your phone"
-            defaultValue={initialValues.phone}
-          />
+          <FieldUpdate name="name" placeholder="Name" label="Name" defaultValue={initialValues.name} />
+          <FieldUpdate name="phone" placeholder="Phone" label="Phone" defaultValue={initialValues.phone} />
         </FormRow>
       </FormWrapper>
 
-      <FormWrapper title="Delivery data">
+      {/* <FormWrapper title="Delivery data">
         <FormRow className="one-element">
           <FormikField
             name="tower"
@@ -70,7 +64,7 @@ const Sidebar:React.FC = () => {
             defaultValue={initialValues.apartment}
           />
         </FormRow>
-      </FormWrapper>
+      </FormWrapper> */}
     </SidebarStyled>
   );
 };
