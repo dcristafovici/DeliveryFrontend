@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { COLORS, HELPERS } from '../../../constants';
 import food from '../../../assets/img/food.svg';
 import star from '../../../assets/img/star.svg';
+import { device } from '../../../utils/breakpoints';
 
 export const OrdersItemsStyled = styled.div`
   background: ${COLORS.WHITE};
@@ -135,6 +136,89 @@ export const OrdersItemsStyled = styled.div`
           font-size: 16px;
           font-weight: 500;
           color: ${COLORS.PRIMARY_DARK};
+        }
+      }
+    }
+  }
+
+  @media only screen and (${device.xs}){
+    .orders {
+      &-repeat {
+        button {
+          height: 30px;
+          min-width: auto;
+          padding-left: 20px;
+          padding-right: 20px;
+          span {
+            font-size: 12px;
+          }
+        }
+      }
+      &-total {
+        span {
+          &:first-child {
+            margin-right: 5px;
+            font-size: 12px;
+          }
+          &:nth-child(2) {
+            font-size: 12px;
+          }
+        }
+      }
+      &-item {
+        &__top {
+          flex-wrap: wrap;
+          padding: 10px;
+          height: auto;
+        }
+        &__bottom {
+          padding: 10px;
+        }
+      }
+      &-top {
+        &__left {
+          flex-wrap: wrap;
+          margin-bottom: 10px;
+        }
+        &__right {
+          width: 100%;
+        }
+        &__toggle {
+          width: 100%;
+          span {
+            font-size: 12px;
+          }
+        }
+        &__number {
+          font-size: 12px;
+          margin-bottom: 5px;
+          margin-right: 0;
+        }
+        &__status {
+          span {
+            font-size: 12px;
+          }
+        }
+      }
+      &-general {
+        &__restaurant {
+          font-size: 14px;
+          padding-left: 15px;
+          &::before {
+            width: 10px;
+            height: 10px;
+            margin-top: -5px;
+          }
+        }
+        &__rating {
+          height: 20px;
+          padding-left: 18px;
+          font-size: 12px;
+          &::before {
+            width: 8px;
+            height: 8px;
+            margin-top: -4px;
+          }
         }
       }
     }

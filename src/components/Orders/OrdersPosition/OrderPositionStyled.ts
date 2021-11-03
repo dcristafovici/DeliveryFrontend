@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { COLORS } from '../../../constants';
+import { device } from '../../../utils/breakpoints';
 
 export const OrderPositionStyled = styled.div`
   display: flex;
@@ -55,12 +56,36 @@ export const OrderPositionStyled = styled.div`
       &__price {
         position: relative;
         top: -10px;
+        width: 60px;
+        text-align: right;
       }
       &__image {
         width: 50px;
       }
       &__name {
-       width: 69.6721311475%; 
+        box-sizing: border-box;
+        width: calc(100% - 300px)
+      }
+
+    }
+  }
+
+  @media only screen and (${device.xs}){
+    .orders {
+      &-position {
+        &__quantity,
+        &__price {
+          font-size: 12px;
+        }
+        &__name {
+          width: calc(100% - 100px);
+          span {
+            &:first-child,
+            &:nth-child(2) {
+              font-size: 12px;
+            }
+          }
+        }
       }
     }
   }

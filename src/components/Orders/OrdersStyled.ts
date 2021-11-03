@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants';
+import { device } from '../../utils/breakpoints';
 
 export const OrdersStyled = styled.div`
   width: 100%;
@@ -12,5 +13,15 @@ export const OrdersStyled = styled.div`
     color: ${COLORS.PRIMARY_BLUE};
     font-weight: 700;
     margin-bottom: 25px;
+  }
+
+  @media only screen and (${device.xs}){
+    padding: 20px;
+    .orders {
+      &-title {
+        margin-bottom: 10px;
+        font-size: 14px;
+      }
+    }
   }
 `;

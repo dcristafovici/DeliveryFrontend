@@ -16,7 +16,6 @@ const Banner:React.FC = () => {
 
   const { user = {} } = useTypeSelector((state) => state.authReducer);
   const { id, tower } = user;
-  console.log(user);
   const initialTower = tower || 'Choose Tower';
   const onChangeSelect = (option:string) => {
     if (id) {

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants';
+import { device } from '../../utils/breakpoints';
 
 export const AccountStyled = styled.div`
   padding-top: 22px;
@@ -14,8 +15,14 @@ export const AccountStyled = styled.div`
 
 export const SidebarWrapperStyled = styled.div`
   width: 350px;
+  @media only screen and (${device.xs}){
+    display: none;
+  }
 `;
 
 export const MainAccountStyled = styled.div`
   width: calc(100% - 380px);
+  @media only screen and (${device.xs}){
+    width: 100%;
+  }
 `;

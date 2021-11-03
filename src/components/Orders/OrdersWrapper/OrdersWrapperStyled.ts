@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { COLORS } from '../../../constants';
+import { device } from '../../../utils/breakpoints';
 
 export const OrdersWrapperStyled = styled.div`
   margin-bottom: 40px;
@@ -14,5 +15,12 @@ export const OrdersWrapperStyled = styled.div`
     padding-bottom: 10px;
     margin-bottom: 20px;
     border-bottom: 1px solid ${COLORS.GRAY_2};
+  }
+  @media only screen and (${device.xs}){
+    .orders-wrapper {
+      &__date {
+        font-size: 12px;
+      }
+    }
   }
 `;
