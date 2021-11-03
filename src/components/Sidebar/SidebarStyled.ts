@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { COLORS } from '../../constants';
+import { COLORS, HELPERS } from '../../constants';
+import { device } from '../../utils/breakpoints';
 
 export const SidebarStyled = styled.div`
   background: ${COLORS.WHITE};
@@ -9,4 +10,8 @@ export const SidebarStyled = styled.div`
   box-sizing: border-box;
   position: sticky;
   top: 0;
+  @media only screen and (${device.xs}){
+    height: 100%;
+    border-radius: 0;
+  }
 `;

@@ -1,4 +1,5 @@
 import React from 'react';
+import AccountBar from '../../components/Account/AccountBar';
 import Container from '../../components/Basic/Container';
 import { StyledFlex } from '../../components/Basic/Flex/StyledFlex';
 import Section from '../../components/Basic/Section';
@@ -24,6 +25,9 @@ const Account:React.FC = () => (
         </StyledFlex>
       </Container>
     </Section>
+    {(window.innerWidth <= 480) && (
+      <AccountBar />
+    )}
   </AccountStyled>
 );
 
