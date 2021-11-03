@@ -7,7 +7,7 @@ import OrdersPosition from '../OrdersPosition';
 import { OrdersItemInterface } from './OrdersItemInterface';
 
 const OrdersItem:React.FC<OrdersItemInterface> = (
-  { id, totalPrice, restaurant }: OrdersItemInterface,
+  { id, totalPrice, restaurant, status }: OrdersItemInterface,
 ) => {
   const { loading, data = {} } = useQuery(GET_CART, { variables: { orderID: id } });
   const { GetCart: Cart = [] } = data;
@@ -20,7 +20,7 @@ const OrdersItem:React.FC<OrdersItemInterface> = (
           </div>
           <div className="orders-top__status">
             <span>Status: </span>
-            <span>Delivered</span>
+            <span>{status}</span>
           </div>
         </div>
         <div className="orders-top__right">

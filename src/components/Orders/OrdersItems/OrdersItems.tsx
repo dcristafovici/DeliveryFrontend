@@ -11,6 +11,7 @@ const OrdersItems:React.FC<OrdersItemsInterface> = ({ ordersItems }: OrdersItems
         totalPrice={order.totalPrice}
         id={order.id}
         restaurant={order.restaurant}
+        status={order.status}
       />
     ))}
   </OrdersItemsStyled>

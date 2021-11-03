@@ -4,5 +4,6 @@ export interface OrdersItemInterface {
   restaurant: {
     name: string;
     rating: number;
-  }
+  },
+  status: string;
 }

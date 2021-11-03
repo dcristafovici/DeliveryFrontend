@@ -15,7 +15,7 @@ const Orders:React.FC = () => {
 
   const UserOrders = GetOrderByUser.map((order:any) => {
     const date = new Date(order.created_at);
-    const convetedDate = `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`;
+    const convetedDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
     return {
       ...order,
       created_at: convetedDate,

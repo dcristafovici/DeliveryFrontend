@@ -36,6 +36,15 @@ export const HeaderStyled = styled.header`
   .header-status{
     font-weight: 400;
   }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    .header-account {
+      margin-left: 20px;
+    }
+  }
   @media only screen and (${device.xs}){
     .header {
       &-navigation,

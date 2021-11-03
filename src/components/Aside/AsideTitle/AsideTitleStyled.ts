@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { COLORS, HELPERS } from '../../../constants';
+import { device } from '../../../utils/breakpoints';
 
 export const AsideTitleStyled = styled.div`
   display: flex;
@@ -26,7 +27,7 @@ export const AsideTitleStyled = styled.div`
 
   .aside {
     &-back {
-      display: flex;
+      display: none;
       align-items: center;
       svg {
         transform: rotate(-90deg);
@@ -34,6 +35,11 @@ export const AsideTitleStyled = styled.div`
         height: 14px;
         margin-right: 5px;
       }
+    }
+  }
+  @media only screen and (${device.xs}){
+    .aside-back {
+      display: flex;
     }
   }
 `;

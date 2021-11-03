@@ -10,6 +10,7 @@ export const FormRowStyled = styled.div`
   justify-content: space-between;
   .formik-field {
     width: calc(50% - 10px);
+    margin-bottom: 0;
   }
   &.three-elements {
     .formik-field {

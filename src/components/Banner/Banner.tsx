@@ -9,7 +9,6 @@ import { Towers } from './Towers';
 import { UPDATE_USER } from '../../GraphQL/Mutations';
 import { useTypeSelector } from '../../redux/useTypeSelector';
 import { showPopup } from '../../redux/actions/popupAction';
-import Popup from '../Basic/Popup';
 
 const Banner:React.FC = () => {
   const dispatch = useDispatch();
@@ -17,6 +16,7 @@ const Banner:React.FC = () => {
 
   const { user = {} } = useTypeSelector((state) => state.authReducer);
   const { id, tower } = user;
+  console.log(user);
   const initialTower = tower || 'Choose Tower';
   const onChangeSelect = (option:string) => {
     if (id) {

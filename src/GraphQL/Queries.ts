@@ -61,6 +61,11 @@ export const CHECK_TOKEN = gql`
     CheckToken(token: $token) {
       id,
       phone,
+      name,
+      tower,
+      floor,
+      office,
+      apartment 
     }
   }
 `;
@@ -74,6 +79,7 @@ export const GET_ORDERS_BY_USER = gql`
         name,
         rating
       }
+      status,
       created_at,
     }
   }

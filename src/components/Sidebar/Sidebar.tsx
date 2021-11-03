@@ -7,6 +7,7 @@ import FormWrapper from '../Basic/Form/FormWrapper';
 import FormRow from '../Basic/Form/FormRow';
 import FormikField from '../Basic/Form/FormikField';
 import { UPDATE_USER } from '../../GraphQL/Mutations';
+import Button from '../Basic/Button';
 
 const Sidebar:React.FC = () => {
   const [updateUser] = useMutation(UPDATE_USER);
@@ -38,12 +39,6 @@ const Sidebar:React.FC = () => {
             name="phone"
             label="Your phone"
             defaultValue={initialValues.phone}
-          />
-          <FormikField
-            name="email"
-            label="Your email"
-            type="Email"
-            defaultValue={initialValues.email}
           />
         </FormRow>
       </FormWrapper>

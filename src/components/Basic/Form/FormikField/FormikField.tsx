@@ -8,7 +8,7 @@ import { FormikFieldStyled } from './FormikFieldStyled';
 const FormikField:React.FC<FormikFieldInterface> = (
   { name, label, type, error, touched, isTextarea, ...rest }: FormikFieldInterface,
 ) => (
-  <FormikFieldStyled className={`formik-field ${error && 'has-error'}`}>
+  <FormikFieldStyled className={`formik-field ${error ? 'has-error' : ''}`}>
     <label>{label}</label>
     {isTextarea ? (
       <Textarea

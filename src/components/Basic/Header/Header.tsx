@@ -41,15 +41,13 @@ const Header:React.FC = () => {
           <div className="header-phone">
             <a href="tel:+1 (985) 766-49-62">+1 (985) 766-49-62</a>
           </div>
-
-          <div className="header-status">
-            Online
-          </div>
           {token ? (
-            <div
-              className="header-account"
-              role="button"
-            >
+            <div className="header-right">
+              <div className="header-personal">
+                <Link to={`/account/${user.id}`}>
+                  <Button name="Account" disabled={false} />
+                </Link>
+              </div>
               <div
                 className="header-account"
                 role="button"
