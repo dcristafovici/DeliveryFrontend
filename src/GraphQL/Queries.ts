@@ -62,6 +62,7 @@ export const CHECK_TOKEN = gql`
       id,
       phone,
       name,
+      email,
       tower,
       floor,
       office,

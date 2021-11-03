@@ -11,6 +11,7 @@ export const FieldUpdateStyled = styled.div`
     width: 100%;
     box-sizing: border-box;
     height: 40px;
+    padding-right: 30px;
     padding-left: 15px;
     background: ${COLORS.GRAY_4};
     transition: ${HELPERS.TRANSITION_FAST};
@@ -39,11 +40,23 @@ export const FieldUpdateStyled = styled.div`
     &__actions > div {
       cursor: pointer;
       position: absolute;
-      right: 10px;
+      right: 0;
       top: 50%;
       transform: translateY(-50%);
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
       svg {
         transition: ${HELPERS.TRANSITION};
+      }
+    }
+    &__error {
+      margin-top: 7.5px;
+      span {
+        font-size: 12px;
+        color: ${COLORS.RED}
       }
     }
     &__edit {
@@ -68,4 +81,5 @@ export const FieldUpdateStyled = styled.div`
       color: ${COLORS.PRIMARY_BLUE};
     }
   }
+
 `;

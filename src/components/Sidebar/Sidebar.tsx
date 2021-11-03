@@ -34,37 +34,27 @@ const Sidebar:React.FC = () => {
         <FormRow className="one-element">
           <FieldUpdate name="name" placeholder="Name" label="Name" defaultValue={initialValues.name} />
           <FieldUpdate name="phone" placeholder="Phone" label="Phone" defaultValue={initialValues.phone} />
+          <FieldUpdate type="email" name="email" placeholder="E-mail" label="E-mail" defaultValue={initialValues.email} />
         </FormRow>
       </FormWrapper>
 
-      {/* <FormWrapper title="Delivery data">
+      <FormWrapper title="Delivery data">
         <FormRow className="one-element">
-          <FormikField
+          {/* <FormikField
             name="tower"
             label="Delivery tower"
             defaultValue={initialValues.tower}
-          />
+          /> */}
+          DeliveryTower
         </FormRow>
         <FormRow>
-          <FormikField
-            name="floor"
-            label="Your floor"
-            defaultValue={initialValues.floor}
-          />
-          <FormikField
-            name="office"
-            label="Your office"
-            defaultValue={initialValues.office}
-          />
+          <FieldUpdate name="floor" placeholder="Floor" label="Floor" defaultValue={initialValues.floor} />
+          <FieldUpdate name="office" placeholder="Office" label="Office" defaultValue={initialValues.office} />
         </FormRow>
         <FormRow className="one-element">
-          <FormikField
-            name="apartment"
-            label="Your apartment"
-            defaultValue={initialValues.apartment}
-          />
+          <FieldUpdate name="apartment" placeholder="Apartment" label="Apartment" defaultValue={initialValues.apartment} />
         </FormRow>
-      </FormWrapper> */}
+      </FormWrapper>
     </SidebarStyled>
   );
 };

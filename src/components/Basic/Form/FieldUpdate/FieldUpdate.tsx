@@ -16,6 +16,7 @@ const FieldUpdate:React.FC<FieldUpdateInterface> = (
   const { user } = useTypeSelector((state) => state.authReducer);
   const [updateUser] = useMutation(UPDATE_USER);
 
+  const [error, setError] = useState('');
   useEffect(() => {
     setInitialValue(defaultValue);
     if (defaultValue) {
@@ -34,12 +35,12 @@ const FieldUpdate:React.FC<FieldUpdateInterface> = (
 
   const onUpdateHandler = () => {
     updateUser({ variables: { data: { id: user.id, field: name, value: inputValue } } })
-      .then(() => setFieldState(fieldStateEnum.NO_EDIT))
-      .catch((e) => console.log(e));
+      .then(() => { setFieldState(fieldStateEnum.NO_EDIT); setError(''); })
+      .catch((e) => setError(e.message));
   };
 
   return (
-    <FieldUpdateStyled className={fieldState}>
+    <FieldUpdateStyled className={`field-update ${fieldState}`}>
       {label && <label>{label}</label>}
       <div className="field-update__input">
 
@@ -74,6 +75,11 @@ const FieldUpdate:React.FC<FieldUpdateInterface> = (
           defaultValue={initialValue}
         />
       </div>
+      {error && (
+        <div className="field-update__error">
+          <span>{error}</span>
+        </div>
+      )}
     </FieldUpdateStyled>
   );
 };
