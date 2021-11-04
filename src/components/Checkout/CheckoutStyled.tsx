@@ -86,6 +86,12 @@ export const CheckoutStyled = styled.div`
       }
     }
   }
+
+  .jiMaRd span {
+    font-size: 14px;
+    font-weight: 500;
+    color: ${COLORS.PRIMARY_DARK};
+  }
 `;
 
 export const OverlayStyled = styled.div`

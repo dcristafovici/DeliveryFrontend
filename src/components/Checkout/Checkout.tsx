@@ -9,13 +9,15 @@ import FormRow from '../Basic/Form/FormRow';
 import FormikField from '../Basic/Form/FormikField';
 import Button from '../Basic/Button';
 import FormikFieldDate from '../Basic/Form/FormikFieldDate';
-import { setCheckoutStatus } from '../../redux/actions/asideAction';
+import { clearAside, setCheckoutStatus } from '../../redux/actions/asideAction';
 import { CREATE_ORDER, UPDATE_USER } from '../../GraphQL/Mutations';
 import { useTypeSelector } from '../../redux/useTypeSelector';
+import { Towers } from '../Banner/Towers';
+import FormSelect from '../Basic/Form/FormSelect/FormSelect';
+import FieldUpdate from '../Basic/Form/FieldUpdate';
 
 const Checkout:React.FC = () => {
   const dispatch = useDispatch();
-  const [updateUser] = useMutation(UPDATE_USER);
 
   const { id: restaurantID } = useParams<{ id: string }>();
 
@@ -24,6 +26,8 @@ const Checkout:React.FC = () => {
   const { id, email, address, ...filteredUser } = user;
 
   const [createOrder] = useMutation(CREATE_ORDER);
+  const [updateUser] = useMutation(UPDATE_USER);
+
   const [initialValues, setInitialValues] = useState<CheckoutFormInterface>({
     name: '',
     phone: '',
@@ -46,15 +50,19 @@ const Checkout:React.FC = () => {
   }, [user]);
 
   const onChangeDate = (name:any, date:any) => {
-    const newDateFormat = date.toISOString().slice(0, 10);
-    setInitialValues({ ...initialValues, [name]: newDateFormat });
+    setInitialValues({ ...initialValues, [name]: date.toISOString().slice(0, 10) });
   };
 
   const onSendHandle = (e:React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     createOrder({ variables:
       { data: { ...initialValues, user: id, restaurant: restaurantID, totalPrice: `${total}$`, cart: CartWithIDs } },
-    });
+    })
+      .then(() => {
+        dispatch(setCheckoutStatus(false));
+        dispatch(clearAside());
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -64,42 +72,24 @@ const Checkout:React.FC = () => {
         <div className="checkout-title">Checkout</div>
         <FormWrapper title="Your contacts">
           <FormRow>
-            <FormikField
-              name="name"
-              label="Your name"
-              defaultValue={initialValues.name}
-            />
-            <FormikField
-              name="phone"
-              label="Your phone"
-              defaultValue={initialValues.phone}
-            />
+            <FieldUpdate name="name" placeholder="Name" label="Your Name" defaultValue={initialValues.name} />
+            <FieldUpdate name="phone" placeholder="Phone" label="Your phone" defaultValue={initialValues.phone} />
+
           </FormRow>
         </FormWrapper>
         <FormWrapper title="Delivery address">
           <FormRow className="one-element">
-            <FormikField
-              name="tower"
-              label="Tower"
-              defaultValue={initialValues.tower}
+            <FormSelect
+              values={Towers}
+              label="Choose Tower"
+              selectDefault={initialValues.tower || 'Choose Tower'}
+              onSelect={(option:string) => updateUser({ variables: { data: { id: user.id, field: 'tower', value: option } } })}
             />
           </FormRow>
           <FormRow className="three-elements">
-            <FormikField
-              name="floor"
-              label="Floor"
-              defaultValue={initialValues.floor}
-            />
-            <FormikField
-              name="office"
-              label="Office"
-              defaultValue={initialValues.office}
-            />
-            <FormikField
-              name="apartment"
-              label="Apartment"
-              defaultValue={initialValues.apartment}
-            />
+            <FieldUpdate name="floor" placeholder="Floor" label="Your floor" defaultValue={initialValues.floor} />
+            <FieldUpdate name="office" placeholder="Office" label="Your office" defaultValue={initialValues.office} />
+            <FieldUpdate name="apartment" placeholder="Apartment" label="Your apartment" defaultValue={initialValues.apartment} />
           </FormRow>
         </FormWrapper>
         <FormWrapper title="Delivery detailes">

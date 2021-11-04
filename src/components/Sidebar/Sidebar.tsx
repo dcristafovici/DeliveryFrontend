@@ -10,8 +10,8 @@ import { UPDATE_USER } from '../../GraphQL/Mutations';
 import FieldUpdate from '../Basic/Form/FieldUpdate';
 import { ArrowTopIcon } from '../Basic/Icons';
 import { mobileAccountStatus } from '../../redux/actions/authAction';
-import FormikFieldSelect from '../Basic/Form/FormSelect';
 import { Towers } from '../Banner/Towers';
+import FormSelect from '../Basic/Form/FormSelect';
 
 const Sidebar:React.FC = () => {
   const dispatch = useDispatch();
@@ -56,7 +56,7 @@ const Sidebar:React.FC = () => {
 
       <FormWrapper title="Delivery data">
         <FormRow className="one-element">
-          <FormikFieldSelect
+          <FormSelect
             values={Towers}
             label="Choose Tower"
             selectDefault={initialValues.tower || 'Choose Tower'}
