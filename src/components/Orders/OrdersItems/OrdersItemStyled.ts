@@ -44,15 +44,34 @@ export const OrdersItemsStyled = styled.div`
     }
     &__toggle {
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      svg {
+        fill: ${COLORS.PRIMARY_BLUE};
+        width: 10px;
+        height: 10px;
+        margin-left: 3px;
+        transition: ${HELPERS.TRANSITION};
+      }
+      &.isOpen {
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+      &:hover {
+        span {
+          color: ${COLORS.BLUE_DARK}
+        }
+        svg {
+          fill: ${COLORS.BLUE_DARK}
+        }
+      }
     }
     &__toggle span{
       font-size: 14px;
       font-weight: 400;
       color: ${COLORS.PRIMARY_BLUE};
       transition: ${HELPERS.TRANSITION};
-      &:hover {
-        color: ${COLORS.BLUE_DARK};
-      }
     }
     &__status{
       display: flex;

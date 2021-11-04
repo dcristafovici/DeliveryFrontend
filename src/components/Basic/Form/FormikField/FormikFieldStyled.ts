@@ -13,6 +13,15 @@ export const FormikFieldStyled = styled.div`
     display: block;
     margin-bottom: 7px;
   }
+  .diSkkD {
+    span {
+      font-size: 14px;
+      padding-right: 30px;
+      color: ${COLORS.PRIMARY_DARK};
+      box-sizing: border-box;
+      font-weight: 500;
+    }
+  }
   .send-icon,
   .edit-field {
     position: absolute;

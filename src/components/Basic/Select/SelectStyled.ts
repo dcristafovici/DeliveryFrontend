@@ -64,7 +64,10 @@ export const SelectedListStyled = styled.div`
     overflow-y: scroll;
   }
   li {
-    height: 30px;
+    height: auto;
+    min-height: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     display: flex;
     align-items: center;
     transition: ${HELPERS.TRANSITION_FAST};

@@ -6,12 +6,12 @@ import { SidebarFormInterface } from './SidebarInterface';
 import { useTypeSelector } from '../../redux/useTypeSelector';
 import FormWrapper from '../Basic/Form/FormWrapper';
 import FormRow from '../Basic/Form/FormRow';
-import FormikField from '../Basic/Form/FormikField';
 import { UPDATE_USER } from '../../GraphQL/Mutations';
-import Button from '../Basic/Button';
 import FieldUpdate from '../Basic/Form/FieldUpdate';
 import { ArrowTopIcon } from '../Basic/Icons';
 import { mobileAccountStatus } from '../../redux/actions/authAction';
+import FormikFieldSelect from '../Basic/Form/FormSelect';
+import { Towers } from '../Banner/Towers';
 
 const Sidebar:React.FC = () => {
   const dispatch = useDispatch();
@@ -56,12 +56,12 @@ const Sidebar:React.FC = () => {
 
       <FormWrapper title="Delivery data">
         <FormRow className="one-element">
-          {/* <FormikField
-            name="tower"
-            label="Delivery tower"
-            defaultValue={initialValues.tower}
-          /> */}
-          DeliveryTower
+          <FormikFieldSelect
+            values={Towers}
+            label="Choose Tower"
+            selectDefault={initialValues.tower || 'Choose Tower'}
+            onSelect={(option:string) => updateUser({ variables: { data: { id: user.id, field: 'tower', value: option } } })}
+          />
         </FormRow>
         <FormRow>
           <FieldUpdate name="floor" placeholder="Floor" label="Floor" defaultValue={initialValues.floor} />

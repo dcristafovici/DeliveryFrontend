@@ -6,5 +6,5 @@ export interface SelectInterface {
   values: SelectValue[];
   initialValue: string;
   className?: string;
-  onChangeEvent?: any;
+  onChangeEvent: any;
 }
