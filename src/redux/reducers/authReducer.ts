@@ -1,7 +1,8 @@
-import { CHANGE_POPUP_STATUS, SET_USER, SIGN_OUT } from '../actions-types/authTypes';
+import { CHANGE_POPUP_STATUS, MOBILE_ACCOUNT_STATUS, SET_USER, SIGN_OUT } from '../actions-types/authTypes';
 
 const initialState = {
   popupStatus: false,
+  mobileAccount: false,
   token: null,
   user: {
     id: '',
@@ -32,6 +33,11 @@ export const authReducer = (state = initialState, action:any) => {
           id: '',
           phone: '',
         },
+      };
+    case MOBILE_ACCOUNT_STATUS:
+      return {
+        ...state,
+        mobileAccount: payload.status,
       };
     default: {
       return {

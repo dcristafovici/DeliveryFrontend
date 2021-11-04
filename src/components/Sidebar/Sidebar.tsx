@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation } from '@apollo/client';
+import { useDispatch } from 'react-redux';
 import { SidebarStyled } from './SidebarStyled';
 import { SidebarFormInterface } from './SidebarInterface';
 import { useTypeSelector } from '../../redux/useTypeSelector';
@@ -9,10 +10,15 @@ import FormikField from '../Basic/Form/FormikField';
 import { UPDATE_USER } from '../../GraphQL/Mutations';
 import Button from '../Basic/Button';
 import FieldUpdate from '../Basic/Form/FieldUpdate';
+import { ArrowTopIcon } from '../Basic/Icons';
+import { mobileAccountStatus } from '../../redux/actions/authAction';
 
 const Sidebar:React.FC = () => {
+  const dispatch = useDispatch();
   const [updateUser] = useMutation(UPDATE_USER);
+
   const { user } = useTypeSelector((state) => state.authReducer);
+
   const [initialValues, setInitialValues] = useState<SidebarFormInterface>({
     name: '',
     phone: '',
@@ -22,6 +28,7 @@ const Sidebar:React.FC = () => {
     office: '',
     apartment: '',
   });
+
   useEffect(() => {
     const { id, ...filteredUser } = user;
     setInitialValues((prev) => ({ ...initialValues, ...filteredUser }));
@@ -29,6 +36,15 @@ const Sidebar:React.FC = () => {
 
   return (
     <SidebarStyled>
+      <div
+        className="sidebar-back"
+        role="button"
+        tabIndex={0}
+        onClick={() => dispatch(mobileAccountStatus(false))}
+      >
+        <ArrowTopIcon />
+        <span>Back</span>
+      </div>
       <FormWrapper title="Personal data">
         {/* Todo Name and phone */}
         <FormRow className="one-element">

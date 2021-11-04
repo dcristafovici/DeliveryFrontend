@@ -4,8 +4,8 @@ import Container from '../../components/Basic/Container';
 import { StyledFlex } from '../../components/Basic/Flex/StyledFlex';
 import Section from '../../components/Basic/Section';
 import Orders from '../../components/Orders';
-import Sidebar from '../../components/Sidebar';
-import { AccountStyled, MainAccountStyled, SidebarWrapperStyled } from './AccountStyled';
+import SidebarWrapper from '../../components/Sidebar/SidebarWrapper';
+import { AccountStyled, MainAccountStyled } from './AccountStyled';
 
 const Account:React.FC = () => (
   <AccountStyled>
@@ -14,9 +14,7 @@ const Account:React.FC = () => (
         <div className="account-title">Account</div>
         <StyledFlex justify="space-between">
 
-          <SidebarWrapperStyled>
-            <Sidebar />
-          </SidebarWrapperStyled>
+          <SidebarWrapper />
 
           <MainAccountStyled>
             <Orders />

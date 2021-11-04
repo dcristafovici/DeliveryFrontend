@@ -10,8 +10,26 @@ export const SidebarStyled = styled.div`
   box-sizing: border-box;
   position: sticky;
   top: 0;
+  .sidebar {
+    &-back {
+      display: none;
+      margin-bottom: 30px;
+      svg {
+        transform: rotate(-90deg);
+        width: 14px;
+        height: 14px;
+        margin-right: 5px;
+      }
+    }
+  }
   @media only screen and (${device.xs}){
     height: 100%;
     border-radius: 0;
+    .sidebar {
+      &-back {
+        display: flex;
+        align-items: center;
+      }
+    }
   }
 `;
