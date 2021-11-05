@@ -3,18 +3,19 @@ import { useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import { useParams } from 'react-router';
 import { CheckoutStyled, OverlayStyled } from './CheckoutStyled';
-import { CheckoutFormInterface } from './CheckoutInterface';
+import { CheckoutFormInterface, CheckoutDays, TimeToDelivery } from './CheckoutInterface';
 import FormWrapper from '../Basic/Form/FormWrapper';
 import FormRow from '../Basic/Form/FormRow';
 import FormikField from '../Basic/Form/FormikField';
 import Button from '../Basic/Button';
-import FormikFieldDate from '../Basic/Form/FormikFieldDate';
 import { clearAside, setCheckoutStatus } from '../../redux/actions/asideAction';
 import { CREATE_ORDER, UPDATE_USER } from '../../GraphQL/Mutations';
 import { useTypeSelector } from '../../redux/useTypeSelector';
 import { Towers } from '../Banner/Towers';
 import FormSelect from '../Basic/Form/FormSelect/FormSelect';
 import FieldUpdate from '../Basic/Form/FieldUpdate';
+import { updateUserValues } from '../../redux/actions/authAction';
+import { SelectValue } from '../Basic/Select/SelectInterface';
 
 const Checkout:React.FC = () => {
   const dispatch = useDispatch();
@@ -28,15 +29,35 @@ const Checkout:React.FC = () => {
   const [createOrder] = useMutation(CREATE_ORDER);
   const [updateUser] = useMutation(UPDATE_USER);
 
-  const [initialValues, setInitialValues] = useState<CheckoutFormInterface>({
+  const [disponibleTime, setDisponibleTime] = useState<SelectValue[]>([]);
+
+  useEffect(() => {
+    const ds = () => {
+      const hours = 24;
+      const distance = 0.5;
+      const iteration = hours / distance;
+      const emptyArray = [];
+      for (let i = 0; i < iteration; i += 1) {
+        let time;
+        if (i % 2 === 0) {
+          time = `${i}:00`;
+        }
+        emptyArray.push({ label: time, name: time });
+      }
+      console.log(emptyArray);
+    };
+    ds();
+  }, []);
+
+  const [checkoutValues, setCheckoutValues] = useState<CheckoutFormInterface>({
     name: '',
     phone: '',
     tower: '',
     floor: '',
     office: '',
     apartment: '',
-    date: '',
-    time: '',
+    date: CheckoutDays[0].label,
+    time: TimeToDelivery[0].label,
     additional: '',
   });
 
@@ -46,23 +67,26 @@ const Checkout:React.FC = () => {
   }));
 
   useEffect(() => {
-    setInitialValues((prev) => ({ ...initialValues, ...filteredUser }));
+    setCheckoutValues((prev) => ({ ...checkoutValues, ...filteredUser }));
   }, [user]);
 
-  const onChangeDate = (name:any, date:any) => {
-    setInitialValues({ ...initialValues, [name]: date.toISOString().slice(0, 10) });
+  const onChangeTower = (option:string) => {
+    updateUser({ variables: { data: { id: user.id, field: 'tower', value: option } } });
+    dispatch(updateUserValues('tower', option));
   };
 
   const onSendHandle = (e:React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    createOrder({ variables:
-      { data: { ...initialValues, user: id, restaurant: restaurantID, totalPrice: `${total}$`, cart: CartWithIDs } },
-    })
-      .then(() => {
-        dispatch(setCheckoutStatus(false));
-        dispatch(clearAside());
-      })
-      .catch((error) => console.log(error));
+    console.log(checkoutValues);
+    // createOrder({ variables:
+    // eslint-disable-next-line max-len
+    //   { data: { ...checkoutValues, user: id, restaurant: restaurantID, totalPrice: `${total}$`, cart: CartWithIDs } },
+    // })
+    //   .then(() => {
+    //     dispatch(setCheckoutStatus(false));
+    //     dispatch(clearAside());
+    //   })
+    //   .catch((error) => console.log(error));
   };
 
   return (
@@ -72,8 +96,8 @@ const Checkout:React.FC = () => {
         <div className="checkout-title">Checkout</div>
         <FormWrapper title="Your contacts">
           <FormRow>
-            <FieldUpdate name="name" placeholder="Name" label="Your Name" defaultValue={initialValues.name} />
-            <FieldUpdate name="phone" placeholder="Phone" label="Your phone" defaultValue={initialValues.phone} />
+            <FieldUpdate name="name" placeholder="Name" label="Your Name" defaultValue={checkoutValues.name} />
+            <FieldUpdate name="phone" placeholder="Phone" label="Your phone" defaultValue={checkoutValues.phone} />
 
           </FormRow>
         </FormWrapper>
@@ -82,28 +106,29 @@ const Checkout:React.FC = () => {
             <FormSelect
               values={Towers}
               label="Choose Tower"
-              selectDefault={initialValues.tower || 'Choose Tower'}
-              onSelect={(option:string) => updateUser({ variables: { data: { id: user.id, field: 'tower', value: option } } })}
+              selectDefault={checkoutValues.tower || 'Choose Tower'}
+              onSelect={(option:string) => onChangeTower(option)}
             />
           </FormRow>
           <FormRow className="three-elements">
-            <FieldUpdate name="floor" placeholder="Floor" label="Your floor" defaultValue={initialValues.floor} />
-            <FieldUpdate name="office" placeholder="Office" label="Your office" defaultValue={initialValues.office} />
-            <FieldUpdate name="apartment" placeholder="Apartment" label="Your apartment" defaultValue={initialValues.apartment} />
+            <FieldUpdate name="floor" placeholder="Floor" label="Your floor" defaultValue={checkoutValues.floor} />
+            <FieldUpdate name="office" placeholder="Office" label="Your office" defaultValue={checkoutValues.office} />
+            <FieldUpdate name="apartment" placeholder="Apartment" label="Your apartment" defaultValue={checkoutValues.apartment} />
           </FormRow>
         </FormWrapper>
         <FormWrapper title="Delivery detailes">
           <FormRow>
-            <FormikFieldDate
-              name="date"
-              label="Choose date"
-              onChange={onChangeDate}
-              defaultValue={initialValues.date}
+            <FormSelect
+              values={CheckoutDays}
+              label="Choose Day"
+              selectDefault={checkoutValues.date}
+              onSelect={(option:string) => setCheckoutValues({ ...checkoutValues, date: option })}
             />
-            <FormikField
-              name="time"
-              label="Choose time"
-              type="time"
+            <FormSelect
+              values={TimeToDelivery}
+              label="Choose Time"
+              selectDefault={checkoutValues.time}
+              onSelect={(option:string) => setCheckoutValues({ ...checkoutValues, time: option })}
             />
           </FormRow>
         </FormWrapper>

@@ -1,4 +1,9 @@
-import { CHANGE_POPUP_STATUS, SET_USER, SIGN_OUT, MOBILE_ACCOUNT_STATUS } from '../actions-types/authTypes';
+import {
+  CHANGE_POPUP_STATUS,
+  SET_USER, SIGN_OUT,
+  MOBILE_ACCOUNT_STATUS,
+  UPDATE_USER,
+} from '../actions-types/authTypes';
 
 export const changePopupStatus = (status:boolean) => (dispatch:any) => {
   dispatch({
@@ -29,5 +34,12 @@ export const mobileAccountStatus = (status: boolean) => (dispatch:any) => {
   dispatch({
     type: MOBILE_ACCOUNT_STATUS,
     payload: { status },
+  });
+};
+
+export const updateUserValues = (field: string, value: string) => (dispatch:any) => {
+  dispatch({
+    type: UPDATE_USER,
+    payload: { field, value },
   });
 };

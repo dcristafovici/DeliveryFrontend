@@ -1,8 +1,9 @@
 import { useMutation } from '@apollo/client';
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { UPDATE_USER } from '../../../../GraphQL/Mutations';
+import { updateUserValues } from '../../../../redux/actions/authAction';
 import { useTypeSelector } from '../../../../redux/useTypeSelector';
-import checkTokenValidate from '../../../../utils';
 import { CheckIcon, EditIcon } from '../../Icons';
 import { fieldStateEnum, FieldUpdateInterface } from './FieldUpdateInterface';
 import { FieldUpdateStyled } from './FieldUpdateStyled';
@@ -16,6 +17,8 @@ const FieldUpdate:React.FC<FieldUpdateInterface> = (
 
   const { user } = useTypeSelector((state) => state.authReducer);
   const [updateUser] = useMutation(UPDATE_USER);
+
+  const dispatch = useDispatch();
 
   const [error, setError] = useState('');
   useEffect(() => {
@@ -36,7 +39,11 @@ const FieldUpdate:React.FC<FieldUpdateInterface> = (
 
   const onUpdateHandler = () => {
     updateUser({ variables: { data: { id: user.id, field: name, value: inputValue } } })
-      .then(() => { setFieldState(fieldStateEnum.NO_EDIT); setError(''); })
+      .then(() => {
+        setFieldState(fieldStateEnum.NO_EDIT);
+        setError('');
+        dispatch(updateUserValues(name, inputValue));
+      })
       .catch((e) => setError(e.message));
   };
 

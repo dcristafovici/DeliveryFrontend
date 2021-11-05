@@ -61,7 +61,7 @@ export const SelectedListStyled = styled.div`
   border-top: 1px solid ${COLORS.GRAY_2};
   ul {
     max-height: 340px;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
   li {
     height: auto;
