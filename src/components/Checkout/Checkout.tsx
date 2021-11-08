@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import { useParams } from 'react-router';
 import { CheckoutStyled, OverlayStyled } from './CheckoutStyled';
-import { CheckoutFormInterface, CheckoutDays, TimeToDelivery } from './CheckoutInterface';
+import { CheckoutFormInterface, CheckoutDays, checkoutDaysEnum } from './CheckoutInterface';
 import FormWrapper from '../Basic/Form/FormWrapper';
 import FormRow from '../Basic/Form/FormRow';
 import FormikField from '../Basic/Form/FormikField';
@@ -15,7 +15,7 @@ import { Towers } from '../Banner/Towers';
 import FormSelect from '../Basic/Form/FormSelect/FormSelect';
 import FieldUpdate from '../Basic/Form/FieldUpdate';
 import { updateUserValues } from '../../redux/actions/authAction';
-import { SelectValue } from '../Basic/Select/SelectInterface';
+import { getDisponibleHours } from '../../utils/getDisponibleHours';
 
 const Checkout:React.FC = () => {
   const dispatch = useDispatch();
@@ -26,28 +26,11 @@ const Checkout:React.FC = () => {
   const { total, deliveryTime, cart = [] } = useTypeSelector((state) => state.asideReducer);
   const { id, email, address, ...filteredUser } = user;
 
+  const TimeToDelivery = getDisponibleHours(0, 30, true);
+  const TimeDeliveryTommorow = getDisponibleHours(0, 30);
+
   const [createOrder] = useMutation(CREATE_ORDER);
   const [updateUser] = useMutation(UPDATE_USER);
-
-  const [disponibleTime, setDisponibleTime] = useState<SelectValue[]>([]);
-
-  useEffect(() => {
-    const ds = () => {
-      const hours = 24;
-      const distance = 0.5;
-      const iteration = hours / distance;
-      const emptyArray = [];
-      for (let i = 0; i < iteration; i += 1) {
-        let time;
-        if (i % 2 === 0) {
-          time = `${i}:00`;
-        }
-        emptyArray.push({ label: time, name: time });
-      }
-      console.log(emptyArray);
-    };
-    ds();
-  }, []);
 
   const [checkoutValues, setCheckoutValues] = useState<CheckoutFormInterface>({
     name: '',
@@ -67,6 +50,14 @@ const Checkout:React.FC = () => {
   }));
 
   useEffect(() => {
+    if (checkoutValues.date === checkoutDaysEnum.TODAY) {
+      setCheckoutValues({ ...checkoutValues, time: TimeToDelivery[0].label });
+    } else {
+      setCheckoutValues({ ...checkoutValues, time: TimeDeliveryTommorow[0].label });
+    }
+  }, [checkoutValues.date]);
+
+  useEffect(() => {
     setCheckoutValues((prev) => ({ ...checkoutValues, ...filteredUser }));
   }, [user]);
 
@@ -77,16 +68,14 @@ const Checkout:React.FC = () => {
 
   const onSendHandle = (e:React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    console.log(checkoutValues);
-    // createOrder({ variables:
-    // eslint-disable-next-line max-len
-    //   { data: { ...checkoutValues, user: id, restaurant: restaurantID, totalPrice: `${total}$`, cart: CartWithIDs } },
-    // })
-    //   .then(() => {
-    //     dispatch(setCheckoutStatus(false));
-    //     dispatch(clearAside());
-    //   })
-    //   .catch((error) => console.log(error));
+    createOrder({ variables:
+      { data: { ...checkoutValues, user: id, restaurant: restaurantID, totalPrice: `${total}$`, cart: CartWithIDs } },
+    })
+      .then(() => {
+        dispatch(setCheckoutStatus(false));
+        dispatch(clearAside());
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -125,7 +114,11 @@ const Checkout:React.FC = () => {
               onSelect={(option:string) => setCheckoutValues({ ...checkoutValues, date: option })}
             />
             <FormSelect
-              values={TimeToDelivery}
+              values={
+                checkoutValues.date === checkoutDaysEnum.TODAY
+                  ? TimeToDelivery
+                  : TimeDeliveryTommorow
+                }
               label="Choose Time"
               selectDefault={checkoutValues.time}
               onSelect={(option:string) => setCheckoutValues({ ...checkoutValues, time: option })}
@@ -138,6 +131,11 @@ const Checkout:React.FC = () => {
               name="additional"
               isTextarea
               label="Your comment"
+              onChange={
+                (e:React.FormEvent<HTMLTextAreaElement>) => setCheckoutValues(
+                  { ...checkoutValues, additional: e.currentTarget.value },
+                )
+              }
             />
           </FormRow>
         </FormWrapper>

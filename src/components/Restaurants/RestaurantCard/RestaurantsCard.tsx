@@ -13,7 +13,7 @@ const RestaurantCard:React.FC<RestaurantCardInterface> = (
           <img src={`http://localhost:5000/${image.medium_large}`} alt={name} />
         </div>
         <div className="card-top__info">
-          <div className="card-top__sale card-top__item">{discount}</div>
+          <div className="card-top__sale card-top__item">{`${discount} %`}</div>
           <div className="card-top__time card-top__item">{deliveryTime}</div>
         </div>
       </div>
@@ -23,7 +23,9 @@ const RestaurantCard:React.FC<RestaurantCardInterface> = (
         </div>
         <div className="card-bottom__row">
           <div className="card-bottom__rating">{rating}</div>
-          <div className="card-bottom__price">{minPrice}</div>
+          <div className="card-bottom__price">
+            {`${minPrice} $`}
+          </div>
         </div>
       </div>
     </Link>

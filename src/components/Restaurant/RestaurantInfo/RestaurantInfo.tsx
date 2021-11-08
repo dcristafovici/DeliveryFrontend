@@ -14,7 +14,7 @@ const RestaurantInfo:React.FC<RestaurantCardInterface> = (
         {name}
       </div>
       <div className="restaurant-content__bottom">
-        <div className="restaurant-content__price">{minPrice}</div>
+        <div className="restaurant-content__price">{`${minPrice} $`}</div>
         <div className="restaurant-content__time">{deliveryTime}</div>
         <div className="restaurant-content__link">Information about restaurant</div>
       </div>

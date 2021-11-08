@@ -21,9 +21,7 @@ export const CheckoutDays = [
   },
 ];
 
-export const TimeToDelivery = [
-  {
-    name: '00:00',
-    label: '00:00',
-  },
-];
+export enum checkoutDaysEnum {
+  TODAY = 'Today',
+  TOMMOROW = 'Tomorrow',
+}
