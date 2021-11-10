@@ -49,7 +49,7 @@ export const Categories:React.FC<CategoryComponentInterface> = (
                 <li
                   key={category.id}
                   className={`${categoryVisible === category.id ? 'category-active' : ''}`}
-                  // onClick={() => dispatch(setCategoryClicked(category.id))}
+                  onClick={() => dispatch(setCategoryClicked(category.id))}
                 >
                   {category.name}
                 </li>
@@ -73,7 +73,7 @@ export const Categories:React.FC<CategoryComponentInterface> = (
                       <li
                         key={category.id}
                         className={`${categoryVisible === category.id ? 'category-active' : ''}`}
-                        // onClick={() => dispatch(setCategoryClicked(category.id))}
+                        onClick={() => dispatch(setCategoryClicked(category.id))}
                       >
                         {category.name}
                       </li>
