@@ -19,7 +19,7 @@ const Header:React.FC = () => {
 
           <div className="header-logo">
             <Link to="/">
-              logo
+              Logo
             </Link>
           </div>
 

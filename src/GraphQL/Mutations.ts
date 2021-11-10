@@ -15,6 +15,7 @@ export const CHECK_CODE = gql`
 export const ADD_USER = gql`
   mutation AddUser($data: AddUserInput!) {
     AddUser(data: $data){
+      id,
       phone,
       token
     }
