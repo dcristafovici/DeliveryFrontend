@@ -11,8 +11,8 @@ const AppRouter = ({ routes }: { routes: RouteTypes[] }) => (
       <Header />
       <Switch>
         <Suspense fallback={<h1>Loading</h1>}>
-          {routes.map(({ name, path, exact, component }: RouteTypes) => (
-            <Route key={name} path={path} component={component} exact={exact} />
+          {routes.map(({ name, path, exact, guard: Guard, component }: RouteTypes) => (
+            <Guard key={name} path={path} component={component} exact={exact} />
           ))}
         </Suspense>
       </Switch>

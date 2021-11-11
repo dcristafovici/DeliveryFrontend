@@ -13,5 +13,7 @@ export const checkTokenValidate = () => {
     useEffect(() => {
       dispatch(setUser(token, CheckToken));
     }, [loading]);
+    return true;
   }
+  return false;
 };
