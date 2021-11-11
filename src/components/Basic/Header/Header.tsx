@@ -29,7 +29,7 @@ const Header:React.FC = () => {
           {token ? (
             <div className="header-right">
               <div className="header-personal">
-                <Link to={`/account/${user.id}`}>
+                <Link to="/account/">
                   <Button name="Account" disabled={false} />
                 </Link>
               </div>

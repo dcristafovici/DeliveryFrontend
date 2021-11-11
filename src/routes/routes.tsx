@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { DefaultGuard, TokenGuard, UserGuard } from './Guards';
+import { DefaultGuard, TokenGuard } from './Guards';
 import { RoutesDetailsTypes, RouteTypes } from './types';
 
 export const RoutesDetailes: RoutesDetailsTypes = {
@@ -14,7 +14,7 @@ export const RoutesDetailes: RoutesDetailsTypes = {
   },
   ACCOUNT: {
     name: 'Account',
-    path: '/account/:id',
+    path: '/account/',
   },
 };
 
@@ -35,7 +35,7 @@ const routes: RouteTypes[] = [
   {
     name: RoutesDetailes.ACCOUNT.name,
     path: RoutesDetailes.ACCOUNT.path,
-    guard: UserGuard,
+    guard: TokenGuard,
     component: lazy(() => import('../pages/Account')),
   },
 ];

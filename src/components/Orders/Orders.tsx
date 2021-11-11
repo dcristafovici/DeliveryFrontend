@@ -1,6 +1,5 @@
 import { useQuery } from '@apollo/client';
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import React from 'react';
 import { GET_ORDERS_BY_USER } from '../../GraphQL/Queries';
 import { useTypeSelector } from '../../redux/useTypeSelector';
 import OrdersItems from './OrdersItems';
@@ -8,9 +7,9 @@ import { OrdersStyled } from './OrdersStyled';
 import OrdersWrapper from './OrdersWrapper';
 
 const Orders:React.FC = () => {
-  const { id } = useParams<{ id: string }>();
+  const { user } = useTypeSelector((state) => state.authReducer);
 
-  const { loading, data = {} } = useQuery(GET_ORDERS_BY_USER, { variables: { user: id } });
+  const { loading, data = {} } = useQuery(GET_ORDERS_BY_USER, { variables: { user: user.id } });
   const { GetOrderByUser = [] } = data;
 
   const UserOrders = GetOrderByUser.map((order:any) => {

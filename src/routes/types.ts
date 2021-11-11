@@ -23,13 +23,6 @@ export interface TokenGuardProps {
   exact: boolean;
 }
 
-export interface UserGuardProps {
-  component: any;
-  path: string;
-  exact: boolean;
-  userID: string;
-}
-
 export interface DefaultGuardProps {
   component: any;
   path: string;
