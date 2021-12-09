@@ -4,11 +4,10 @@ export interface RestaurantCardInterface {
   description?: string;
   minPrice?: string;
   deliveryTime?: string;
-  discount?: string;
   rating?: string;
-  image: {
+  media: {
     medium: string;
-    medium_large: string;
+    mediumLarge: string;
     large: string;
   };
 }

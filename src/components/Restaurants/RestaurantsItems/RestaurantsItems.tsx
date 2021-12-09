@@ -7,7 +7,7 @@ const RestaurantsItems:React.FC<RestaurantItemsInterface> = (
   { restaurants }: RestaurantItemsInterface,
 ) => (
   <RestaurantItemsStyled>
-    {restaurants.map((restaurant:RestaurantCardInterface) => (
+    {restaurants.length && restaurants.map((restaurant:RestaurantCardInterface) => (
       <RestaurantCard
         key={restaurant.id}
         id={restaurant.id}
@@ -15,9 +15,8 @@ const RestaurantsItems:React.FC<RestaurantItemsInterface> = (
         description={restaurant.description}
         minPrice={restaurant.minPrice}
         deliveryTime={restaurant.deliveryTime}
-        discount={restaurant.discount}
         rating={restaurant.rating}
-        image={restaurant.image}
+        media={restaurant.media}
       />
     ))}
   </RestaurantItemsStyled>

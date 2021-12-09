@@ -3,11 +3,11 @@ import { RestaurantCardInterface } from '../../Restaurants/RestaurantsInterface'
 import { RestaurantInfoStyled } from './RestaurantInfoStyled';
 
 const RestaurantInfo:React.FC<RestaurantCardInterface> = (
-  { name, minPrice, deliveryTime, image }: RestaurantCardInterface,
+  { name, minPrice, deliveryTime, media }: RestaurantCardInterface,
 ) => (
   <RestaurantInfoStyled>
     <div className="restaurant-info__photo">
-      <img src={`http://localhost:5000/${image?.large}`} alt={name} />
+      <img src={`http://localhost:5000/${media?.large}`} alt={name} />
     </div>
     <div className="restaurant-info__content">
       <div className="restaurant-content__name">

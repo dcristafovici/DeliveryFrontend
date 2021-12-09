@@ -13,21 +13,23 @@ import Categories from '../../components/Categories';
 import RestaurantInfo from '../../components/Restaurant/RestaurantInfo';
 import Bar from '../../components/Bar';
 import AsideWrapper from '../../components/Aside/AsideWrapper';
+import { FIND_ONE_RESTAURANT } from '../../GraphQL/Restaurants/RestaurantsQueries';
+import { FIND_BY_KEY_RESTAURANT_CATEGORIES } from '../../GraphQL/RestaurantCategory/RestaurantCategory';
 
 const Restaurant:React.FC = () => {
   const { id } = useParams<{ id: string }>();
 
-  const { loading, data = {} } = useQuery(RESTAURANT_BY_ID, { variables: { id } });
-  const { RestaurantByID: RestaurantData = [] } = data;
-  const { minPrice = '', deliveryTime = '' } = RestaurantData;
+  const { loading, data = {} } = useQuery(FIND_ONE_RESTAURANT, { variables: { id } });
+  const { findOneRestaurant = [] } = data;
+  const { minPrice = '', deliveryTime = '' } = findOneRestaurant;
 
-  const { data: CategoryData = {} } = useQuery(GET_CATEGORY_BY_RESTAURANT, { variables: { data: { field: 'restaurant', value: id } } });
-  const { CategoryOrderfindByKey: CategoriesGet = [] } = CategoryData;
+  const { data: CategoriesData = {} } = useQuery(FIND_BY_KEY_RESTAURANT_CATEGORIES, { variables: { data: { field: 'restaurant', value: id } } });
+  const { findByKeyRestaurantCategory = [] } = CategoriesData;
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!loading && RestaurantData) dispatch(setAsideData({ minPrice, deliveryTime }));
+    if (!loading && findOneRestaurant) dispatch(setAsideData({ minPrice, deliveryTime }));
   }, [loading]);
 
   return (
@@ -38,13 +40,13 @@ const Restaurant:React.FC = () => {
 
             <MainRestaurantStyled>
               <RestaurantInfo
-                name={RestaurantData.name}
-                minPrice={RestaurantData.minPrice}
-                deliveryTime={RestaurantData.deliveryTime}
-                image={RestaurantData.image}
+                name={findOneRestaurant.name}
+                minPrice={findOneRestaurant.minPrice}
+                deliveryTime={findOneRestaurant.deliveryTime}
+                media={findOneRestaurant.media}
               />
-              <Categories categories={CategoriesGet} />
-              <Products categories={CategoriesGet} />
+              <Categories categories={findByKeyRestaurantCategory} />
+              <Products categories={findByKeyRestaurantCategory} />
             </MainRestaurantStyled>
 
             <AsideWrapper />
