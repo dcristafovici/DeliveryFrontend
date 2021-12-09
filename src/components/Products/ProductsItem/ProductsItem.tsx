@@ -4,22 +4,14 @@ import { addProduct } from '../../../redux/actions/asideAction';
 import { ProductPointObject } from '../ProductsPoint/ProductsPointInterface';
 import { ProductsItemStyled } from './ProductsItemStyled';
 import placeholder from '../../../assets/img/placeholder.svg';
-import { useTypeSelector } from '../../../redux/useTypeSelector';
-import { showPopup } from '../../../redux/actions/popupAction';
 
 const ProductsItem:React.FC<ProductPointObject> = (
   { id, name, weight, description, price, image }: ProductPointObject,
 ) => {
   const dispatch = useDispatch();
-  const { user = {} } = useTypeSelector((state) => state.authReducer);
-  const { id: userID } = user;
 
   const addProductHandler = () => {
-    if (userID) {
-      dispatch(addProduct(id, name, price, weight));
-    } else {
-      dispatch(showPopup(true, 'To add product you need to login on site'));
-    }
+    dispatch(addProduct(id, name, price, weight));
   };
   return (
     <ProductsItemStyled onClick={addProductHandler}>

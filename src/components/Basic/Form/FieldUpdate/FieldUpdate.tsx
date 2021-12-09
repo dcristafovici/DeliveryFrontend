@@ -2,7 +2,6 @@ import { useMutation } from '@apollo/client';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { UPDATE_USER } from '../../../../GraphQL/Mutations';
-import { updateUserValues } from '../../../../redux/actions/authAction';
 import { useTypeSelector } from '../../../../redux/useTypeSelector';
 import { CheckIcon, EditIcon } from '../../Icons';
 import { fieldStateEnum, FieldUpdateInterface } from './FieldUpdateInterface';
@@ -14,9 +13,6 @@ const FieldUpdate:React.FC<FieldUpdateInterface> = (
   const [initialValue, setInitialValue] = useState<string>(defaultValue);
   const [inputValue, setInputValue] = useState<string>(defaultValue);
   const [fieldState, setFieldState] = useState(fieldStateEnum.EDIT);
-
-  const { user } = useTypeSelector((state) => state.authReducer);
-  const [updateUser] = useMutation(UPDATE_USER);
 
   const dispatch = useDispatch();
 
@@ -37,15 +33,15 @@ const FieldUpdate:React.FC<FieldUpdateInterface> = (
     }
   };
 
-  const onUpdateHandler = () => {
-    updateUser({ variables: { data: { id: user.id, field: name, value: inputValue } } })
-      .then(() => {
-        setFieldState(fieldStateEnum.NO_EDIT);
-        setError('');
-        dispatch(updateUserValues(name, inputValue));
-      })
-      .catch((e) => setError(e.message));
-  };
+  // const onUpdateHandler = () => {
+  //   updateUser({ variables: { data: { id: user.id, field: name, value: inputValue } } })
+  //     .then(() => {
+  //       setFieldState(fieldStateEnum.NO_EDIT);
+  //       setError('');
+  //       dispatch(updateUserValues(name, inputValue));
+  //     })
+  //     .catch((e) => setError(e.message));
+  // };
 
   return (
     <FieldUpdateStyled className={`field-update ${fieldState}`}>
@@ -68,7 +64,6 @@ const FieldUpdate:React.FC<FieldUpdateInterface> = (
               className="field-update__send"
               role="button"
               tabIndex={0}
-              onClick={onUpdateHandler}
             >
               <CheckIcon />
             </div>

@@ -11,10 +11,8 @@ import Button from '../Basic/Button';
 import { clearAside, setCheckoutStatus } from '../../redux/actions/asideAction';
 import { CREATE_ORDER, UPDATE_USER } from '../../GraphQL/Mutations';
 import { useTypeSelector } from '../../redux/useTypeSelector';
-import { Towers } from '../Banner/Towers';
 import FormSelect from '../Basic/Form/FormSelect/FormSelect';
 import FieldUpdate from '../Basic/Form/FieldUpdate';
-import { updateUserValues } from '../../redux/actions/authAction';
 import { getDisponibleHours } from '../../utils/getDisponibleHours';
 
 const Checkout:React.FC = () => {
@@ -22,9 +20,7 @@ const Checkout:React.FC = () => {
 
   const { id: restaurantID } = useParams<{ id: string }>();
 
-  const { user } = useTypeSelector((state) => state.authReducer);
   const { total, deliveryTime, cart = [] } = useTypeSelector((state) => state.asideReducer);
-  const { id, email, address, ...filteredUser } = user;
 
   const TimeToDelivery = getDisponibleHours(0, 30, true);
   const TimeDeliveryTommorow = getDisponibleHours(0, 30);
@@ -57,25 +53,8 @@ const Checkout:React.FC = () => {
     }
   }, [checkoutValues.date]);
 
-  useEffect(() => {
-    setCheckoutValues((prev) => ({ ...checkoutValues, ...filteredUser }));
-  }, [user]);
-
-  const onChangeTower = (option:string) => {
-    updateUser({ variables: { data: { id: user.id, field: 'tower', value: option } } });
-    dispatch(updateUserValues('tower', option));
-  };
-
   const onSendHandle = (e:React.FormEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    createOrder({ variables:
-      { data: { ...checkoutValues, user: id, restaurant: restaurantID, totalPrice: `${total}$`, cart: CartWithIDs } },
-    })
-      .then(() => {
-        dispatch(setCheckoutStatus(false));
-        dispatch(clearAside());
-      })
-      .catch((error) => console.log(error));
+    console.log(e);
   };
 
   return (
@@ -92,12 +71,12 @@ const Checkout:React.FC = () => {
         </FormWrapper>
         <FormWrapper title="Delivery address">
           <FormRow className="one-element">
-            <FormSelect
+            {/* <FormSelect
               values={Towers}
               label="Choose Tower"
               selectDefault={checkoutValues.tower || 'Choose Tower'}
               onSelect={(option:string) => onChangeTower(option)}
-            />
+            /> */}
           </FormRow>
           <FormRow className="three-elements">
             <FieldUpdate name="floor" placeholder="Floor" label="Your floor" defaultValue={checkoutValues.floor} />

@@ -2,7 +2,6 @@ import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route, useParams } from 'react-router-dom';
 import Header from '../components/Basic/Header';
 import Main from '../components/Basic/Main';
-import Popup from '../components/Basic/Popup';
 import { RouteTypes } from './types';
 
 const AppRouter = ({ routes }: { routes: RouteTypes[] }) => (
@@ -16,7 +15,6 @@ const AppRouter = ({ routes }: { routes: RouteTypes[] }) => (
           ))}
         </Suspense>
       </Switch>
-      <Popup />
     </Router>
   </Main>
 );

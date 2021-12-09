@@ -17,7 +17,6 @@ const Products:React.FC<ProductsComponentInterface> = (
   const { id } = useParams<{ id: string }>();
   const { data = {} } = useQuery(FIND_BY_KEY_PRODUCTS, { variables: { data: { field: 'restaurant', value: id } } });
   const { findByKeyProducts = [] } = data;
-  console.log(findByKeyProducts);
 
   return (
     <ProductsStyled>
