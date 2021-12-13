@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import AuthPopup from '../../Popup/AuthPopup';
 import Button from '../Button';
 import { ContainerStyled } from '../Container/ContainerStyled';
 import { StyledFlex } from '../Flex/StyledFlex';
@@ -21,6 +22,7 @@ const Header:React.FC = () => (
           tabIndex={0}
         >
           <Button disabled={false} name="Sign In" className="transparent" />
+          <AuthPopup />
         </div>
       </StyledFlex>
     </ContainerStyled>
