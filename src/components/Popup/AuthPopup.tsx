@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Form, Formik } from 'formik';
 import { useMutation } from '@apollo/client';
 import { AuthPopupStyled } from './AuthPopupStyled';
 import Overlay from './Overlay';
@@ -7,68 +6,53 @@ import FormikField from '../Basic/Form/FormikField';
 import Button from '../Basic/Button';
 import { AUTHENTICATION_USER, CREATE_OTP } from '../../GraphQL/Auth/AuthMutations';
 import { getSessionID } from '../../utils/uniqueSessionID';
-
-const initialValues = {
-  phone: '',
-  otp: '',
-};
+import Form from '../Basic/Form/Form';
 
 const AuthPopup:React.FC = () => {
   const [typePhone, setTypePhone] = useState<boolean>(true);
+  const [form, setForm] = useState({
+    phone: '',
+    OTP: '',
+  });
 
+  const sessionID = getSessionID();
   const [createOTP] = useMutation(CREATE_OTP);
   const [authenticationUser] = useMutation(AUTHENTICATION_USER);
-  const sessionID = getSessionID();
-  const handleSubmit = (values: any) => {
-    const { phone, otp } = values;
+
+  const onChangeEvent = (e:React.FormEvent<HTMLInputElement>) => {
+    const { value, name } = e.currentTarget;
+    setForm({ ...form, [name]: value });
+  };
+
+  const onSubmitHandler = (e:React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const { phone, OTP } = form;
     if (typePhone) {
       createOTP({ variables: { data: { phone, sessionID } } })
-        .then(() => {
-          setTypePhone(false);
-        });
+        .then(() => setTypePhone(false))
+        .catch((err) => console.log(err));
     } else {
-      authenticationUser({ variables: { data: { phone, OTP: otp, sessionID } } })
+      authenticationUser({ variables: { data: { phone, OTP, sessionID } } })
         .then(({ data }) => {
-          console.log(data.authenticationUser);
+          localStorage.setItem('token', data.authenticationUser);
         })
-        .catch((err) => console.log(err.message));
+        .catch((err) => {
+          console.log(err.message);
+        });
     }
   };
   return (
     <Overlay>
       <AuthPopupStyled>
         <div className="popup-title">Authentication</div>
-        <Formik
-          initialValues={initialValues}
-          onSubmit={handleSubmit}
-          validateOnChange
-          validateOnBlur
-          enableReinitialize
-        >
-          {({ dirty, isValid, errors, getFieldProps, touched, setFieldValue }) => (
-            <Form>
-              {typePhone ? (
-                <FormikField
-                  {...getFieldProps('phone')}
-                  type="text"
-                  name="phone"
-                  label="Your phone"
-                />
-              ) : (
-                <FormikField
-                  {...getFieldProps('otp')}
-                  type="text"
-                  name="otp"
-                  label="OTP password"
-                />
-              )}
-              <Button
-                name="Submit"
-                disabled={!dirty || !isValid}
-              />
-            </Form>
+        <Form>
+          {typePhone ? (
+            <FormikField name="phone" onChange={onChangeEvent} label="Your phone" />
+          ) : (
+            <FormikField type="number" name="OTP" onChange={onChangeEvent} label="OTP Code" />
           )}
-        </Formik>
+          <Button onClickEvent={onSubmitHandler} name="Send" />
+        </Form>
       </AuthPopupStyled>
     </Overlay>
   );

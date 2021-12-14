@@ -1,7 +1,7 @@
 export interface ButtonInterface {
   name: string;
   className?: string;
-  disabled: boolean;
+  disabled?: boolean;
   onClickEvent?: React.MouseEventHandler<HTMLButtonElement>;
 }
 

@@ -22,7 +22,7 @@ const Header:React.FC = () => (
           tabIndex={0}
         >
           <Button disabled={false} name="Sign In" className="transparent" />
-          <AuthPopup />
+          {/* <AuthPopup /> */}
         </div>
       </StyledFlex>
     </ContainerStyled>

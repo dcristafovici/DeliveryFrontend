@@ -3,7 +3,7 @@ import { ButtonInterface } from './ButtonInterface';
 import { ButtonStyled } from './ButtonStyled';
 
 const Button:React.FC<ButtonInterface> = (
-  { name, className, onClickEvent, disabled }: ButtonInterface,
+  { name, className, onClickEvent, disabled = false }: ButtonInterface,
 ) => (
   <ButtonStyled onClick={onClickEvent} className={className} disabled={disabled}>
     <span>{name}</span>
