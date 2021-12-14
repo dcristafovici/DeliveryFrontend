@@ -1,11 +1,14 @@
 import { gql } from '@apollo/client';
 
-export const TOKEN_IS_VALID = gql`
-  query tokenIsValid($token: String!){
-    tokenIsValid(token: $token){
+export const GET_INFORMATION_BY_TOKEN = gql`
+  query getUserByToken($token: String!){
+    getUserByToken(token: $token){
       id,
       phone,
-      iat
+      email,
+      address,
+      address_lat,
+      address_lon
     }
   }
 `;
