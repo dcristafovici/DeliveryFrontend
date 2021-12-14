@@ -1,15 +1,12 @@
-import { useQuery } from '@apollo/client';
 import React from 'react';
-import { TOKEN_IS_VALID } from './GraphQL/Auth/AuthQueries';
+import UserIsValid from './components/UserIsValid';
 import routes, { AppRouter } from './routes';
 
-const App:React.FC = () => {
-  const { error, data = {} } = useQuery(TOKEN_IS_VALID, { variables: { token: localStorage.getItem('token') } });
-  const { tokenIsValid = {} } = data;
-  console.log(tokenIsValid, 'token is invalid');
-  return (
+const App:React.FC = () => (
+  <>
+    <UserIsValid />
     <AppRouter routes={routes} />
-  );
-};
+  </>
+);
 
 export default App;

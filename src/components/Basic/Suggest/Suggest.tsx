@@ -17,6 +17,11 @@ const Suggest:React.FC = () => {
     const { value } = e.currentTarget;
     setAddress(value);
   };
+  const onClickHandler = (item: SuggestInterface) => {
+    const { value, data: addressData } = item;
+    const { geo_lat, geo_lon } = addressData;
+  };
+
   return (
     <SuggestStyled>
       <div className="suggested-input">
@@ -25,7 +30,7 @@ const Suggest:React.FC = () => {
       <div className="suggested-results">
         <ul>
           {findPossibleAddresses && findPossibleAddresses.map((item:SuggestInterface) => (
-            <li key={item.value}>{item.value}</li>
+            <li onClick={() => onClickHandler(item)} key={item.value}>{item.value}</li>
           ))}
         </ul>
       </div>

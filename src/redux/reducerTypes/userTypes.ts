@@ -2,7 +2,7 @@ export interface userInitialStateInterface {
   id: string,
   phone: string,
   address: string,
-  address_lat: string,
-  address_long: string,
+  geo_lat: string,
+  geo_lon: string,
   isLogged: boolean,
 }
