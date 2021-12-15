@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Popup from '../../Popup';
 import AuthPopup from '../../Popup/AuthPopup';
-import Overlay from '../../Popup/Overlay/Overlay';
+import Overlay from '../../Popup/Overlay';
 import Button from '../Button';
 import { ContainerStyled } from '../Container/ContainerStyled';
 import { StyledFlex } from '../Flex/StyledFlex';
