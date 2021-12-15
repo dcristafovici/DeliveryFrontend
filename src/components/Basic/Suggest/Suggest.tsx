@@ -1,7 +1,8 @@
-import { useLazyQuery } from '@apollo/client';
+import { useLazyQuery, useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { FIND_POSSIBLE_ADDRESSES } from '../../../GraphQL/Address/AddressQueries';
+import { UPDATE_USER } from '../../../GraphQL/User/UserMutations';
 import { setUserAddress } from '../../../redux/actions/userAction';
 import { useDebouncedEffect } from '../../../types/useDebouncedEffect';
 import { SuggestInterface } from './SuggestInterface';
@@ -13,6 +14,7 @@ const Suggest:React.FC = () => {
   const { findPossibleAddresses = [] } = data;
 
   const dispatch = useDispatch();
+  const [updateUser] = useMutation(UPDATE_USER);
 
   useDebouncedEffect(() => {
     getSuggest({ variables: { address } });
@@ -26,6 +28,7 @@ const Suggest:React.FC = () => {
     const { value, data: addressData } = item;
     const { geo_lat, geo_lon } = addressData;
     const combinedCoordinates = { address: value, address_lat: geo_lat, address_lon: geo_lon };
+    updateUser({ variables: { id: '44e9a38f-4e89-44bf-b6c3-12ddf3af7d2e', data: { ...combinedCoordinates } } });
     dispatch(setUserAddress(combinedCoordinates));
   };
 
