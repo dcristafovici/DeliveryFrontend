@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Popup from '../../Popup';
 import AuthPopup from '../../Popup/AuthPopup';
+import Overlay from '../../Popup/Overlay/Overlay';
 import Button from '../Button';
 import { ContainerStyled } from '../Container/ContainerStyled';
 import { StyledFlex } from '../Flex/StyledFlex';
 import { HeaderStyled } from './HeaderStyled';
 
 const Header:React.FC = () => {
-  const [authStatus, setAuthStatus] = useState<boolean>(false);
+  const [authentication, setAuthentication] = useState(false);
   return (
     <HeaderStyled>
       <ContainerStyled className="container-styled">
@@ -18,14 +20,22 @@ const Header:React.FC = () => {
               Logo
             </Link>
           </div>
-          <div
-            className="header-account"
-            role="button"
-            tabIndex={0}
-          >
-            <Button onClickEvent={() => setAuthStatus(true)} disabled={false} name="Sign In" className="transparent" />
-            <AuthPopup status={authStatus} />
+
+          <div className="header-account">
+            <Button
+              disabled={false}
+              name="Sign In"
+              className="transparent"
+              onClickEvent={() => setAuthentication(true)}
+            />
+            {authentication && (
+              <Popup>
+                <Overlay onClickEvent={() => setAuthentication(false)} />
+                <AuthPopup />
+              </Popup>
+            )}
           </div>
+
         </StyledFlex>
       </ContainerStyled>
     </HeaderStyled>
