@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setTotal } from '../../../redux/actions/asideAction';
 import { AsideItemInterface } from '../../../redux/types/reduxTypes';
-import { useTypeSelector } from '../../../redux/useTypeSelector';
+import { useTypeSelector } from '../../../redux/reduxHooks';
 import AsideItem from './AsideItem';
 import { AsideItemsStyled } from './AsideItemStyled';
 

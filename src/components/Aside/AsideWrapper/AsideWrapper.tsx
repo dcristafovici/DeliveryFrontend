@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTypeSelector } from '../../../redux/useTypeSelector';
+import { useTypeSelector } from '../../../redux/reduxHooks';
 import Aside from '../Aside';
 import { AsideWrapperStyled } from './AsideWrapperStyled';
 

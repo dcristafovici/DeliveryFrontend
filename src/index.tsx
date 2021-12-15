@@ -6,13 +6,11 @@ import { Store } from './redux/Store';
 import App from './App';
 import { Global } from './Global/Global';
 import { GraphqlClient } from './GraphQL/GraphqlClient';
-import { uniqueSessionID } from './utils/uniqueSessionID';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={Store}>
       <ApolloProvider client={GraphqlClient}>
-        {uniqueSessionID()}
         <Global />
         <App />
       </ApolloProvider>

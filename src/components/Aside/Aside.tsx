@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTypeSelector } from '../../redux/useTypeSelector';
+import { useTypeSelector } from '../../redux/reduxHooks';
 import Checkout from '../Checkout';
 import AsideItems from './AsideItems';
 import AsideLine from './AsideLine/AsideLine';

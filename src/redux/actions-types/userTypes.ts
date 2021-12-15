@@ -1,0 +1,4 @@
+const USER_ENTITY = '[USER]';
+
+export const SET_USER_DATA = `${USER_ENTITY} SET_USER_DATA`;
+export const SET_USER_ADDRESS = `${USER_ENTITY} SET_USER_ADDRESS`;

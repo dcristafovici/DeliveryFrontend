@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { changeMobileAside } from '../../redux/actions/asideAction';
-import { useTypeSelector } from '../../redux/useTypeSelector';
+import { useTypeSelector } from '../../redux/reduxHooks';
 import { BarStyled, BarControllStyled } from './BarStyled';
 
 const Bar:React.FC = () => {

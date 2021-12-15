@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useDispatch } from 'react-redux';
 import { setCategoryClicked } from '../../redux/actions/restaurantAction';
-import { useTypeSelector } from '../../redux/useTypeSelector';
+import { useTypeSelector } from '../../redux/reduxHooks';
 import { useOutsideEvent } from '../../utils/useOutsideEvent';
 import { ArrowIcon } from '../Basic/Icons';
 import { CategoryWrapperInterface, CategoryComponentInterface } from '../Products/ProductsPoint/ProductsPointInterface';

@@ -1,12 +1,20 @@
-import React from 'react';
-import UserIsValid from './components/UserIsValid';
+import React, { useEffect } from 'react';
+import ValidationToken from './components/ValidationToken';
 import routes, { AppRouter } from './routes';
+import { uniqueSessionID } from './utils/uniqueSessionID';
 
-const App:React.FC = () => (
-  <>
-    <UserIsValid />
-    <AppRouter routes={routes} />
-  </>
-);
+const App:React.FC = () => {
+  useEffect(() => {
+    // Generating custom session ID;
+    uniqueSessionID();
+  }, []);
+
+  return (
+    <>
+      <ValidationToken />
+      <AppRouter routes={routes} />
+    </>
+  );
+};
 
 export default App;

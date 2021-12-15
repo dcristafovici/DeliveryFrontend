@@ -2,7 +2,7 @@ import { useMutation } from '@apollo/client';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { UPDATE_USER } from '../../../../GraphQL/Mutations';
-import { useTypeSelector } from '../../../../redux/useTypeSelector';
+import { useTypeSelector } from '../../../../redux/reduxHooks';
 import { CheckIcon, EditIcon } from '../../Icons';
 import { fieldStateEnum, FieldUpdateInterface } from './FieldUpdateInterface';
 import { FieldUpdateStyled } from './FieldUpdateStyled';

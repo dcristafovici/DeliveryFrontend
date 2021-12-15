@@ -10,7 +10,7 @@ import FormikField from '../Basic/Form/FormikField';
 import Button from '../Basic/Button';
 import { clearAside, setCheckoutStatus } from '../../redux/actions/asideAction';
 import { CREATE_ORDER, UPDATE_USER } from '../../GraphQL/Mutations';
-import { useTypeSelector } from '../../redux/useTypeSelector';
+import { useTypeSelector } from '../../redux/reduxHooks';
 import FormSelect from '../Basic/Form/FormSelect/FormSelect';
 import FieldUpdate from '../Basic/Form/FieldUpdate';
 import { getDisponibleHours } from '../../utils/getDisponibleHours';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setCheckoutStatus } from '../../../redux/actions/asideAction';
-import { useTypeSelector } from '../../../redux/useTypeSelector';
+import { useTypeSelector } from '../../../redux/reduxHooks';
 import Button from '../../Basic/Button';
 import { AsideSummaryStyled } from './AsideSummaryStyled';
 

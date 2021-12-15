@@ -6,7 +6,7 @@ import ProductsItem from '../ProductsItem/ProductsItem';
 import { ProductPointObject, ProductsPointInterface } from './ProductsPointInterface';
 import { ProductsPointStyled, ProductsItemsStyled } from './ProductsPointStyled';
 import { ProductsPlaceholder } from '../ProductsPlaceholder';
-import { useTypeSelector } from '../../../redux/useTypeSelector';
+import { useTypeSelector } from '../../../redux/reduxHooks';
 
 const ProductsPoint:React.FC<ProductsPointInterface> = (
   { products = ProductsPlaceholder, category, nextCategory }: ProductsPointInterface,
