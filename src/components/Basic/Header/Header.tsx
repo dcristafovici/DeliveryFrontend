@@ -31,7 +31,7 @@ const Header:React.FC = () => {
             {authentication && (
               <Popup>
                 <Overlay onClickEvent={() => setAuthentication(false)} />
-                <AuthPopup />
+                <AuthPopup onClose={() => setAuthentication(false)} />
               </Popup>
             )}
           </div>
