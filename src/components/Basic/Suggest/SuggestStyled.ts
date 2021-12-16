@@ -8,6 +8,8 @@ export const SuggestStyled = styled.div`
   max-width: 500px;
   input {
     height: 50px;
+    padding-right: 30px;
+    box-sizing: border-box;
     background: ${COLORS.WHITE};
   }
   .suggested {
@@ -53,6 +55,33 @@ export const SuggestStyled = styled.div`
           background: ${COLORS.BLUE_DARK};
         }
       }
+    }
+  }
+  &.user-seted {
+    input {
+      pointer-events: none;
+      color: ${COLORS.PRIMARY_BLUE}
+    }
+  }
+  .address-reset {
+    position: absolute;
+    right: 5px;
+    cursor: pointer;
+    top: 50%;
+    font-size: 20px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    &:hover {
+      svg {
+        fill: ${COLORS.RED_DARK};
+      }
+    }
+    svg {
+      fill: ${COLORS.RED};
+      width: 70%;
+      height: auto;
+      transition: ${HELPERS.TRANSITION};
     }
   }
 `;
