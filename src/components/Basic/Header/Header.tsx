@@ -1,45 +1,18 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Popup from '../../Popup';
-import AuthPopup from '../../Popup/AuthPopup';
-import Overlay from '../../Popup/Overlay';
-import Button from '../Button';
+import React from 'react';
 import { ContainerStyled } from '../Container/ContainerStyled';
 import { StyledFlex } from '../Flex/StyledFlex';
+import HeaderAccount from './HeaderAccount/HeaderAccount';
+import HeaderLogo from './HeaderLogo';
 import { HeaderStyled } from './HeaderStyled';
 
-const Header:React.FC = () => {
-  const [authentication, setAuthentication] = useState(false);
-  return (
-    <HeaderStyled>
-      <ContainerStyled className="container-styled">
-        <StyledFlex align="center" justify="space-between">
-
-          <div className="header-logo">
-            <Link to="/">
-              Logo
-            </Link>
-          </div>
-
-          <div className="header-account">
-            <Button
-              disabled={false}
-              name="Sign In"
-              className="transparent"
-              onClickEvent={() => setAuthentication(true)}
-            />
-            {authentication && (
-              <Popup>
-                <Overlay onClickEvent={() => setAuthentication(false)} />
-                <AuthPopup onClose={() => setAuthentication(false)} />
-              </Popup>
-            )}
-          </div>
-
-        </StyledFlex>
-      </ContainerStyled>
-    </HeaderStyled>
-  );
-};
-
+const Header:React.FC = () => (
+  <HeaderStyled>
+    <ContainerStyled className="container-styled">
+      <StyledFlex align="center" justify="space-between">
+        <HeaderLogo />
+        <HeaderAccount />
+      </StyledFlex>
+    </ContainerStyled>
+  </HeaderStyled>
+);
 export default Header;

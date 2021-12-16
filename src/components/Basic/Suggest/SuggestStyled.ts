@@ -9,8 +9,6 @@ export const SuggestStyled = styled.div`
   input {
     height: 50px;
     background: ${COLORS.WHITE};
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
   }
   .suggested {
     &-results {
