@@ -12,6 +12,7 @@ export const AsideStyled = styled.aside`
   box-sizing: border-box;
   position: sticky;
   top: 40px;
+  z-index: 20;
   @media only screen and (${device.xs}){
     position: absolute;
     top: 0;

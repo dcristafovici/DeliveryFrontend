@@ -3,6 +3,7 @@ import { SET_USER_DATA } from '../actions-types/userTypes';
 
 const initialState: IUser = {
   id: '',
+  name: '',
   phone: '',
   email: '',
   address: '',
