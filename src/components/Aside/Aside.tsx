@@ -1,6 +1,5 @@
 import React from 'react';
 import { useTypeSelector } from '../../redux/reduxHooks';
-import Checkout from '../Checkout';
 import AsideItems from './AsideItems';
 import AsideLine from './AsideLine/AsideLine';
 import { AsideStyled } from './AsideStyled';
@@ -26,7 +25,6 @@ const Aside:React.FC = () => {
         />
         <AsideSummary />
       </AsideStyled>
-      {checkout && <Checkout />}
     </>
   );
 };

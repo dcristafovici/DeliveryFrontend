@@ -81,6 +81,7 @@ export const AsideItemStyled = styled.div`
         text-align: center;
         font-size: 13px;
         color: ${COLORS.PRIMARY_BLUE};
+        background: none;
       }
     }
   }

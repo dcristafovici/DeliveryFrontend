@@ -1,4 +1,3 @@
-import { ButtonStyled } from '../../components/Basic/Button/ButtonStyled';
 import {
   ADD_PRODUCT,
   CLEAR_ASIDE,
@@ -7,10 +6,8 @@ import {
   REMOVE_PRODUCT,
   SET_ASIDE_DATA,
   SET_TOTAL,
-  CHECKOUT_STATUS,
   UPDATE_PERCENT,
   UPDATE_QUANTITY,
-  CHANGE_MOBILE_ASIDE,
 } from '../actions-types/asideTypes';
 
 export const addProduct = (
@@ -73,33 +70,9 @@ export const setTotal = (price:number) => (dispatch:any) => {
   });
 };
 
-export const setCheckoutStatus = (status:boolean) => (dispatch:any) => {
-  if (status) {
-    document.body.classList.add('modal-open');
-  } else {
-    document.body.classList.remove('modal-open');
-  }
-  dispatch({
-    type: CHECKOUT_STATUS,
-    payload: { status },
-  });
-};
-
 export const updatePercent = (percent: number) => (dispatch:any) => {
   dispatch({
     type: UPDATE_PERCENT,
     payload: { percent },
-  });
-};
-
-export const changeMobileAside = (status: boolean) => (dispatch:any) => {
-  if (status) {
-    document.body.classList.add('stoped');
-  } else {
-    document.body.classList.remove('stoped');
-  }
-  dispatch({
-    type: CHANGE_MOBILE_ASIDE,
-    payload: { status },
   });
 };

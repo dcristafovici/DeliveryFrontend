@@ -6,12 +6,10 @@ import Container from '../../components/Basic/Container';
 import { StyledFlex } from '../../components/Basic/Flex/StyledFlex';
 import Section from '../../components/Basic/Section';
 import Products from '../../components/Products';
-import { GET_CATEGORY_BY_RESTAURANT, RESTAURANT_BY_ID } from '../../GraphQL/Queries';
 import { MainRestaurantStyled, RestaurantStyled } from './RestaurantStyled';
 import { setAsideData } from '../../redux/actions/asideAction';
 import Categories from '../../components/Categories';
 import RestaurantInfo from '../../components/Restaurant/RestaurantInfo';
-import Bar from '../../components/Bar';
 import AsideWrapper from '../../components/Aside/AsideWrapper';
 import { FIND_ONE_RESTAURANT } from '../../GraphQL/Restaurants/RestaurantsQueries';
 import { FIND_BY_KEY_RESTAURANT_CATEGORIES } from '../../GraphQL/RestaurantCategory/RestaurantCategory';
@@ -51,9 +49,6 @@ const Restaurant:React.FC = () => {
 
             <AsideWrapper />
 
-            {(window.innerWidth <= 480) && (
-              <Bar />
-            )}
           </StyledFlex>
         </Container>
       </Section>

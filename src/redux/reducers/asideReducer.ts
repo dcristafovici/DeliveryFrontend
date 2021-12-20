@@ -6,10 +6,8 @@ import {
   SET_ASIDE_DATA,
   SET_TOTAL,
   SUB_QUANTITY,
-  CHECKOUT_STATUS,
   UPDATE_PERCENT,
   UPDATE_QUANTITY,
-  CHANGE_MOBILE_ASIDE,
 } from '../actions-types/asideTypes';
 import { AsideItemInterface } from '../types/reduxTypes';
 
@@ -18,7 +16,7 @@ const initialState = {
   deliveryTime: 0,
   total: 0,
   cart: [],
-  checkout: false,
+  checkout: true,
   percent: 0,
   status: false,
 };
@@ -108,20 +106,10 @@ export const asideReducer = (state = initialState, action:any) => {
         ...state,
         total: payload.price,
       };
-    case CHECKOUT_STATUS:
-      return {
-        ...state,
-        checkout: payload.status,
-      };
     case UPDATE_PERCENT:
       return {
         ...state,
         percent: payload.percent,
-      };
-    case CHANGE_MOBILE_ASIDE:
-      return {
-        ...state,
-        status: payload.status,
       };
     default: {
       return {

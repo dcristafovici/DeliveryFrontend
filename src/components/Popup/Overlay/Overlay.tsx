@@ -1,6 +1,6 @@
 import React from 'react';
-import { OverlayStyled } from '../../Checkout/CheckoutStyled';
 import { OverlayInterface } from './OverlayInterface';
+import { OverlayStyled } from './OverlayStyled';
 
 const Overlay:React.FC<OverlayInterface> = ({ onClickEvent }: OverlayInterface) => (
   <OverlayStyled onClick={onClickEvent} />

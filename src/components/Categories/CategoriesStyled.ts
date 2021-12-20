@@ -60,6 +60,7 @@ export const CategoriesStyled = styled.div`
     &-others {
       margin-left: 20px;
       position: relative;
+      white-space: nowrap;
       &__name {
         height: 40px;
         display: inline-flex;

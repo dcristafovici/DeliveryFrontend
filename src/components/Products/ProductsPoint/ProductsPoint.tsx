@@ -74,7 +74,7 @@ const ProductsPoint:React.FC<ProductsPointInterface> = (
             price={product.price}
             weight={product.weight}
             categories={product.categories}
-            image={product.image}
+            media={product.media}
           />
         ))}
       </ProductsItemsStyled>

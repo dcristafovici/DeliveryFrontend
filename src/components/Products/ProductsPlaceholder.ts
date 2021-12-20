@@ -11,7 +11,7 @@ export const ProductsPlaceholder = [
         name: 'Category Name',
       },
     ],
-    image: null,
+    media: null,
   },
   {
     id: '2',
@@ -25,7 +25,7 @@ export const ProductsPlaceholder = [
         name: 'Category Name',
       },
     ],
-    image: null,
+    media: null,
   },
   {
     id: '3',
@@ -39,7 +39,7 @@ export const ProductsPlaceholder = [
         name: 'Category Name',
       },
     ],
-    image: null,
+    media: null,
   },
   {
     id: '4',
@@ -53,7 +53,7 @@ export const ProductsPlaceholder = [
         name: 'Category Name',
       },
     ],
-    image: null,
+    media: null,
   },
   {
     id: '5',
@@ -67,7 +67,7 @@ export const ProductsPlaceholder = [
         name: 'Category Name',
       },
     ],
-    image: null,
+    media: null,
   },
   {
     id: '6',
@@ -81,7 +81,7 @@ export const ProductsPlaceholder = [
         name: 'Category Name',
       },
     ],
-    image: null,
+    media: null,
   },
   {
     id: '7',
@@ -95,7 +95,7 @@ export const ProductsPlaceholder = [
         name: 'Category Name',
       },
     ],
-    image: null,
+    media: null,
   },
   {
     id: '8',
@@ -109,7 +109,7 @@ export const ProductsPlaceholder = [
         name: 'Category Name',
       },
     ],
-    image: null,
+    media: null,
   },
   {
     id: '9',
@@ -123,7 +123,7 @@ export const ProductsPlaceholder = [
         name: 'Category Name',
       },
     ],
-    image: null,
+    media: null,
   },
   {
     id: '10',
@@ -137,7 +137,7 @@ export const ProductsPlaceholder = [
         name: 'Category Name',
       },
     ],
-    image: null,
+    media: null,
   },
   {
     id: '11',
@@ -151,7 +151,7 @@ export const ProductsPlaceholder = [
         name: 'Category Name',
       },
     ],
-    image: null,
+    media: null,
   },
   {
     id: '12',
@@ -165,6 +165,6 @@ export const ProductsPlaceholder = [
         name: 'Category Name',
       },
     ],
-    image: null,
+    media: null,
   },
 ];

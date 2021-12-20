@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { setCheckoutStatus } from '../../../redux/actions/asideAction';
 import { useTypeSelector } from '../../../redux/reduxHooks';
 import Button from '../../Basic/Button';
 import { AsideSummaryStyled } from './AsideSummaryStyled';
@@ -20,7 +19,7 @@ const AsideSummary:React.FC = () => {
           <span>{`${total} $`}</span>
         </div>
       </div>
-      <Button disabled={total < minPrice} name="Checkout" onClickEvent={() => dispatch(setCheckoutStatus(true))} className="full" />
+      <Button disabled={total < minPrice} name="Checkout" className="full" />
     </AsideSummaryStyled>
   );
 };

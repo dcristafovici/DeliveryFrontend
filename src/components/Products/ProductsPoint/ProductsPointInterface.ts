@@ -16,7 +16,7 @@ export interface ProductPointObject {
     id: string;
     name: string
   }[];
-  image: {
+  media: {
     medium: string;
   } | null;
 }
