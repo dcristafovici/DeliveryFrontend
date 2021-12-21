@@ -17,6 +17,7 @@ export const InputStyled = styled.input`
   }
   ${(props:InputStyledInterface) => props.disabled && css`
     pointer-events: none;
-    background: #cccccc;
+    color: ${COLORS.GRAY_8};
+    user-select: none;
   `}
 `;

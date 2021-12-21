@@ -11,7 +11,7 @@ export const SelectFieldStyled = styled.div`
   width: 100%;
   background: ${COLORS.WHITE};
   border-radius: 3px;
-  height: 45px;
+  height: 40px;
   padding-left: 15px;
   cursor: pointer;
   display: flex;
@@ -29,7 +29,7 @@ export const SelectFieldStyled = styled.div`
   span {
     color: ${COLORS.GRAY_1};
     font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
   }
   &.select-open{
     &::after{

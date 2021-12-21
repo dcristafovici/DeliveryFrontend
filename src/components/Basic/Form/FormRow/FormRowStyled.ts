@@ -16,7 +16,7 @@ export const FormRowStyled = styled.div`
   &.three-elements {
     .formik-field,
     .field-update {
-      width: 30%
+      width: 32%
     }
   }
   &.one-element {
