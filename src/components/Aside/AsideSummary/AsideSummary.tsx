@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTypeSelector } from '../../../redux/reduxHooks';
 import Button from '../../Basic/Button';
@@ -9,6 +9,7 @@ import { AsideSummaryStyled } from './AsideSummaryStyled';
 
 const AsideSummary:React.FC = () => {
   const { deliveryTime = '', total = 0, minPrice } = useTypeSelector((state) => state.asideReducer);
+  const [showCheckout, setShowCheckout] = useState(false);
   const dispatch = useDispatch();
   return (
     <>
@@ -23,12 +24,14 @@ const AsideSummary:React.FC = () => {
             <span>{`${total} $`}</span>
           </div>
         </div>
-        <Button disabled={total < minPrice} name="Checkout" className="full" />
+        <Button disabled={total < minPrice} onClickEvent={() => setShowCheckout(true)} name="Checkout" className="full" />
       </AsideSummaryStyled>
-      <Popup>
-        <Overlay />
-        <Checkout />
-      </Popup>
+      {showCheckout && (
+        <Popup>
+          <Overlay onClickEvent={() => setShowCheckout(false)} />
+          <Checkout />
+        </Popup>
+      )}
     </>
   );
 };

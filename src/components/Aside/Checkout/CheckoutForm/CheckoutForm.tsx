@@ -1,5 +1,8 @@
+import { useMutation } from '@apollo/client';
 import { useFormik } from 'formik';
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
+import { CREATE_ORDER } from '../../../../GraphQL/Order/OrderMutations';
 import { useTypeSelector } from '../../../../redux/reduxHooks';
 import Button from '../../../Basic/Button';
 import FormikField from '../../../Basic/Form/FormikField';
@@ -12,12 +15,42 @@ import { checkoutDaysEnum, CheckoutFormInterface } from './CheckoutFormInterface
 import { CheckoutFormStyled } from './CheckoutFormStyled';
 
 const CheckoutForm:React.FC = () => {
+  const { id: restaurantID } = useParams<{ id: string }>();
+
   const user = useTypeSelector((state) => state.userReducer);
+  const { cart = [] } = useTypeSelector((state) => state.asideReducer);
+
+  const [createOrder] = useMutation(CREATE_ORDER);
+
   const [initialValues, setInitialValues] = useState<
     CheckoutFormInterface>(CheckoutFormInitialValues);
 
-  const onSubmitHandler = (values:any) => {
-    console.log(values);
+  const onSubmitHandler = (values: CheckoutFormInterface) => {
+    const editedCart = cart.map((item:any) => ({
+      product: item.id,
+      quantity: item.quantity,
+    }));
+    const { name, phone, email, floor, office, apartment, date, time, additionalComment } = values;
+    createOrder({ variables: {
+      data: {
+        user: user.id,
+        restaurant: restaurantID,
+        day: date,
+        time,
+        status: 'On hold',
+        orderCart: editedCart,
+        orderCustomer: {
+          name,
+          phone,
+          email,
+          address: 'Address placeholder',
+          floor,
+          office,
+          apartment,
+          additionalComment,
+        },
+      },
+    } });
   };
 
   useEffect(() => {
@@ -126,10 +159,10 @@ const CheckoutForm:React.FC = () => {
           <FormRow className="one-element">
             <FormikField
               type="text"
-              name="comment"
+              name="additionalComment"
               label="Your comment"
-              value={formik.values.comment}
-              error={formik.errors.comment}
+              value={formik.values.additionalComment}
+              error={formik.errors.additionalComment}
               onChange={formik.handleChange}
               isTextarea
             />

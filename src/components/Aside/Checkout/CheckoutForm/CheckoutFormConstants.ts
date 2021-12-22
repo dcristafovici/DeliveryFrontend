@@ -23,5 +23,5 @@ export const CheckoutFormInitialValues:CheckoutFormInterface = {
   apartment: '',
   date: CheckoutDays[0].label,
   time: TimeToDelivery[0].label,
-  comment: '',
+  additionalComment: '',
 };

@@ -7,7 +7,7 @@ export interface CheckoutFormInterface {
   apartment: string;
   date: string;
   time: string;
-  comment: string;
+  additionalComment: string;
 }
 
 export enum checkoutDaysEnum {
