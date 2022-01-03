@@ -6,4 +6,14 @@ export interface OrdersItemInterface {
     rating: number;
   },
   status: string;
+  orderCart: {
+    quantity: number,
+    product: {
+      id: string,
+      name: string,
+      media: {
+        small: string;
+      }
+    }
+  }[]
 }

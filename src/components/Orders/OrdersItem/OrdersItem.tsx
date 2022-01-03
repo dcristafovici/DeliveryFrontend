@@ -8,10 +8,8 @@ import OrdersPosition from '../OrdersPosition';
 import { OrdersItemInterface } from './OrdersItemInterface';
 
 const OrdersItem:React.FC<OrdersItemInterface> = (
-  { id, totalPrice, restaurant, status }: OrdersItemInterface,
+  { id, totalPrice, restaurant, status, orderCart }: OrdersItemInterface,
 ) => {
-  const { loading, data = {} } = useQuery(GET_CART, { variables: { orderID: id } });
-  const { GetCart: Cart = [] } = data;
   const [showPosition, setShowPosition] = useState<boolean>(false);
 
   return (
@@ -39,32 +37,30 @@ const OrdersItem:React.FC<OrdersItemInterface> = (
         </div>
       </div>
 
-      {showPosition && (
-        <div className="orders-item__bottom">
-          <div className="orders-general">
-            <div className="orders-general__restaurant">{restaurant.name}</div>
-            <div className="orders-general__rating">{restaurant.rating}</div>
+      <div className="orders-item__bottom">
+        <div className="orders-general">
+          <div className="orders-general__restaurant">{restaurant.name}</div>
+          <div className="orders-general__rating">{restaurant.rating}</div>
+        </div>
+        <div className="orders-positions">
+          {orderCart.map((position: any, index: number) => (
+            <OrdersPosition
+              quantity={position.quantity}
+              product={position.product}
+              key={index}
+            />
+          ))}
+        </div>
+        <div className="orders-actions">
+          <div className="orders-repeat">
+            <Button name="Repeat" disabled className="transparent" />
           </div>
-          <div className="orders-positions">
-            {Cart.map((position: any) => (
-              <OrdersPosition
-                quantity={position.quantity}
-                product={position.productID}
-                key={position.id}
-              />
-            ))}
-          </div>
-          <div className="orders-actions">
-            <div className="orders-repeat">
-              <Button name="Repeat" disabled className="transparent" />
-            </div>
-            <div className="orders-total">
-              <span>Total:</span>
-              <span>{totalPrice}</span>
-            </div>
+          <div className="orders-total">
+            <span>Total:</span>
+            <span>{totalPrice}</span>
           </div>
         </div>
-      )}
+      </div>
     </OrdersItemsStyled>
   );
 };

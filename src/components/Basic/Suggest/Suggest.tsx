@@ -13,6 +13,7 @@ import { SuggestStyled } from './SuggestStyled';
 const Suggest:React.FC = () => {
   const [address, setAddress] = useState<string>('');
   const [addressFromUser, setAddressFromUser] = useState<boolean>(false);
+  const [show, setShow] = useState<boolean>(false);
 
   const dispatch = useDispatch();
   const [updateUser] = useMutation(UPDATE_USER);
@@ -24,6 +25,7 @@ const Suggest:React.FC = () => {
   useDebouncedEffect(() => {
     if (address && !addressFromUser) {
       getSuggest({ variables: { address } });
+      setShow(true);
     }
   }, [address], 500);
 
@@ -46,7 +48,10 @@ const Suggest:React.FC = () => {
   const onClickHandler = (item: SuggestInterface) => {
     const { value, data: addressData } = item;
     const { geo_lat: address_lat, geo_lon: address_lon } = addressData;
+
     const combinedCoordinates = { address: value, address_lat, address_lon };
+    setShow(false);
+
     updateUser({ variables: { id, data: { ...combinedCoordinates } } })
       .then(() => {
         dispatch(setUserData(combinedCoordinates));
@@ -60,11 +65,11 @@ const Suggest:React.FC = () => {
           type="text"
           key={userAddress}
           onChange={onChangeHandler}
-          defaultValue={address}
+          value={address}
           placeholder="Type your location"
         />
       </div>
-      {findPossibleAddresses.length ? (
+      {findPossibleAddresses.length && show ? (
         <div className="suggested-results">
           <ul>
             {findPossibleAddresses.map((item:SuggestInterface) => (

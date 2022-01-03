@@ -1,19 +1,15 @@
-import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { SidebarStyled } from './SidebarStyled';
 import { SidebarFormInterface } from './SidebarInterface';
 import FormWrapper from '../Basic/Form/FormWrapper';
 import FormRow from '../Basic/Form/FormRow';
-import { UPDATE_USER } from '../../GraphQL/Mutations';
 import FieldUpdate from '../Basic/Form/FieldUpdate';
 import { ArrowTopIcon } from '../Basic/Icons';
-import { Towers } from '../Banner/Towers';
-import FormSelect from '../Basic/Form/FormSelect';
+import { useTypeSelector } from '../../redux/reduxHooks';
 
 const Sidebar:React.FC = () => {
-  const dispatch = useDispatch();
-  const [updateUser] = useMutation(UPDATE_USER);
+  const user = useTypeSelector((state) => state.userReducer);
 
   const [initialValues, setInitialValues] = useState<SidebarFormInterface>({
     name: '',
@@ -45,9 +41,6 @@ const Sidebar:React.FC = () => {
       </FormWrapper>
 
       <FormWrapper title="Delivery data">
-        <FormRow className="one-element">
-          tower
-        </FormRow>
         <FormRow>
           <FieldUpdate name="floor" placeholder="Floor" label="Floor" defaultValue={initialValues.floor} />
           <FieldUpdate name="office" placeholder="Office" label="Office" defaultValue={initialValues.office} />

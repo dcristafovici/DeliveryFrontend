@@ -4,7 +4,7 @@ export interface OrderPositionInterface {
     name: string;
     price: number;
     weight: number;
-    image: {
+    media: {
       small: string;
     }
   }

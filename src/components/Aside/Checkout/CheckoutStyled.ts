@@ -13,4 +13,6 @@ export const CheckoutStyled = styled.div`
   padding: 40px;
   box-sizing: border-box;
   border-radius: 5px;
+  max-height: calc(95vh);
+  overflow-y: scroll;
 `;

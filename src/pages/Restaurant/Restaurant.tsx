@@ -12,7 +12,7 @@ import Categories from '../../components/Categories';
 import RestaurantInfo from '../../components/Restaurant/RestaurantInfo';
 import AsideWrapper from '../../components/Aside/AsideWrapper';
 import { FIND_ONE_RESTAURANT } from '../../GraphQL/Restaurants/RestaurantsQueries';
-import { FIND_BY_KEY_RESTAURANT_CATEGORIES } from '../../GraphQL/RestaurantCategory/RestaurantCategory';
+import { FIND_BY_KEY_RES_CAT } from '../../GraphQL/RestaurantCategory/RestaurantCategory';
 
 const Restaurant:React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -21,8 +21,8 @@ const Restaurant:React.FC = () => {
   const { findOneRestaurant = [] } = data;
   const { minPrice = '', deliveryTime = '' } = findOneRestaurant;
 
-  const { data: CategoriesData = {} } = useQuery(FIND_BY_KEY_RESTAURANT_CATEGORIES, { variables: { data: { field: 'restaurant', value: id } } });
-  const { findByKeyRestaurantCategory = [] } = CategoriesData;
+  const { data: CategoriesData = {} } = useQuery(FIND_BY_KEY_RES_CAT, { variables: { data: { field: 'restaurant', value: id } } });
+  const { findByKeyResCat = [] } = CategoriesData;
 
   const dispatch = useDispatch();
 
@@ -43,8 +43,8 @@ const Restaurant:React.FC = () => {
                 deliveryTime={findOneRestaurant.deliveryTime}
                 media={findOneRestaurant.media}
               />
-              <Categories categories={findByKeyRestaurantCategory} />
-              <Products categories={findByKeyRestaurantCategory} />
+              <Categories categories={findByKeyResCat} />
+              <Products categories={findByKeyResCat} />
             </MainRestaurantStyled>
 
             <AsideWrapper />
