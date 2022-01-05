@@ -5,5 +5,15 @@ import ArrowTopIcon from './ArrowTopIcon';
 import EditIcon from './EditIcon';
 import CheckIcon from './CheckIcon';
 import AccountIcon from './AccountIcon';
+import CheckoutIcon from './CheckoutIcon';
 
-export { FileIcon, CloseIcon, ArrowIcon, ArrowTopIcon, EditIcon, CheckIcon, AccountIcon };
+export {
+  FileIcon,
+  CloseIcon,
+  ArrowIcon,
+  ArrowTopIcon,
+  EditIcon,
+  CheckIcon,
+  AccountIcon,
+  CheckoutIcon,
+};

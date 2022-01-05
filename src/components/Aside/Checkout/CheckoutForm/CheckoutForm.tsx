@@ -11,10 +11,10 @@ import FormSelect from '../../../Basic/Form/FormSelect';
 import FormWrapper from '../../../Basic/Form/FormWrapper';
 import CheckoutGeneral from '../CheckoutGeneral';
 import { CheckoutFormInitialValues, TimeDeliveryTommorow, TimeToDelivery, CheckoutDays } from './CheckoutFormConstants';
-import { checkoutDaysEnum, CheckoutFormInterface } from './CheckoutFormInterface';
+import { checkoutDaysEnum, CheckoutFormInterface, CheckoutFormProps } from './CheckoutFormInterface';
 import { CheckoutFormStyled } from './CheckoutFormStyled';
 
-const CheckoutForm:React.FC = () => {
+const CheckoutForm:React.FC<CheckoutFormProps> = ({ onCreateHandler }: CheckoutFormProps) => {
   const { id: restaurantID } = useParams<{ id: string }>();
 
   const user = useTypeSelector((state) => state.userReducer);
@@ -51,7 +51,13 @@ const CheckoutForm:React.FC = () => {
           additionalComment,
         },
       },
-    } });
+    } })
+      .then(({ data }) => {
+        const { createOrder: orderResult } = data;
+        const { orderNumber, orderCustomer } = orderResult;
+        onCreateHandler({ orderNumber, orderCustomer: orderCustomer.name });
+      })
+      .catch((err) => console.log(err.message));
   };
 
   useEffect(() => {

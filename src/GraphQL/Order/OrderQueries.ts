@@ -11,6 +11,8 @@ export const FIND_ORDERS_BY_KEYS = gql`
         name,
         rating
       }
+      total,
+      orderNumber,
       orderCart {
         quantity,
         product {

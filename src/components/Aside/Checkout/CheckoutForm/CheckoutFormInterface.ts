@@ -14,3 +14,12 @@ export enum checkoutDaysEnum {
   TODAY = 'Today',
   TOMMOROW = 'Tomorrow',
 }
+
+export interface CheckoutFormProps {
+  onCreateHandler: (data: onCreateInterface) => void
+}
+
+export interface onCreateInterface {
+  orderNumber: number;
+  orderCustomer: string;
+}
