@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useTypeSelector } from '../../../../redux/reduxHooks';
 import Popup from '../../../Popup';
 import AuthPopup from '../../../Popup/AuthPopup';
@@ -12,7 +13,9 @@ const HeaderAccount:React.FC = () => {
   return (
     <HeaderAccountStyled>
       {id ? (
-        <h1>user is authenticated</h1>
+        <Link to="/account/" className="button">
+          Account
+        </Link>
       ) : (
         <Button
           disabled={false}

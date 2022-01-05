@@ -18,7 +18,7 @@ const CheckoutForm:React.FC = () => {
   const { id: restaurantID } = useParams<{ id: string }>();
 
   const user = useTypeSelector((state) => state.userReducer);
-  const { cart = [] } = useTypeSelector((state) => state.asideReducer);
+  const { cart = [], total = 0 } = useTypeSelector((state) => state.asideReducer);
 
   const [createOrder] = useMutation(CREATE_ORDER);
 
@@ -36,6 +36,7 @@ const CheckoutForm:React.FC = () => {
         user: user.id,
         restaurant: restaurantID,
         day: date,
+        total,
         time,
         status: 'On hold',
         orderCart: editedCart,

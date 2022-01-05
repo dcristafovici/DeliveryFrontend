@@ -55,32 +55,34 @@ export const Categories:React.FC<CategoryComponentInterface> = (
                 </li>
               ))}
             </ul>
-            <div className="categories-others" ref={showRef}>
-              <div
-                className={`categories-others__name ${showMore && 'show'} ${moreText !== 'More' && 'is-category'}`}
-                onClick={() => setShowMore((prev) => !prev)}
-                role="button"
-                tabIndex={0}
-              >
-                <span>{moreText}</span>
-                <ArrowIcon />
+            {categories.length > 5 && (
+              <div className="categories-others" ref={showRef}>
+                <div
+                  className={`categories-others__name ${showMore && 'show'} ${moreText !== 'More' && 'is-category'}`}
+                  onClick={() => setShowMore((prev) => !prev)}
+                  role="button"
+                  tabIndex={0}
+                >
+                  <span>{moreText}</span>
+                  <ArrowIcon />
+                </div>
+                <div className={`categories-others__list ${showMore && 'show'}`}>
+                  <ul>
+                    {categories
+                      .slice(5, categories.length)
+                      .map(({ category }: CategoryWrapperInterface) => (
+                        <li
+                          key={category.id}
+                          className={`${categoryVisible === category.id ? 'category-active' : ''}`}
+                          onClick={() => dispatch(setCategoryClicked(category.id))}
+                        >
+                          {category.name}
+                        </li>
+                      ))}
+                  </ul>
+                </div>
               </div>
-              <div className={`categories-others__list ${showMore && 'show'}`}>
-                <ul>
-                  {categories
-                    .slice(5, categories.length)
-                    .map(({ category }: CategoryWrapperInterface) => (
-                      <li
-                        key={category.id}
-                        className={`${categoryVisible === category.id ? 'category-active' : ''}`}
-                        onClick={() => dispatch(setCategoryClicked(category.id))}
-                      >
-                        {category.name}
-                      </li>
-                    ))}
-                </ul>
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </CategoriesStyled>

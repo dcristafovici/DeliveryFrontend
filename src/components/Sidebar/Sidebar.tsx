@@ -21,6 +21,19 @@ const Sidebar:React.FC = () => {
     apartment: '',
   });
 
+  useEffect(() => {
+    if (user.id) {
+      Object.keys(initialValues).forEach((element:string) => {
+        if (user[element]) {
+          setInitialValues((prev: SidebarFormInterface) => ({
+            ...prev,
+            [element]: user[element],
+          }));
+        }
+      });
+    }
+  }, [user]);
+
   return (
     <SidebarStyled>
       <div
