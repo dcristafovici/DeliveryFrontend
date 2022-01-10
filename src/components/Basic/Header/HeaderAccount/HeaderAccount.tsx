@@ -13,7 +13,7 @@ const HeaderAccount:React.FC = () => {
   return (
     <HeaderAccountStyled>
       {id ? (
-        <Link to="/account/" className="button">
+        <Link to="/account/" className="auth-button">
           Account
         </Link>
       ) : (
