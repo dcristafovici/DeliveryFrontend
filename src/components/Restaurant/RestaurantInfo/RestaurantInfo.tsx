@@ -1,4 +1,5 @@
 import React from 'react';
+import { serverPath } from '../../../utils/envMode';
 import { RestaurantCardInterface } from '../../Restaurants/RestaurantsInterface';
 import { RestaurantInfoStyled } from './RestaurantInfoStyled';
 
@@ -7,7 +8,7 @@ const RestaurantInfo:React.FC<RestaurantCardInterface> = (
 ) => (
   <RestaurantInfoStyled>
     <div className="restaurant-info__photo">
-      <img src={`http://localhost:5000/${media?.large}`} alt={name} />
+      <img src={`${serverPath}/${media?.large}`} alt={name} />
     </div>
     <div className="restaurant-info__content">
       <div className="restaurant-content__name">

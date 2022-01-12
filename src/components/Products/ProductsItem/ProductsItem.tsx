@@ -4,6 +4,7 @@ import { addProduct } from '../../../redux/actions/asideAction';
 import { ProductPointObject } from '../ProductsPoint/ProductsPointInterface';
 import { ProductsItemStyled } from './ProductsItemStyled';
 import placeholder from '../../../assets/img/placeholder.svg';
+import { serverPath } from '../../../utils/envMode';
 
 const ProductsItem:React.FC<ProductPointObject> = (
   { id, name, weight, description, price, media }: ProductPointObject,
@@ -17,7 +18,7 @@ const ProductsItem:React.FC<ProductPointObject> = (
     <ProductsItemStyled onClick={addProductHandler}>
       <div className={`products-item__photo ${(media && media.medium) ? '' : 'product-photo__placeholder'}`}>
         {(media && media.medium) ? (
-          <img src={`http://localhost:5000/${media?.medium}`} alt="Product" />
+          <img src={`${serverPath}/${media?.medium}`} alt="Product" />
         ) : (
           <img src={placeholder} alt="Product" />
         )}
