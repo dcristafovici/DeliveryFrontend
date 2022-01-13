@@ -5,16 +5,15 @@ const phoneRegExp = new RegExp('^(\\+7|8)?[\\s\\-]?\\(?[489][0-9]{2}\\)?[\\s\\-]
 
 export const authPhoneValidation = Yup.object().shape({
   phone: Yup.string()
-    .required('Phone is required')
-    .matches(phoneRegExp, 'Phone number is not valid'),
+    .required('Phone is required'),
 });
 
 export const authOTPValidation = Yup.object().shape({
   OTP: Yup.number()
     .required('OTP is required.')
-    .test('len', 'Must be exactly 6 characters', (val) => {
+    .test('len', 'Must be exactly 4 characters', (val) => {
       if (val) {
-        return val.toString().length === 6;
+        return val.toString().length === 4;
       }
       return false;
     }),
