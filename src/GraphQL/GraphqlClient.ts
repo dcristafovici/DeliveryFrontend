@@ -6,7 +6,7 @@ const httpLink = createHttpLink({
   uri: `${serverPath}/graphql`,
 });
 
-console.log('test first deploy');
+console.log('test second deploy');
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('token');
