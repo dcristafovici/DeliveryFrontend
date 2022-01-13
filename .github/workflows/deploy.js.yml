@@ -17,4 +17,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm cache clean --force
       - run: npm i
+      - run: npm install -g install-peerdeps
+      - run: install-peerdeps --dev eslint-config-airbnb
+      - run: install-peerdeps --dev eslint-config-airbnb-base
       - run: npm run build
