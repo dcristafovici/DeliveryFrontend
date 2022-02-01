@@ -1,7 +1,7 @@
+import React, { useEffect, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { useFormik } from 'formik';
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { CREATE_ORDER } from '../../../../GraphQL/Order/OrderMutations';
 import { useTypeSelector } from '../../../../redux/reduxHooks';
 import Button from '../../../Basic/Button';
@@ -19,6 +19,8 @@ const CheckoutForm:React.FC<CheckoutFormProps> = ({ onCreateHandler }: CheckoutF
 
   const user = useTypeSelector((state) => state.userReducer);
   const { cart = [], total = 0 } = useTypeSelector((state) => state.asideReducer);
+
+  const history = useHistory();
 
   const [createOrder] = useMutation(CREATE_ORDER);
 
@@ -38,7 +40,6 @@ const CheckoutForm:React.FC<CheckoutFormProps> = ({ onCreateHandler }: CheckoutF
         day: date,
         total,
         time,
-        status: 'On hold',
         orderCart: editedCart,
         orderCustomer: {
           name,
@@ -54,8 +55,10 @@ const CheckoutForm:React.FC<CheckoutFormProps> = ({ onCreateHandler }: CheckoutF
     } })
       .then(({ data }) => {
         const { createOrder: orderResult } = data;
-        const { orderNumber, orderCustomer } = orderResult;
-        onCreateHandler({ orderNumber, orderCustomer: orderCustomer.name });
+        const { orderNumber, orderCustomer, orderPayment } = orderResult;
+        const { confirmation_url } = orderPayment;
+        window.location.replace(confirmation_url);
+        // onCreateHandler({ orderNumber, orderCustomer: orderCustomer.name });
       })
       .catch((err) => console.log(err.message));
   };

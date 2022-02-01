@@ -6,7 +6,7 @@ import OrdersPosition from '../OrdersPosition';
 import { OrdersItemInterface } from './OrdersItemInterface';
 
 const OrdersItem:React.FC<OrdersItemInterface> = (
-  { total, restaurant, status, orderCart, orderNumber }: OrdersItemInterface,
+  { total, restaurant, orderPayment, orderCart, orderNumber }: OrdersItemInterface,
 ) => {
   const [showPosition, setShowPosition] = useState<boolean>(false);
   return (
@@ -23,7 +23,7 @@ const OrdersItem:React.FC<OrdersItemInterface> = (
           </div>
           <div className="orders-top__status">
             <span>Status: </span>
-            <span>{status}</span>
+            <span>{orderPayment.status}</span>
           </div>
         </div>
         <div className="orders-top__right">

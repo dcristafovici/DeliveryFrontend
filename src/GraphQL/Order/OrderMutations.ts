@@ -7,6 +7,9 @@ export const CREATE_ORDER = gql`
       orderCustomer{
         name
       }
+      orderPayment {
+        confirmation_url
+      }
     }
   }
 `;

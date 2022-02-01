@@ -6,7 +6,6 @@ export const FIND_ORDERS_BY_KEYS = gql`
       id,
       day,
       time,
-      status,
       restaurant{
         name,
         rating
@@ -23,6 +22,9 @@ export const FIND_ORDERS_BY_KEYS = gql`
             small
           }
         }
+      }
+      orderPayment{
+        status
       }
       created_at
     }

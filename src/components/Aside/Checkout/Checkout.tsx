@@ -11,6 +11,11 @@ const Checkout:React.FC = () => {
     orderNumber: 0,
     status: false,
   });
+
+  const onRedirectForPay = () => {
+    console.log('dd');
+  };
+
   const onCreateHandler = (orderResult: onCreateInterface) => {
     const { orderCustomer, orderNumber } = orderResult;
     setOrderCreated({
@@ -18,7 +23,10 @@ const Checkout:React.FC = () => {
       orderNumber,
       status: true,
     });
+
+    onRedirectForPay();
   };
+
   return (
     <CheckoutStyled>
       {!orderCreated.status ? (

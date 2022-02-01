@@ -5,8 +5,10 @@ export interface OrdersItemInterface {
     rating: number;
   },
   orderNumber: number,
-  status: string;
   total: number;
+  orderPayment: {
+    status: string;
+  }
   orderCart: {
     quantity: number,
     product: {
