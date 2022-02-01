@@ -7,3 +7,7 @@ export interface SuggestInterface {
   value: string;
   data: SuggestDataInterface;
 }
+
+export interface SuggestProps {
+  mode?: string;
+}

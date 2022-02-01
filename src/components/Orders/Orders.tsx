@@ -9,7 +9,10 @@ import OrdersWrapper from './OrdersWrapper';
 
 const Orders:React.FC = () => {
   const { id } = useTypeSelector((state) => state.userReducer);
-  const { data = {} } = useQuery(FIND_ORDERS_BY_KEYS, { variables: { data: { field: 'user', value: id } } });
+  const { data = {} } = useQuery(FIND_ORDERS_BY_KEYS, {
+    variables: { data: { field: 'user', value: id } },
+    skip: !id,
+  });
   const { findByKeyOrders = [] } = data;
   return (
     <OrdersStyled>

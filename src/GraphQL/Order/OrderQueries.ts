@@ -1,5 +1,16 @@
 import { gql } from '@apollo/client';
 
+export const FIND_ONE_ORDER = gql`
+  query findOneOrder($id: String!) {
+    findOneOrder(id: $id) {
+      orderNumber,
+      orderCustomer {
+        name
+      }
+    }
+  }
+`;
+
 export const FIND_ORDERS_BY_KEYS = gql`
   query findByKeyOrders($data: FindByKeyInput!) {
     findByKeyOrders(data: $data) {

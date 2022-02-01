@@ -1,4 +1,10 @@
 export interface CheckoutSuccessInterface {
+  orderID: string;
+}
+
+export interface CheckoutSuccessResponse {
   orderNumber: number;
-  orderCustomer: string;
+  orderCustomer: {
+    name: string;
+  }
 }

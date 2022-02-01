@@ -6,6 +6,11 @@ export const SuggestStyled = styled.div`
   z-index: 10;
   width: 100%;
   max-width: 500px;
+  &.form-element {
+    input {
+      background: ${COLORS.GRAY_4} ;
+    }
+  }
   input {
     height: 50px;
     padding-right: 30px;

@@ -16,10 +16,9 @@ export enum checkoutDaysEnum {
 }
 
 export interface CheckoutFormProps {
-  onCreateHandler: (data: onCreateInterface) => void
-}
-
-export interface onCreateInterface {
-  orderNumber: number;
-  orderCustomer: string;
+  restaurantID: string;
+  user: any;
+  cart: any;
+  address: any;
+  total: any;
 }

@@ -7,10 +7,10 @@ import { setUserData } from '../../../redux/actions/userAction';
 import { useTypeSelector } from '../../../redux/reduxHooks';
 import { useDebouncedEffect } from '../../../types/useDebouncedEffect';
 import { CloseIcon } from '../Icons';
-import { SuggestInterface } from './SuggestInterface';
+import { SuggestInterface, SuggestProps } from './SuggestInterface';
 import { SuggestStyled } from './SuggestStyled';
 
-const Suggest:React.FC = () => {
+const Suggest:React.FC<SuggestProps> = ({ mode }: SuggestProps) => {
   const [address, setAddress] = useState<string>('');
   const [addressFromUser, setAddressFromUser] = useState<boolean>(false);
   const [show, setShow] = useState<boolean>(false);
@@ -59,7 +59,7 @@ const Suggest:React.FC = () => {
       .catch((err) => console.log(err));
   };
   return (
-    <SuggestStyled className={addressFromUser ? 'user-seted' : ''}>
+    <SuggestStyled className={`${addressFromUser ? 'user-seted' : ''} ${mode || ''}`}>
       <div className="suggested-input">
         <input
           type="text"

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { useFormik } from 'formik';
-import { useHistory, useParams } from 'react-router';
 import { CREATE_ORDER } from '../../../../GraphQL/Order/OrderMutations';
-import { useTypeSelector } from '../../../../redux/reduxHooks';
 import Button from '../../../Basic/Button';
 import FormikField from '../../../Basic/Form/FormikField';
 import FormRow from '../../../Basic/Form/FormRow';
@@ -13,15 +11,11 @@ import CheckoutGeneral from '../CheckoutGeneral';
 import { CheckoutFormInitialValues, TimeDeliveryTommorow, TimeToDelivery, CheckoutDays } from './CheckoutFormConstants';
 import { checkoutDaysEnum, CheckoutFormInterface, CheckoutFormProps } from './CheckoutFormInterface';
 import { CheckoutFormStyled } from './CheckoutFormStyled';
+import Suggest from '../../../Basic/Suggest';
 
-const CheckoutForm:React.FC<CheckoutFormProps> = ({ onCreateHandler }: CheckoutFormProps) => {
-  const { id: restaurantID } = useParams<{ id: string }>();
-
-  const user = useTypeSelector((state) => state.userReducer);
-  const { cart = [], total = 0 } = useTypeSelector((state) => state.asideReducer);
-
-  const history = useHistory();
-
+const CheckoutForm:React.FC<CheckoutFormProps> = (
+  { restaurantID, user, cart, total, address }: CheckoutFormProps,
+) => {
   const [createOrder] = useMutation(CREATE_ORDER);
 
   const [initialValues, setInitialValues] = useState<
@@ -45,7 +39,7 @@ const CheckoutForm:React.FC<CheckoutFormProps> = ({ onCreateHandler }: CheckoutF
           name,
           phone,
           email,
-          address: 'Address placeholder',
+          address,
           floor,
           office,
           apartment,
@@ -55,10 +49,9 @@ const CheckoutForm:React.FC<CheckoutFormProps> = ({ onCreateHandler }: CheckoutF
     } })
       .then(({ data }) => {
         const { createOrder: orderResult } = data;
-        const { orderNumber, orderCustomer, orderPayment } = orderResult;
+        const { orderPayment } = orderResult;
         const { confirmation_url } = orderPayment;
         window.location.replace(confirmation_url);
-        // onCreateHandler({ orderNumber, orderCustomer: orderCustomer.name });
       })
       .catch((err) => console.log(err.message));
   };
@@ -75,13 +68,13 @@ const CheckoutForm:React.FC<CheckoutFormProps> = ({ onCreateHandler }: CheckoutF
       });
     }
   }, [user]);
-
   const formik = useFormik({
     initialValues,
     validateOnChange: true,
     enableReinitialize: true,
     onSubmit: (values) => onSubmitHandler(values),
   });
+
   return (
     <CheckoutFormStyled>
       <form onSubmit={formik.handleSubmit}>
@@ -117,6 +110,9 @@ const CheckoutForm:React.FC<CheckoutFormProps> = ({ onCreateHandler }: CheckoutF
           </FormRow>
         </FormWrapper>
         <FormWrapper title="Delivery address">
+          <FormRow className="one-element">
+            <Suggest mode="form-element" />
+          </FormRow>
           <FormRow className="three-elements">
             <FormikField
               type="text"
@@ -154,7 +150,7 @@ const CheckoutForm:React.FC<CheckoutFormProps> = ({ onCreateHandler }: CheckoutF
             />
             <FormSelect
               values={
-                initialValues.date === checkoutDaysEnum.TODAY
+                formik.values.date === checkoutDaysEnum.TODAY
                   ? TimeToDelivery
                   : TimeDeliveryTommorow
                 }

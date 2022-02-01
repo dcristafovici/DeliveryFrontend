@@ -1,45 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useParams } from 'react-router';
+import { useTypeSelector } from '../../../redux/reduxHooks';
 import CheckoutForm from './CheckoutForm';
-import { onCreateInterface } from './CheckoutForm/CheckoutFormInterface';
 import { CheckoutStyled } from './CheckoutStyled';
-import CheckoutSuccess from './CheckoutSuccess';
 import CheckoutTitle from './CheckoutTitle';
 
 const Checkout:React.FC = () => {
-  const [orderCreated, setOrderCreated] = useState({
-    orderCustomer: '',
-    orderNumber: 0,
-    status: false,
-  });
-
-  const onRedirectForPay = () => {
-    console.log('dd');
-  };
-
-  const onCreateHandler = (orderResult: onCreateInterface) => {
-    const { orderCustomer, orderNumber } = orderResult;
-    setOrderCreated({
-      orderCustomer,
-      orderNumber,
-      status: true,
-    });
-
-    onRedirectForPay();
-  };
-
+  const { id: restaurantID } = useParams<{ id: string }>();
+  const user = useTypeSelector((state) => state.userReducer);
+  const { cart = [], total } = useTypeSelector((state) => state.asideReducer);
+  const { address } = useTypeSelector((state) => state.userReducer);
   return (
     <CheckoutStyled>
-      {!orderCreated.status ? (
-        <>
-          <CheckoutTitle />
-          <CheckoutForm onCreateHandler={onCreateHandler} />
-        </>
-      ) : (
-        <CheckoutSuccess
-          orderCustomer={orderCreated.orderCustomer}
-          orderNumber={orderCreated.orderNumber}
-        />
-      )}
+      <CheckoutTitle />
+      <CheckoutForm
+        restaurantID={restaurantID}
+        user={user}
+        cart={cart}
+        address={address}
+        total={total}
+      />
     </CheckoutStyled>
   );
 };

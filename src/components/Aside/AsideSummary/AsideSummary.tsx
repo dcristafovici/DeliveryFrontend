@@ -10,7 +10,6 @@ import { AsideSummaryStyled } from './AsideSummaryStyled';
 const AsideSummary:React.FC = () => {
   const { deliveryTime = '', total = 0, minPrice } = useTypeSelector((state) => state.asideReducer);
   const [showCheckout, setShowCheckout] = useState(false);
-  const dispatch = useDispatch();
   return (
     <>
       <AsideSummaryStyled>
