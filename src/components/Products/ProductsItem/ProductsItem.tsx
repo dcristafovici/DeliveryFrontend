@@ -5,14 +5,17 @@ import { ProductPointObject } from '../ProductsPoint/ProductsPointInterface';
 import { ProductsItemStyled } from './ProductsItemStyled';
 import placeholder from '../../../assets/img/placeholder.svg';
 import { serverPath } from '../../../utils/envMode';
+import { useTypeSelector } from '../../../redux/reduxHooks';
 
 const ProductsItem:React.FC<ProductPointObject> = (
   { id, name, weight, description, price, media }: ProductPointObject,
 ) => {
   const dispatch = useDispatch();
-
+  const user = useTypeSelector((state) => state.userReducer);
   const addProductHandler = () => {
-    dispatch(addProduct(id, name, price, weight));
+    if (user.id) {
+      dispatch(addProduct(id, name, price, weight));
+    }
   };
   return (
     <ProductsItemStyled onClick={addProductHandler}>
