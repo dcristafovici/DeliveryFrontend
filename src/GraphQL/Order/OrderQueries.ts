@@ -7,6 +7,9 @@ export const FIND_ONE_ORDER = gql`
       orderCustomer {
         name
       }
+      orderPayment{
+        id
+      }
     }
   }
 `;

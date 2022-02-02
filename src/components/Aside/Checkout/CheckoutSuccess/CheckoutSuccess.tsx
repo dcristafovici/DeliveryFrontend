@@ -14,8 +14,10 @@ const CheckoutSuccess:React.FC<CheckoutSuccessInterface> = (
   { orderID }: CheckoutSuccessInterface,
 ) => {
   const { loading, data = {} } = useQuery(FIND_ONE_ORDER, { variables: { id: orderID } });
-  const { findOneOrder: order = [] } = data;
+  const { findOneOrder = [] } = data;
+  const { orderCustomer, orderNumber, orderPayment } = findOneOrder;
   const history = useHistory();
+
   return (
     <CheckoutSuccessStyled>
       <Overlay onClickEvent={() => history.push(RoutesDetailes.ACCOUNT.path)} />
@@ -29,7 +31,7 @@ const CheckoutSuccess:React.FC<CheckoutSuccessInterface> = (
         <ul>
           <li>
             Hello
-            <span>{!loading && order.orderCustomer.name}</span>
+            <span>{!loading && orderCustomer.name}</span>
           </li>
           <li>
             Thank you for your order from
@@ -39,7 +41,7 @@ const CheckoutSuccess:React.FC<CheckoutSuccessInterface> = (
             Your order number is
             <span>
               №
-              {!loading && order.orderNumber}
+              {!loading && orderNumber}
             </span>
           </li>
         </ul>

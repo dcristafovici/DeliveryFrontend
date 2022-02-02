@@ -7,4 +7,7 @@ export interface CheckoutSuccessResponse {
   orderCustomer: {
     name: string;
   }
+  orderPayment: {
+    id: number;
+  }
 }
