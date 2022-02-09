@@ -5,10 +5,8 @@ import { useDispatch } from 'react-redux';
 import Container from '../../components/Basic/Container';
 import { StyledFlex } from '../../components/Basic/Flex/StyledFlex';
 import Section from '../../components/Basic/Section';
-import Products from '../../components/Products';
 import { MainRestaurantStyled, RestaurantStyled } from './RestaurantStyled';
 import { setAsideData } from '../../redux/actions/asideAction';
-import Categories from '../../components/Categories';
 import RestaurantInfo from '../../components/Restaurant/RestaurantInfo';
 import AsideWrapper from '../../components/Aside/AsideWrapper';
 import { FIND_ONE_RESTAURANT } from '../../GraphQL/Restaurants/RestaurantsQueries';
@@ -19,7 +17,7 @@ const Restaurant:React.FC = () => {
 
   const { loading, data = {} } = useQuery(FIND_ONE_RESTAURANT, { variables: { id } });
   const { findOneRestaurant = [] } = data;
-  const { minPrice = '', deliveryTime = '' } = findOneRestaurant;
+  const { minPrice = '', deliveryTime = '', name = '', media = {} } = findOneRestaurant;
 
   const { data: CategoriesData = {} } = useQuery(FIND_BY_KEY_RES_CAT, { variables: { data: { field: 'restaurant', value: id } } });
   const { findByKeyResCat = [] } = CategoriesData;
@@ -43,8 +41,6 @@ const Restaurant:React.FC = () => {
                 deliveryTime={findOneRestaurant.deliveryTime}
                 media={findOneRestaurant.media}
               />
-              <Categories categories={findByKeyResCat} />
-              <Products categories={findByKeyResCat} />
             </MainRestaurantStyled>
 
             <AsideWrapper />
