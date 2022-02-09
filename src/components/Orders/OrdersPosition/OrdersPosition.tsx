@@ -7,11 +7,11 @@ const OrdersPosition:React.FC<OrderPositionInterface> = (
   { quantity, product }: OrderPositionInterface,
 ) => (
   <OrderPositionStyled className="orders-position">
-    {(window.innerWidth > 480) && (
-      <div className="orders-position__image">
+    <div className="orders-position__image">
+      {product.media && product.media.small ? (
         <img src={`${serverPath}/${product.media.small}`} alt="P1" />
-      </div>
-    )}
+      ) : ''}
+    </div>
     <div className="orders-position__name">
       <span>
         {product.name}
