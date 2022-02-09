@@ -15,6 +15,9 @@ export type RoutesDetailsTypes = {
   HOME_PAGE: RoutesPathTypes,
   RESTAURANT: RoutesPathTypes,
   ACCOUNT: RoutesPathTypes,
+  FOR_RESTAURANTS: RoutesPathTypes,
+  FOR_COMPANIES: RoutesPathTypes,
+  PROMOTIONS: RoutesPathTypes,
 }
 
 export interface TokenGuardProps {
@@ -28,3 +31,8 @@ export interface DefaultGuardProps {
   path: string;
   exact: boolean;
 }
+
+export type RoutesNavigationTypes = {
+  name: string;
+  path: string;
+};

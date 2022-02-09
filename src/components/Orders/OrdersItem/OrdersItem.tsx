@@ -49,9 +49,7 @@ const OrdersItem:React.FC<OrdersItemInterface> = (
             ))}
           </div>
           <div className="orders-actions">
-            <div className="orders-repeat">
-              <Button name="Repeat" disabled className="transparent" />
-            </div>
+            <div className="orders-repeat" />
             <div className="orders-total">
               <span>Total:</span>
               <span>{`${total} $`}</span>

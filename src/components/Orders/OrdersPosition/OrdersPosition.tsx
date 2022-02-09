@@ -2,15 +2,20 @@ import React from 'react';
 import { serverPath } from '../../../utils/envMode';
 import { OrderPositionInterface } from './OrderPositionInterface';
 import { OrderPositionStyled } from './OrderPositionStyled';
+import placeholder from '../../../assets/img/placeholder.svg';
 
 const OrdersPosition:React.FC<OrderPositionInterface> = (
   { quantity, product }: OrderPositionInterface,
 ) => (
   <OrderPositionStyled className="orders-position">
     <div className="orders-position__image">
-      {product.media && product.media.small ? (
-        <img src={`${serverPath}/${product.media.small}`} alt="P1" />
-      ) : ''}
+      <>
+        {product.media && product.media.small ? (
+          <img src={`${serverPath}/${product.media.small}`} alt={product.name} />
+        ) : (
+          <img src={placeholder} alt="Placeholder" />
+        )}
+      </>
     </div>
     <div className="orders-position__name">
       <span>
