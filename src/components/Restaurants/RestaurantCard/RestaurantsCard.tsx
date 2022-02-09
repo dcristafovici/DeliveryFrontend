@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { serverPath } from '../../../utils/envMode';
-import { RestaurantCardInterface } from '../RestaurantsInterface';
+import { RestaurantCardInterface } from './RestaurantCardInterface';
 import { RestaurantCardStyled } from './RestaurantCardStyled';
 
 const RestaurantCard:React.FC<RestaurantCardInterface> = (

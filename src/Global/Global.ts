@@ -48,6 +48,7 @@ export const Global = createGlobalStyle`
   }
   ::-webkit-scrollbar-thumb {
     background-color: ${COLORS.PRIMARY_BLUE};
+    min-height: 50px;
   }
   ::-webkit-scrollbar-thumb {
     background-color: ${COLORS.PRIMARY_BLUE};
@@ -90,5 +91,27 @@ export const Global = createGlobalStyle`
       font-weight: 400;
       color: ${COLORS.GRAY_1};
     }
+  }
+
+  .loading {
+    position: relative;
+    overflow: hidden;
+  }
+  .loading:after {
+    background: #ccc;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-100px);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: loading 0.8s infinite;
+  }
+  @keyframes loading {
+      100% {
+          transform: translateX(100%);
+      }
   }
 `;
