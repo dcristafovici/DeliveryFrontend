@@ -2,7 +2,10 @@ import styled from 'styled-components';
 import { COLORS } from '../../../constants';
 
 export const ProductsPointStyled = styled.div`
-  margin-bottom: 40px;
+  padding-top: 40px;
+  &:first-child {
+    padding-top: 0
+  }
   .products {
     &-point {
       &__title {

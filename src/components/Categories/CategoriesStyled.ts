@@ -2,8 +2,16 @@ import styled from 'styled-components';
 import { COLORS, HELPERS } from '../../constants';
 
 export const CategoriesStyled = styled.div`
-  margin-bottom: 30px;
-  position: relative;
+  position: sticky;
+  top: -1px;
+  z-index: 6;
+  &.is-sticky {
+    background: ${COLORS.WHITE};
+    padding: 10px;
+    border-bottom-left-radius: 5px;
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.0979294), 0px 1px 3px rgba(0, 0, 0, 0.1);
+    border-bottom-right-radius: 5px;
+  }
   .categories {
     &-points {
       display: flex;
@@ -58,9 +66,11 @@ export const CategoriesStyled = styled.div`
         overflow-x: hidden;
         overflow-y: scroll;
         box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.0979294), 0px 1px 3px rgba(0, 0, 0, 0.1);
-        .categories-point {
+        .categories-point a {
           width: 100%;
           box-shadow: none;
+          border-radius: 0;
+          padding-left: 20px;
           justify-content: flex-start;
           height: 40px;
           margin-right: 0;
