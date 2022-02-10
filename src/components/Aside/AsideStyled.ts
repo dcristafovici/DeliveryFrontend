@@ -8,11 +8,11 @@ export const AsideStyled = styled.aside`
   border-radius: 3px;
   padding: 14px;
   box-sizing: border-box;
-  max-height: calc(100vh - 40px);
+  max-height: calc(100vh - 20px);
   box-sizing: border-box;
   position: sticky;
-  top: 50px;
-  z-index: 20;
+  top: 10px;
+  z-index: 5;
   @media only screen and (${device.xs}){
     position: absolute;
     top: 0;
