@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { STRINGS } from '../../constants';
 import { useOutsideEvent } from '../../utils/useOutsideEvent';
 import { ArrowIcon } from '../Basic/Icons';
 import { ProductsPointInterface } from '../Products/ProductsPoint/ProductsPointInterface';
@@ -8,7 +9,7 @@ import { CategoriesStyled } from './CategoriesStyled';
 
 const Categories:React.FC<CategoriesInterface> = ({ categories }: CategoriesInterface) => {
   const [showMore, setShowMore] = useState<boolean>(false);
-  const [moreElement, setMoreElement] = useState<string>('More');
+  const [moreElement, setMoreElement] = useState<string>(STRINGS.MORE);
   const [isSticky, setIsSticky] = useState<boolean>(false);
   const ref = useRef(null);
   const showRef = useRef(null);
@@ -26,19 +27,21 @@ const Categories:React.FC<CategoriesInterface> = ({ categories }: CategoriesInte
     };
   }, []);
 
-  console.log('onChange');
-
   return (
     <CategoriesStyled ref={ref} className={isSticky ? 'is-sticky' : ''}>
       <div className="categories-points">
         {categories.slice(0, 5).map((category: ProductsPointInterface) => (
-          <CategoriesPoint key={category.category.id} category={category.category} />
+          <CategoriesPoint
+            onSetName={(name) => setMoreElement(STRINGS.MORE)}
+            key={category.category.id}
+            category={category.category}
+          />
         ))}
 
         {categories.length > 5 && (
           <div className={`${showMore ? 'active' : ''} categories-more`} ref={showRef}>
             <div
-              className="categories-more__title"
+              className={`${moreElement !== STRINGS.MORE ? 'not-default' : ''} categories-more__title`}
               onClick={() => setShowMore((prev:boolean) => !prev)}
               role="button"
               tabIndex={0}
@@ -46,13 +49,15 @@ const Categories:React.FC<CategoriesInterface> = ({ categories }: CategoriesInte
               {moreElement}
               <ArrowIcon />
             </div>
-            {showMore && (
-              <div className="categories-more__dropdown">
-                {categories.slice(5).map((category: ProductsPointInterface) => (
-                  <CategoriesPoint key={category.category.id} category={category.category} />
-                ))}
-              </div>
-            )}
+            <div className={`${showMore ? 'open' : ''} categories-more__dropdown`}>
+              {categories.slice(5).map((category: ProductsPointInterface) => (
+                <CategoriesPoint
+                  onSetName={(name) => setMoreElement(name)}
+                  key={category.category.id}
+                  category={category.category}
+                />
+              ))}
+            </div>
           </div>
         )}
 

@@ -39,6 +39,12 @@ export const CategoriesStyled = styled.div`
         width: 100%;
         cursor: pointer;
         transition: ${HELPERS.TRANSITION};
+        &.not-default {
+          color: ${COLORS.PRIMARY_BLUE};
+          svg {
+            fill: ${COLORS.PRIMARY_BLUE};
+          }
+        }
         &:hover {
           color: ${COLORS.BLUE_DARK};
           svg {
@@ -56,7 +62,7 @@ export const CategoriesStyled = styled.div`
       &__dropdown {
         position: absolute;
         top: calc(100% + 10px);
-        z-index: 6;
+        z-index: -1;
         width: 250px;
         right: -125px;
         background: ${COLORS.WHITE};
@@ -66,6 +72,16 @@ export const CategoriesStyled = styled.div`
         overflow-x: hidden;
         overflow-y: scroll;
         box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.0979294), 0px 1px 3px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        transform: translateY(-20px);
+        pointer-events: none;
+        transition: ${HELPERS.TRANSITION};
+        &.open {
+          opacity: 1;
+          transform: translateY(0);
+          z-index: 6;
+          pointer-events: all;
+        }
         .categories-point a {
           width: 100%;
           box-shadow: none;
