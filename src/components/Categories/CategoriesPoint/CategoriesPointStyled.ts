@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { COLORS, HELPERS } from '../../../constants';
 
-export const CategoriesPointStyled = styled.div`
+export const CategoriesPointStyled = styled.a`
   box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.0979294), 0px 1px 3px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
   padding-left: 20px;

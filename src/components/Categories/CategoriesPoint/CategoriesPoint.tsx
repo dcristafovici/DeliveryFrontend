@@ -3,7 +3,7 @@ import { ProductsPointInterface } from '../../Products/ProductsPoint/ProductsPoi
 import { CategoriesPointStyled } from './CategoriesPointStyled';
 
 const CategoriesPoint:React.FC<ProductsPointInterface> = ({ category }: ProductsPointInterface) => (
-  <CategoriesPointStyled className="categories-point" data-id={category.id}>
+  <CategoriesPointStyled href={`#${category.id}`} className="categories-point" data-id={category.id}>
     <span>{category.name}</span>
   </CategoriesPointStyled>
 );

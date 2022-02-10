@@ -53,17 +53,20 @@ export const CategoriesStyled = styled.div`
         right: -125px;
         background: ${COLORS.WHITE};
         border-radius: 5px;
-        padding: 10px;
         box-sizing: border-box;
         max-height: 500px;
+        overflow-x: hidden;
         overflow-y: scroll;
         box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.0979294), 0px 1px 3px rgba(0, 0, 0, 0.1);
         .categories-point {
           width: 100%;
-          padding: 0;
           box-shadow: none;
-          justify-content: center;
+          justify-content: flex-start;
+          height: 40px;
           margin-right: 0;
+          span {
+            font-size: 15px;
+          }
         }
       }
     }

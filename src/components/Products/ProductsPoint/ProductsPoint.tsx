@@ -17,7 +17,7 @@ const ProductsPoint:React.FC<ProductsPointInterface> = ({ category }: ProductsPo
   }, [entry?.isIntersecting]);
 
   return (
-    <ProductsPointStyled>
+    <ProductsPointStyled id={category.id}>
       <div className="products-point__title" ref={ref}>
         {category.name}
       </div>
