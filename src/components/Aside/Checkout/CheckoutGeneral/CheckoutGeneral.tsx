@@ -12,7 +12,7 @@ export const CheckoutGeneral:React.FC = () => {
       </div>
       <div className="checkout-general__item">
         <span>Total</span>
-        <span>{`${total} $`}</span>
+        <span>{total}</span>
       </div>
     </CheckoutGeneralStyled>
   );

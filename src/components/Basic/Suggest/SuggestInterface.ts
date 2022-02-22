@@ -11,3 +11,8 @@ export interface SuggestInterface {
 export interface SuggestProps {
   mode?: string;
 }
+
+export enum SuggestThemes {
+  LIGHT = 'light',
+  DARK = 'dark',
+}

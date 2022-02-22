@@ -15,8 +15,8 @@ const AsideLine:React.FC<AsideLineInterface> = (
   return (
     <AsideLineStyled>
       <div className="aside-line__summs">
-        <span>{`${total} $`}</span>
-        <span>{`${minPrice} $`}</span>
+        <span>{total}</span>
+        <span>{minPrice}</span>
       </div>
       <div className="aside-line__line">
         <i style={{ width: `${percent}%` }} />
@@ -25,7 +25,7 @@ const AsideLine:React.FC<AsideLineInterface> = (
         <div className="aside-line__last">
           <span>
             For free delivery you need to purchase additional
-            <span>{`${minPrice - total} $`}</span>
+            <span>{minPrice - total}</span>
           </span>
         </div>
       )}

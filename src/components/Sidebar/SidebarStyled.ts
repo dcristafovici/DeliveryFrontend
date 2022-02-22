@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { COLORS, HELPERS } from '../../constants';
-import { device } from '../../utils/breakpoints';
+import { COLORS } from '../../constants';
 
 export const SidebarStyled = styled.div`
   background: ${COLORS.WHITE};
@@ -22,14 +21,7 @@ export const SidebarStyled = styled.div`
       }
     }
   }
-  @media only screen and (${device.xs}){
-    height: 100%;
-    border-radius: 0;
-    .sidebar {
-      &-back {
-        display: flex;
-        align-items: center;
-      }
-    }
+  form > div:last-child {
+    margin-bottom: 0;
   }
 `;

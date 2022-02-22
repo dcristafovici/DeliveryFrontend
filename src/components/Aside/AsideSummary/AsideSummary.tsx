@@ -20,7 +20,7 @@ const AsideSummary:React.FC = () => {
           </div>
           <div className="aside-summary__item">
             <span>Total</span>
-            <span>{`${total} $`}</span>
+            <span>{total}</span>
           </div>
         </div>
         <Button disabled={total < minPrice} onClickEvent={() => setShowCheckout(true)} name="Checkout" className="full" />

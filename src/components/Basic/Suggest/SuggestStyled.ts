@@ -89,4 +89,10 @@ export const SuggestStyled = styled.div`
       transition: ${HELPERS.TRANSITION};
     }
   }
+
+  &.dark {
+    input {
+      background: ${COLORS.GRAY_4}
+    }
+  }
 `;

@@ -46,7 +46,7 @@ const AsideItem:React.FC<AsideItemInterface> = (
 
       </div>
       <div className="aside-item__price">
-        <span>{`${quantity * parseFloat(price)} $`}</span>
+        <span>{quantity * parseFloat(price)}</span>
       </div>
     </AsideItemStyled>
   );

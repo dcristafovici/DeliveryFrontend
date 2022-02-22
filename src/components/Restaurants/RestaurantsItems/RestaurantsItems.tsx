@@ -4,10 +4,10 @@ import { RestaurantCardInterface, RestaurantItemsInterface } from '../Restaurant
 import { RestaurantItemsStyled } from './RestaurantsItemsStyled';
 
 const RestaurantsItems:React.FC<RestaurantItemsInterface> = (
-  { restaurants }: RestaurantItemsInterface,
+  { restaurants = [] }: RestaurantItemsInterface,
 ) => (
   <RestaurantItemsStyled>
-    {restaurants.length && restaurants.map((restaurant:RestaurantCardInterface) => (
+    {restaurants.map((restaurant:RestaurantCardInterface) => (
       <RestaurantCard
         key={restaurant.id}
         id={restaurant.id}

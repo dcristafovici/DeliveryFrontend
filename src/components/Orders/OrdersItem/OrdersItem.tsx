@@ -52,7 +52,7 @@ const OrdersItem:React.FC<OrdersItemInterface> = (
             <div className="orders-repeat" />
             <div className="orders-total">
               <span>Total:</span>
-              <span>{`${total} $`}</span>
+              <span>{total}</span>
             </div>
           </div>
         </div>

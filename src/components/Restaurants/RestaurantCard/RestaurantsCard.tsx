@@ -23,9 +23,7 @@ const RestaurantCard:React.FC<RestaurantCardInterface> = (
         </div>
         <div className="card-bottom__row">
           <div className="card-bottom__rating">{rating}</div>
-          <div className="card-bottom__price">
-            {`${minPrice} $`}
-          </div>
+          <div className="card-bottom__price">{minPrice}</div>
         </div>
       </div>
     </Link>

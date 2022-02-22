@@ -15,7 +15,7 @@ const Restaurants:React.FC = () => {
       <Section>
         <Container>
           <Title title="Restaurants" />
-          <RestaurantsItems restaurants={!loading && findRestaurants} />
+          <RestaurantsItems restaurants={findRestaurants} />
         </Container>
       </Section>
     </RestaurantsStyled>

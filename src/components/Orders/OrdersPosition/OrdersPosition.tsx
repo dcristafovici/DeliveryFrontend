@@ -24,7 +24,7 @@ const OrdersPosition:React.FC<OrderPositionInterface> = (
       <span>{product.weight}</span>
     </div>
     <div className="orders-position__quantity">{`${quantity} u.`}</div>
-    <div className="orders-position__price">{`${product.price * quantity} $`}</div>
+    <div className="orders-position__price">{product.price * quantity}</div>
   </OrderPositionStyled>
 );
 

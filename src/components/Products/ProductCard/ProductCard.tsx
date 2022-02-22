@@ -22,7 +22,7 @@ const ProductCard:React.FC<ProductCardPropsInterface> = (
       </div>
       <div className="product-card__content">
         <div className="product-card__name">{name}</div>
-        <div className="product-card__price">{`${price} $`}</div>
+        <div className="product-card__price">{price}</div>
         <div className="product-card__description">{description}</div>
       </div>
     </ProductCardStyled>
