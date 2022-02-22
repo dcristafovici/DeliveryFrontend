@@ -8,7 +8,7 @@ import FormRow from '../../../Basic/Form/FormRow';
 import FormSelect from '../../../Basic/Form/FormSelect';
 import FormWrapper from '../../../Basic/Form/FormWrapper';
 import CheckoutGeneral from '../CheckoutGeneral';
-import { CheckoutFormInitialValues, TimeDeliveryTommorow, TimeToDelivery, CheckoutDays } from './CheckoutFormConstants';
+import { CheckoutFormInitialValues, TimeDeliveryTommorow, TimeToDelivery, CheckoutDays, CheckoutFormValidation } from './CheckoutFormConstants';
 import { checkoutDaysEnum, CheckoutFormInterface, CheckoutFormProps } from './CheckoutFormInterface';
 import { CheckoutFormStyled } from './CheckoutFormStyled';
 import Suggest from '../../../Basic/Suggest';
@@ -72,6 +72,7 @@ const CheckoutForm:React.FC<CheckoutFormProps> = (
     initialValues,
     validateOnChange: true,
     enableReinitialize: true,
+    validationSchema: CheckoutFormValidation,
     onSubmit: (values) => onSubmitHandler(values),
   });
 
