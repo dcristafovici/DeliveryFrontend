@@ -24,6 +24,7 @@ const CheckoutForm:React.FC<CheckoutFormProps> = (
   const onSubmitHandler = (values: CheckoutFormInterface) => {
     const editedCart = cart.map((item:any) => ({
       product: item.id,
+      productName: item.name,
       quantity: item.quantity,
     }));
     const { name, phone, email, floor, office, apartment, date, time, additionalComment } = values;
