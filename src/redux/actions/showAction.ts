@@ -1,6 +1,7 @@
+import { ShowControllEnum } from '../../components/Show/ShowControll/ShowControllEnum';
 import { OPEN_POPUP, CLOSE_POPUP } from '../actions-types/showTypes';
 
-export const openPopup = (id: number) => (dispatch:any) => {
+export const openPopup = (id: ShowControllEnum) => (dispatch:any) => {
   dispatch({
     type: OPEN_POPUP,
     payload: id,

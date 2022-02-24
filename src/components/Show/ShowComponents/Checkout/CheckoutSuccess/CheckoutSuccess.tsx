@@ -1,11 +1,10 @@
 import { useQuery } from '@apollo/client';
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { COLORS } from '../../../../constants';
-import { FIND_ONE_ORDER } from '../../../../GraphQL/Order/OrderQueries';
-import { RoutesDetailes } from '../../../../routes/routes';
-import { CheckoutIcon } from '../../../Basic/Icons';
-import Overlay from '../../../Popup/Overlay';
+import { COLORS } from '../../../../../constants';
+import { FIND_ONE_ORDER } from '../../../../../GraphQL/Order/OrderQueries';
+import { RoutesDetailes } from '../../../../../routes/routes';
+import { CheckoutIcon } from '../../../../Basic/Icons';
 import { CheckoutTitleStyled } from '../CheckoutTitle/CheckoutTitleStyled';
 import { CheckoutSuccessInterface } from './CheckoutSuccessInterface';
 import { CheckoutSuccessStyled } from './CheckoutSuccessStyled';
@@ -20,7 +19,6 @@ const CheckoutSuccess:React.FC<CheckoutSuccessInterface> = (
 
   return (
     <CheckoutSuccessStyled>
-      <Overlay onClickEvent={() => history.push(RoutesDetailes.ACCOUNT.path)} />
       <div className="checkout-success__wrapper">
         <CheckoutTitleStyled>
           Your order has been received

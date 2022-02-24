@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router';
-import { useTypeSelector } from '../../../redux/reduxHooks';
+import { useTypeSelector } from '../../../../redux/reduxHooks';
 import CheckoutForm from './CheckoutForm';
 import { CheckoutStyled } from './CheckoutStyled';
 import CheckoutTitle from './CheckoutTitle';

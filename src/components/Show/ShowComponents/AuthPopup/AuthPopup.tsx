@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { useFormik } from 'formik';
 import { AuthPopupStyled } from './AuthPopupStyled';
-import FormikField from '../../Basic/Form/FormikField';
-import Button from '../../Basic/Button';
-import { getSessionID } from '../../../utils/uniqueSessionID';
+import FormikField from '../../../Basic/Form/FormikField';
+import Button from '../../../Basic/Button';
+import { getSessionID } from '../../../../utils/uniqueSessionID';
 import { authOTPValidation, authPhoneValidation, authPopupInitialValues } from './AuthPopupConstants';
 import { AuthPopupInterface } from './AuthPopupInterface';
-import { AUTHENTICATION_USER, CREATE_OTP } from '../../../GraphQL/OTP/OtpMutations';
+import { AUTHENTICATION_USER, CREATE_OTP } from '../../../../GraphQL/OTP/OtpMutations';
 
 const AuthPopup:React.FC<AuthPopupInterface> = ({ onClose }: AuthPopupInterface) => {
   const [phoneDispatched, setPhoneDispatched] = useState<boolean>(false);

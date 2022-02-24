@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTypeSelector } from '../../../../redux/reduxHooks';
+import { useTypeSelector } from '../../../../../redux/reduxHooks';
 import { CheckoutGeneralStyled } from './CheckoutGeneralStyled';
 
 export const CheckoutGeneral:React.FC = () => {

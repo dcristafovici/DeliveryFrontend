@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { useFormik } from 'formik';
-import { CREATE_ORDER } from '../../../../GraphQL/Order/OrderMutations';
-import Button from '../../../Basic/Button';
-import FormikField from '../../../Basic/Form/FormikField';
-import FormRow from '../../../Basic/Form/FormRow';
-import FormSelect from '../../../Basic/Form/FormSelect';
-import FormWrapper from '../../../Basic/Form/FormWrapper';
 import CheckoutGeneral from '../CheckoutGeneral';
 import { CheckoutFormInitialValues, TimeDeliveryTommorow, TimeToDelivery, CheckoutDays, CheckoutFormValidation } from './CheckoutFormConstants';
 import { checkoutDaysEnum, CheckoutFormInterface, CheckoutFormProps } from './CheckoutFormInterface';
 import { CheckoutFormStyled } from './CheckoutFormStyled';
-import Suggest from '../../../Basic/Suggest';
+import { CREATE_ORDER } from '../../../../../GraphQL/Order/OrderMutations';
+import FormWrapper from '../../../../Basic/Form/FormWrapper';
+import FormRow from '../../../../Basic/Form/FormRow';
+import FormikField from '../../../../Basic/Form/FormikField';
+import Suggest from '../../../../Basic/Suggest';
+import FormSelect from '../../../../Basic/Form/FormSelect';
+import Button from '../../../../Basic/Button';
 
 const CheckoutForm:React.FC<CheckoutFormProps> = (
   { restaurantID, user, cart, total, address }: CheckoutFormProps,

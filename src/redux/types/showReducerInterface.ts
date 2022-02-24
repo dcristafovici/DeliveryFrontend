@@ -1,4 +1,6 @@
+import { ShowControllEnum } from '../../components/Show/ShowControll/ShowControllEnum';
+
 export interface IShow {
   isOpened: boolean;
-  openedID: null | number;
+  openedID: ShowControllEnum | null;
 }

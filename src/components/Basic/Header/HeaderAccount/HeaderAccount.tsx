@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { openPopup } from '../../../../redux/actions/showAction';
 import { useTypeSelector } from '../../../../redux/reduxHooks';
-import Popup from '../../../Popup';
-import AuthPopup from '../../../Popup/AuthPopup';
-import Overlay from '../../../Popup/Overlay';
+import { ShowControllEnum } from '../../../Show/ShowControll/ShowControllEnum';
 import Button from '../../Button';
 import { HeaderAccountStyled } from './HeaderAccountStyled';
 
 const HeaderAccount:React.FC = () => {
-  const [authentication, setAuthentication] = useState(false);
-  const { id } = useTypeSelector((state) => state.userReducer);
+  const { authorized } = useTypeSelector((state) => state.userReducer);
+  const dispatch = useDispatch();
   return (
     <HeaderAccountStyled>
-      {id ? (
+      {authorized ? (
         <Link to="/account/" className="auth-button">
           Account
         </Link>
@@ -21,14 +21,8 @@ const HeaderAccount:React.FC = () => {
           disabled={false}
           name="Sign In"
           className="transparent"
-          onClickEvent={() => setAuthentication(true)}
+          onClickEvent={() => dispatch(openPopup(ShowControllEnum.AUTHENTICATION))}
         />
-      )}
-      {authentication && (
-        <Popup>
-          <Overlay onClickEvent={() => setAuthentication(false)} />
-          <AuthPopup onClose={() => setAuthentication(false)} />
-        </Popup>
       )}
     </HeaderAccountStyled>
   );

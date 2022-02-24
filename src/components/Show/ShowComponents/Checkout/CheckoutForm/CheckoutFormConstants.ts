@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
-import { STRINGS } from '../../../../constants';
-import { getDisponibleHours } from '../../../../utils/getDisponibleHours';
+import { STRINGS } from '../../../../../constants';
+import { getDisponibleHours } from '../../../../../utils/getDisponibleHours';
 import { CheckoutFormInterface } from './CheckoutFormInterface';
 
 export const CheckoutDays = [
