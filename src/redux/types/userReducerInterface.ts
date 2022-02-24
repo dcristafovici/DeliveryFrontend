@@ -6,4 +6,5 @@ export interface IUser {
   address?: string;
   address_lat?: string;
   address_lon?: string;
+  authorized?: boolean;
 }

@@ -5,7 +5,11 @@ import { DefaultGuardProps } from './types';
 export const DefaultGuard:React.FC<DefaultGuardProps> = (
   { component: Component, path, exact }: DefaultGuardProps,
 ) => (
-  <Route path={path} exact={exact} component={Component} />
+  <Route
+    path={path}
+    exact={exact}
+    component={Component}
+  />
 );
 
 export const TokenGuard:React.FC<DefaultGuardProps> = (

@@ -4,6 +4,6 @@ import { IUser } from '../types/userReducerInterface';
 export const setUserData = (user: IUser) => (dispatch:any) => {
   dispatch({
     type: SET_USER_DATA,
-    payload: user,
+    payload: { ...user, authorized: true },
   });
 };

@@ -9,6 +9,7 @@ const initialState: IUser = {
   address: '',
   address_lat: '',
   address_lon: '',
+  authorized: false,
 };
 
 export const userReducer = (state = initialState, action:any) => {
