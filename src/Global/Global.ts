@@ -13,7 +13,7 @@ export const Global = createGlobalStyle`
   }
   body{
     background: ${COLORS.GRAY_BG};
-    &.stoped {
+    &.no-scroll {
       overflow: hidden;
     }
   }
