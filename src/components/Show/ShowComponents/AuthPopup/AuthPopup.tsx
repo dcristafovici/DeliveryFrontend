@@ -1,20 +1,23 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
 import { AuthPopupStyled } from './AuthPopupStyled';
 import FormikField from '../../../Basic/Form/FormikField';
 import Button from '../../../Basic/Button';
 import { getSessionID } from '../../../../utils/uniqueSessionID';
 import { authOTPValidation, authPhoneValidation, authPopupInitialValues } from './AuthPopupConstants';
-import { AuthPopupInterface } from './AuthPopupInterface';
 import { AUTHENTICATION_USER, CREATE_OTP } from '../../../../GraphQL/OTP/OtpMutations';
+import { closePopup } from '../../../../redux/actions/showAction';
 
-const AuthPopup:React.FC<AuthPopupInterface> = ({ onClose }: AuthPopupInterface) => {
+const AuthPopup:React.FC = () => {
   const [phoneDispatched, setPhoneDispatched] = useState<boolean>(false);
 
   const sessionID = getSessionID();
   const [createOTP] = useMutation(CREATE_OTP);
   const [authenticationUser] = useMutation(AUTHENTICATION_USER);
+
+  const dispatch = useDispatch();
 
   const onSubmitHandler = (values: any) => {
     const { phone, OTP } = values;
@@ -26,7 +29,7 @@ const AuthPopup:React.FC<AuthPopupInterface> = ({ onClose }: AuthPopupInterface)
       authenticationUser({ variables: { data: { phone, OTP, sessionID } } })
         .then(({ data }) => {
           localStorage.setItem('token', data.authenticationUser);
-          onClose();
+          dispatch(closePopup());
         })
         .catch((err) => {
           console.log(err.message);

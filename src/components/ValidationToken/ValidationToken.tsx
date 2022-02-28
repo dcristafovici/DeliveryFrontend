@@ -7,7 +7,7 @@ import { setUserData } from '../../redux/actions/userAction';
 const ValidationToken:React.FC = () => {
   const token = localStorage.getItem('token');
   const dispatch = useDispatch();
-  let responseFromToken = {};
+  let responseFromToken:any = null;
   let errorFromToken: ApolloError | undefined;
 
   if (token) {
@@ -17,7 +17,7 @@ const ValidationToken:React.FC = () => {
     errorFromToken = error;
   }
   useEffect(() => {
-    if (Object.keys(responseFromToken).length) {
+    if (responseFromToken) {
       dispatch(setUserData(responseFromToken));
     } else if (errorFromToken) {
       console.log(errorFromToken.message, 'ValidationToken error');

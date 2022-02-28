@@ -15,4 +15,5 @@ export interface ProductCardInterface {
 
 export interface ProductCardPropsInterface {
   product: ProductCardInterface;
+  authorized: boolean;
 }

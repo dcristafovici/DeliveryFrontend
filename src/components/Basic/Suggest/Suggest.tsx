@@ -3,9 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { FIND_POSSIBLE_ADDRESSES } from '../../../GraphQL/Address/AddressQueries';
 import { UPDATE_USER } from '../../../GraphQL/User/UserMutations';
+import { openPopup } from '../../../redux/actions/showAction';
 import { setUserData } from '../../../redux/actions/userAction';
 import { useTypeSelector } from '../../../redux/reduxHooks';
 import { useDebouncedEffect } from '../../../types/useDebouncedEffect';
+import { ShowControllEnum } from '../../Show/ShowControll/ShowControllEnum';
 import { CloseIcon } from '../Icons';
 import { SuggestInterface, SuggestProps, SuggestThemes } from './SuggestInterface';
 import { SuggestStyled } from './SuggestStyled';
@@ -17,7 +19,7 @@ const Suggest:React.FC<SuggestProps> = ({ mode = SuggestThemes.LIGHT }: SuggestP
 
   const dispatch = useDispatch();
   const [updateUser] = useMutation(UPDATE_USER);
-  const { id, address: userAddress } = useTypeSelector((state) => state.userReducer);
+  const { id, address: userAddress, authorized } = useTypeSelector((state) => state.userReducer);
 
   const [getSuggest, { data = {} }] = useLazyQuery(FIND_POSSIBLE_ADDRESSES);
   const { findPossibleAddresses = [] } = data;
@@ -58,6 +60,13 @@ const Suggest:React.FC<SuggestProps> = ({ mode = SuggestThemes.LIGHT }: SuggestP
       })
       .catch((err) => console.log(err));
   };
+
+  const onClickInput = (e: React.FormEvent<HTMLInputElement>) => {
+    if (!authorized) {
+      dispatch(openPopup(ShowControllEnum.INFO));
+      e.currentTarget.blur();
+    }
+  };
   return (
     <SuggestStyled className={`${addressFromUser ? 'user-seted' : ''} ${mode || ''}`}>
       <div className="suggested-input">
@@ -65,6 +74,7 @@ const Suggest:React.FC<SuggestProps> = ({ mode = SuggestThemes.LIGHT }: SuggestP
           type="text"
           key={userAddress}
           onChange={onChangeHandler}
+          onClick={(e) => onClickInput(e)}
           value={address}
           placeholder="Type your location"
         />

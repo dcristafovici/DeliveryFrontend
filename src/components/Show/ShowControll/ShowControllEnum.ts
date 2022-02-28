@@ -1,4 +1,5 @@
 export enum ShowControllEnum {
   AUTHENTICATION = 'authentication',
-  CHECKOUT = 'checkout'
+  CHECKOUT = 'checkout',
+  INFO = 'info',
 }

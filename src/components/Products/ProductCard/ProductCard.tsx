@@ -5,14 +5,25 @@ import { ProductCardPropsInterface } from './ProductCardInterface';
 import { ProductCardStyled } from './ProductCardStyled';
 import placeholder from '../../../assets/img/placeholder.svg';
 import { addProduct } from '../../../redux/actions/asideAction';
+import { openPopup } from '../../../redux/actions/showAction';
+import { ShowControllEnum } from '../../Show/ShowControll/ShowControllEnum';
 
 const ProductCard:React.FC<ProductCardPropsInterface> = (
-  { product }: ProductCardPropsInterface,
+  { product, authorized }: ProductCardPropsInterface,
 ) => {
   const { id, name, price, description, weight, media } = product;
   const dispatch = useDispatch();
+
+  const onAddProduct = () => {
+    if (authorized) {
+      dispatch(addProduct(id, name, price, weight));
+    } else {
+      dispatch(openPopup(ShowControllEnum.INFO));
+    }
+  };
+
   return (
-    <ProductCardStyled onClick={() => dispatch(addProduct(id, name, price, weight))}>
+    <ProductCardStyled onClick={() => onAddProduct()}>
       <div className={`product-card__photo ${(media && media.medium) ? '' : 'product-photo__placeholder'}`}>
         {(media && media.medium) ? (
           <img src={`${serverPath}/${media?.medium}`} alt="Product" />

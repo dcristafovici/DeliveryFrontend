@@ -7,6 +7,7 @@ import CheckIcon from './CheckIcon';
 import AccountIcon from './AccountIcon';
 import CheckoutIcon from './CheckoutIcon';
 import LogoIcon from './LogoIcon';
+import RestrictIcon from './RestrictIcon';
 
 export {
   FileIcon,
@@ -18,4 +19,5 @@ export {
   AccountIcon,
   CheckoutIcon,
   LogoIcon,
+  RestrictIcon,
 };
