@@ -5,7 +5,6 @@ import { uniqueSessionID } from './utils/uniqueSessionID';
 
 const App:React.FC = () => {
   useEffect(() => {
-    // Generating custom session ID;
     uniqueSessionID();
   }, []);
 

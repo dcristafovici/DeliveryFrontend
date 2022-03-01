@@ -177,7 +177,7 @@ const CheckoutForm:React.FC<CheckoutFormProps> = (
           </FormRow>
         </FormWrapper>
         <CheckoutGeneral />
-        <Button name="Checkout" className="full" />
+        <Button name="Checkout" disabled={!formik.isValid} className="full" />
       </form>
     </CheckoutFormStyled>
   );

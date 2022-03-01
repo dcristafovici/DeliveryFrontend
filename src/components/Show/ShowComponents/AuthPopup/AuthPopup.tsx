@@ -30,6 +30,7 @@ const AuthPopup:React.FC = () => {
         .then(({ data }) => {
           localStorage.setItem('token', data.authenticationUser);
           dispatch(closePopup());
+          window.location.reload();
         })
         .catch((err) => {
           console.log(err.message);
