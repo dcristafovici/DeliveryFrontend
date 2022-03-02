@@ -2,39 +2,38 @@ import React, { useEffect, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { useFormik } from 'formik';
 import CheckoutGeneral from '../CheckoutGeneral';
-import { CheckoutFormInitialValues, TimeDeliveryTommorow, TimeToDelivery, CheckoutDays, CheckoutFormValidation } from './CheckoutFormConstants';
-import { checkoutDaysEnum, CheckoutFormInterface, CheckoutFormProps } from './CheckoutFormInterface';
+import { CheckoutFormInitialValues, CheckoutFormValidation } from './CheckoutFormConstants';
+import { CheckoutFormInterface, CheckoutFormProps } from './CheckoutFormInterface';
 import { CheckoutFormStyled } from './CheckoutFormStyled';
 import { CREATE_ORDER } from '../../../../../GraphQL/Order/OrderMutations';
 import FormWrapper from '../../../../Basic/Form/FormWrapper';
 import FormRow from '../../../../Basic/Form/FormRow';
 import FormikField from '../../../../Basic/Form/FormikField';
 import Suggest from '../../../../Basic/Suggest';
-import FormSelect from '../../../../Basic/Form/FormSelect';
 import Button from '../../../../Basic/Button';
+import FormDate from '../../../../Basic/Form/FormDate';
 
 const CheckoutForm:React.FC<CheckoutFormProps> = (
   { restaurantID, user, cart, total, address }: CheckoutFormProps,
 ) => {
   const [createOrder] = useMutation(CREATE_ORDER);
+  const [currentDate, setCurrentDate] = useState(new Date());
 
   const [initialValues, setInitialValues] = useState<
     CheckoutFormInterface>(CheckoutFormInitialValues);
-
   const onSubmitHandler = (values: CheckoutFormInterface) => {
     const editedCart = cart.map((item:any) => ({
       product: item.id,
       productName: item.name,
       quantity: item.quantity,
     }));
-    const { name, phone, email, floor, office, apartment, date, time, additionalComment } = values;
+    const { name, phone, email, floor, office, apartment, additionalComment } = values;
     createOrder({ variables: {
       data: {
         user: user.id,
         restaurant: restaurantID,
-        day: date,
+        date: currentDate,
         total,
-        time,
         orderCart: editedCart,
         orderCustomer: {
           name,
@@ -144,23 +143,7 @@ const CheckoutForm:React.FC<CheckoutFormProps> = (
         </FormWrapper>
         <FormWrapper title="Delivery detailes">
           <FormRow>
-            <FormSelect
-              values={CheckoutDays}
-              label="Choose Day"
-              selectDefault={initialValues.date}
-              onSelect={(option:string) => { formik.setFieldValue('date', option); }}
-            />
-            <FormSelect
-              values={
-                formik.values.date === checkoutDaysEnum.TODAY
-                  ? TimeToDelivery
-                  : TimeDeliveryTommorow
-                }
-              label="Choose Time"
-              selectDefault={initialValues.time}
-              onSelect={(option:string) => { formik.setFieldValue('time', option); }}
-
-            />
+            <FormDate selectedDate={currentDate} onChange={(date) => setCurrentDate(date)} />
           </FormRow>
         </FormWrapper>
         <FormWrapper title="Additional comment">

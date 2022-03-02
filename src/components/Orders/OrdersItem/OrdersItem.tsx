@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import Button from '../../Basic/Button';
 import { ArrowIcon } from '../../Basic/Icons';
 import { OrdersItemsStyled } from '../OrdersItems/OrdersItemStyled';
 import OrdersPosition from '../OrdersPosition';
 import { OrdersItemInterface } from './OrdersItemInterface';
 
 const OrdersItem:React.FC<OrdersItemInterface> = (
-  { total, restaurant, orderPayment, orderCart, orderNumber }: OrdersItemInterface,
+  { date, total, restaurant, orderPayment, orderCart, orderNumber }: OrdersItemInterface,
 ) => {
   const [showPosition, setShowPosition] = useState<boolean>(false);
+  const dateToUTC = new Date(date);
   return (
     <OrdersItemsStyled>
       <div
@@ -49,7 +49,9 @@ const OrdersItem:React.FC<OrdersItemInterface> = (
             ))}
           </div>
           <div className="orders-actions">
-            <div className="orders-repeat" />
+            <div className="orders-date">
+              {dateToUTC.toString()}
+            </div>
             <div className="orders-total">
               <span>Total:</span>
               <span>{total}</span>

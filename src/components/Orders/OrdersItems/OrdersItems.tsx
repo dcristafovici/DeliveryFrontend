@@ -7,10 +7,11 @@ import { OrdersItemsStyled } from './OrdersItemStyled';
 const OrdersItems:React.FC<OrdersItemsInterface> = ({ ordersItems }: OrdersItemsInterface) => (
   <OrdersItemsStyled>
     {ordersItems.map((order: OrdersItemInterface) => {
-      const { id, total, restaurant, orderPayment, orderCart, orderNumber } = order;
+      const { id, date, total, restaurant, orderPayment, orderCart, orderNumber } = order;
       return (
         <OrdersItem
           key={id}
+          date={date}
           total={total}
           orderPayment={orderPayment}
           restaurant={restaurant}

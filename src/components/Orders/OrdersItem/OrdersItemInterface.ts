@@ -6,6 +6,7 @@ export interface OrdersItemInterface {
   },
   orderNumber: number,
   total: number;
+  date: Date,
   orderPayment: {
     status: string;
   }

@@ -1,22 +1,19 @@
 import { useQuery } from '@apollo/client';
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
 import { COLORS } from '../../../../../constants';
 import { FIND_ONE_ORDER } from '../../../../../GraphQL/Order/OrderQueries';
-import { RoutesDetailes } from '../../../../../routes/routes';
+import { useTypeSelector } from '../../../../../redux/reduxHooks';
 import { CheckoutIcon } from '../../../../Basic/Icons';
 import { CheckoutTitleStyled } from '../CheckoutTitle/CheckoutTitleStyled';
-import { CheckoutSuccessInterface } from './CheckoutSuccessInterface';
 import { CheckoutSuccessStyled } from './CheckoutSuccessStyled';
 
-const CheckoutSuccess:React.FC<CheckoutSuccessInterface> = (
-  { orderID }: CheckoutSuccessInterface,
-) => {
+const CheckoutSuccess:React.FC = () => {
+  const { date = {} } = useTypeSelector((state) => state.showReducer);
+  const { orderID } = date;
+
   const { loading, data = {} } = useQuery(FIND_ONE_ORDER, { variables: { id: orderID } });
   const { findOneOrder = [] } = data;
-  const { orderCustomer, orderNumber, orderPayment } = findOneOrder;
-  const history = useHistory();
-
+  const { orderCustomer, orderNumber } = findOneOrder;
   return (
     <CheckoutSuccessStyled>
       <div className="checkout-success__wrapper">
@@ -43,18 +40,6 @@ const CheckoutSuccess:React.FC<CheckoutSuccessInterface> = (
             </span>
           </li>
         </ul>
-
-        <ul>
-          <li>
-            Additional information about your order you can see at the
-            <span>
-              <Link to={RoutesDetailes.ACCOUNT.path}>
-                account page
-              </Link>
-            </span>
-          </li>
-        </ul>
-
         <ul>
           <li>
             If you require any further information, feel free to contact us

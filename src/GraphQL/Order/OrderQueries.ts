@@ -18,8 +18,7 @@ export const FIND_ORDERS_BY_KEYS = gql`
   query findByKeyOrders($data: FindByKeyInput!) {
     findByKeyOrders(data: $data) {
       id,
-      day,
-      time,
+      date,
       restaurant{
         name,
         rating

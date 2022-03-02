@@ -3,4 +3,5 @@ import { ShowControllEnum } from '../../components/Show/ShowControll/ShowControl
 export interface IShow {
   isOpened: boolean;
   openedID: ShowControllEnum | null;
+  date: any;
 }

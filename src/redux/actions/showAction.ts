@@ -1,10 +1,10 @@
 import { ShowControllEnum } from '../../components/Show/ShowControll/ShowControllEnum';
 import { OPEN_POPUP, CLOSE_POPUP } from '../actions-types/showTypes';
 
-export const openPopup = (id: ShowControllEnum) => (dispatch:any) => {
+export const openPopup = (id: ShowControllEnum, date = {}) => (dispatch:any) => {
   dispatch({
     type: OPEN_POPUP,
-    payload: id,
+    payload: { id, date },
   });
   document.body.classList.add('no-scroll');
 };

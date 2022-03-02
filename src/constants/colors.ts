@@ -17,6 +17,7 @@ const GRAY_5 = '#F0F0F0';
 const GRAY_6 = '#7c7c7c';
 const GRAY_7 = '#f5f4f2';
 const GRAY_8 = '#DADADA';
+const GRAY_9 = '#828282';
 
 export {
   PRIMARY_BLUE,
@@ -34,5 +35,6 @@ export {
   GRAY_6,
   GRAY_7,
   GRAY_8,
+  GRAY_9,
   YELLOW,
 };

@@ -89,6 +89,10 @@ export const OrdersItemsStyled = styled.div`
   }
 
   .orders {
+    &-date {
+      font-weight: 400;
+      color: ${COLORS.PRIMARY_DARK};
+    }
     &-general {
       display: flex;
       align-items: center;
