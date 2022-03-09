@@ -2,6 +2,7 @@ import AuthPopup from '../ShowComponents/AuthPopup';
 import Checkout from '../ShowComponents/Checkout';
 import CheckoutSuccess from '../ShowComponents/Checkout/CheckoutSuccess';
 import InfoPopup from '../ShowComponents/InfoPopup';
+import LeavePageAlert from '../ShowComponents/LeavePageAlert';
 import { ShowControllEnum } from './ShowControllEnum';
 import { ShowControllInterface } from './ShowControllInterface';
 
@@ -21,5 +22,9 @@ export const ShowControll: ShowControllInterface[] = [
   {
     id: ShowControllEnum.INFO,
     component: InfoPopup,
+  },
+  {
+    id: ShowControllEnum.LEAVE_PAGE_ALERT,
+    component: LeavePageAlert,
   },
 ];

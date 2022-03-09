@@ -1,6 +1,5 @@
 import * as Yup from 'yup';
 import { STRINGS } from '../../../../../constants';
-import { getDisponibleHours } from '../../../../../utils/getDisponibleHours';
 import { CheckoutFormInterface } from './CheckoutFormInterface';
 
 export const CheckoutDays = [
@@ -13,18 +12,14 @@ export const CheckoutDays = [
     label: 'Tomorrow',
   },
 ];
-export const TimeToDelivery = getDisponibleHours(0, 30, true);
-export const TimeDeliveryTommorow = getDisponibleHours(0, 30);
-
 export const CheckoutFormInitialValues:CheckoutFormInterface = {
   name: '',
   phone: '',
   email: '',
   floor: '',
   office: '',
+  date: '',
   apartment: '',
-  date: CheckoutDays[0].label,
-  time: TimeToDelivery[0].label,
   additionalComment: '',
 };
 

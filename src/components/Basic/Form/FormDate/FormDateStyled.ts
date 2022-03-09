@@ -94,4 +94,7 @@ export const FormDateStyled = styled.div`
   .react-datepicker__navigation:hover *::before {
     border-color: ${COLORS.PRIMARY_BLUE};
   }
+  .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item--selected {
+    background: ${COLORS.PRIMARY_BLUE};
+  }
 `;

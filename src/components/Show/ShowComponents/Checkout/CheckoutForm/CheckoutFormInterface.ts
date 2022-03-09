@@ -6,7 +6,6 @@ export interface CheckoutFormInterface {
   office: string;
   apartment: string;
   date: string;
-  time: string;
   additionalComment: string;
 }
 
