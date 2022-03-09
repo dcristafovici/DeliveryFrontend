@@ -3,11 +3,14 @@ import { useDispatch } from 'react-redux';
 import { Prompt, useHistory } from 'react-router';
 import { clearAside } from '../../../redux/actions/asideAction';
 import { closePopup, openPopup } from '../../../redux/actions/showAction';
+import { useTypeSelector } from '../../../redux/reduxHooks';
 import { ShowControllEnum } from '../../Show/ShowControll/ShowControllEnum';
 
 const RouteLeavingGuard: React.FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const { cart = [] } = useTypeSelector((state) => state.asideReducer);
 
   const [lastLocation, setLastLocation] = useState<Location | null>(null);
   const [confirmedNavigation, setConfirmedNavigation] = useState(false);
@@ -35,7 +38,7 @@ const RouteLeavingGuard: React.FC = () => {
     }
   }, [confirmedNavigation, lastLocation]);
   return (
-    <Prompt when message={handleBlockedNavigation} />
+    <Prompt when={cart.length > 0} message={handleBlockedNavigation} />
   );
 };
 

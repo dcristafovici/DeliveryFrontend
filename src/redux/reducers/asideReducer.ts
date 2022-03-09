@@ -9,9 +9,10 @@ import {
   UPDATE_PERCENT,
   UPDATE_QUANTITY,
 } from '../actions-types/asideTypes';
+import { IAside } from '../types/asideReducerInterface';
 import { AsideItemInterface } from '../types/reduxTypes';
 
-const initialState = {
+const initialState: IAside = {
   minPrice: 0,
   deliveryTime: 0,
   total: 0,
