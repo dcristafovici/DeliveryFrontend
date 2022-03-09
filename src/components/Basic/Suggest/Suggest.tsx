@@ -8,7 +8,7 @@ import { setUserData } from '../../../redux/actions/userAction';
 import { useTypeSelector } from '../../../redux/reduxHooks';
 import { useDebouncedEffect } from '../../../types/useDebouncedEffect';
 import { ShowControllEnum } from '../../Show/ShowControll/ShowControllEnum';
-import { CloseIcon } from '../Icons';
+import { EditIcon } from '../Icons';
 import { SuggestInterface, SuggestProps, SuggestThemes } from './SuggestInterface';
 import { SuggestStyled } from './SuggestStyled';
 
@@ -95,7 +95,7 @@ const Suggest:React.FC<SuggestProps> = ({ mode = SuggestThemes.LIGHT }: SuggestP
           role="button"
           tabIndex={0}
         >
-          <CloseIcon />
+          <EditIcon />
         </div>
       )}
     </SuggestStyled>

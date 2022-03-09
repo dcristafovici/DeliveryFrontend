@@ -18,7 +18,7 @@ export const CheckoutFormInitialValues:CheckoutFormInterface = {
   email: '',
   floor: '',
   office: '',
-  date: '',
+  date: new Date(),
   apartment: '',
   additionalComment: '',
 };
@@ -33,6 +33,4 @@ export const CheckoutFormValidation = Yup.object().shape({
     .required(STRINGS.IS_REQUIRED('email')),
   date: Yup.string()
     .required(STRINGS.IS_REQUIRED('date')),
-  time: Yup.string()
-    .required(STRINGS.IS_REQUIRED('time')),
 });

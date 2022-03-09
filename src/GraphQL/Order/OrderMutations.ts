@@ -13,3 +13,9 @@ export const CREATE_ORDER = gql`
     }
   }
 `;
+
+export const UPDATE_PAYMENT_STATUS = gql`
+  mutation updatePaymentStatus($data: UpdatePaymentStatusDTO!) {
+    updatePaymentStatus(data: $data)
+  }
+`;

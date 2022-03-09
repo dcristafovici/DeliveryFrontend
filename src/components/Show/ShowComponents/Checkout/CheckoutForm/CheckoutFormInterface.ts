@@ -5,7 +5,7 @@ export interface CheckoutFormInterface {
   floor: string;
   office: string;
   apartment: string;
-  date: string;
+  date: Date;
   additionalComment: string;
 }
 

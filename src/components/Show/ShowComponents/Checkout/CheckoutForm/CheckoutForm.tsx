@@ -17,7 +17,6 @@ const CheckoutForm:React.FC<CheckoutFormProps> = (
   { restaurantID, user, cart, total, address }: CheckoutFormProps,
 ) => {
   const [createOrder] = useMutation(CREATE_ORDER);
-  const [currentDate, setCurrentDate] = useState(new Date());
 
   const [initialValues, setInitialValues] = useState<
     CheckoutFormInterface>(CheckoutFormInitialValues);
@@ -27,12 +26,12 @@ const CheckoutForm:React.FC<CheckoutFormProps> = (
       productName: item.name,
       quantity: item.quantity,
     }));
-    const { name, phone, email, floor, office, apartment, additionalComment } = values;
+    const { name, phone, email, floor, office, date, apartment, additionalComment } = values;
     createOrder({ variables: {
       data: {
         user: user.id,
         restaurant: restaurantID,
-        date: currentDate,
+        date,
         total,
         orderCart: editedCart,
         orderCustomer: {
@@ -143,7 +142,10 @@ const CheckoutForm:React.FC<CheckoutFormProps> = (
         </FormWrapper>
         <FormWrapper title="Delivery detailes">
           <FormRow>
-            <FormDate selectedDate={currentDate} onChange={(date) => setCurrentDate(date)} />
+            <FormDate
+              selectedDate={formik.values.date}
+              onChange={(date) => formik.setFieldValue('date', date)}
+            />
           </FormRow>
         </FormWrapper>
         <FormWrapper title="Additional comment">

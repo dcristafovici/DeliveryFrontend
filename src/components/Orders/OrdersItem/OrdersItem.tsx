@@ -8,7 +8,9 @@ const OrdersItem:React.FC<OrdersItemInterface> = (
   { date, total, restaurant, orderPayment, orderCart, orderNumber }: OrdersItemInterface,
 ) => {
   const [showPosition, setShowPosition] = useState<boolean>(false);
-  const dateToUTC = new Date(date);
+  const convertedTimeWithTimezone = new Date(date).toLocaleString('en-GB', {
+    timeZone: 'Europe/Moscow',
+  });
   return (
     <OrdersItemsStyled>
       <div
@@ -50,7 +52,7 @@ const OrdersItem:React.FC<OrdersItemInterface> = (
           </div>
           <div className="orders-actions">
             <div className="orders-date">
-              {dateToUTC.toString()}
+              {convertedTimeWithTimezone}
             </div>
             <div className="orders-total">
               <span>Total:</span>

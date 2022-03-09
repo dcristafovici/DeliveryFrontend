@@ -8,6 +8,7 @@ const FormDate:React.FC<FormDateInterface> = ({ selectedDate, onChange }: FormDa
   <FormDateStyled>
     <DatePicker
       selected={selectedDate}
+      dateFormat="dd/MM/yyyy HH:mm"
       timeFormat="HH:mm"
       minDate={new Date()}
       calendarStartDay={1}

@@ -1,10 +1,12 @@
-import { useQuery } from '@apollo/client';
-import React from 'react';
+import { useMutation, useQuery } from '@apollo/client';
+import React, { useEffect } from 'react';
 import { COLORS } from '../../../../../constants';
+import { UPDATE_PAYMENT_STATUS } from '../../../../../GraphQL/Order/OrderMutations';
 import { FIND_ONE_ORDER } from '../../../../../GraphQL/Order/OrderQueries';
 import { useTypeSelector } from '../../../../../redux/reduxHooks';
 import { CheckoutIcon } from '../../../../Basic/Icons';
 import { CheckoutTitleStyled } from '../CheckoutTitle/CheckoutTitleStyled';
+import { PaymentStatusEnum } from './CheckoutSuccessInterface';
 import { CheckoutSuccessStyled } from './CheckoutSuccessStyled';
 
 const CheckoutSuccess:React.FC = () => {
@@ -13,7 +15,16 @@ const CheckoutSuccess:React.FC = () => {
 
   const { loading, data = {} } = useQuery(FIND_ONE_ORDER, { variables: { id: orderID } });
   const { findOneOrder = [] } = data;
-  const { orderCustomer, orderNumber } = findOneOrder;
+  const { orderCustomer, orderNumber, orderPayment } = findOneOrder;
+
+  const [updateStatus] = useMutation(UPDATE_PAYMENT_STATUS);
+  useEffect(() => {
+    if (orderPayment) {
+      const { id } = orderPayment;
+      updateStatus({ variables: { data: { id, status: PaymentStatusEnum.COMPLETED } } });
+    }
+  }, [orderPayment]);
+
   return (
     <CheckoutSuccessStyled>
       <div className="checkout-success__wrapper">
