@@ -70,7 +70,7 @@ export const CategoriesStyled = styled.div`
         box-sizing: border-box;
         max-height: 500px;
         overflow-x: hidden;
-        overflow-y: scroll;
+        overflow-y: auto;
         box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.0979294), 0px 1px 3px rgba(0, 0, 0, 0.1);
         opacity: 0;
         transform: translateY(-20px);
