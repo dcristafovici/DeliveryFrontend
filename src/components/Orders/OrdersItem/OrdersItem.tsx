@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { getKeyName } from '../../../utils/getKeyName';
 import { ArrowIcon } from '../../Basic/Icons';
+import { PaymentStatusEnum } from '../../Show/ShowComponents/Checkout/CheckoutSuccess/CheckoutSuccessInterface';
 import { OrdersItemsStyled } from '../OrdersItems/OrdersItemStyled';
 import OrdersPosition from '../OrdersPosition';
 import { OrdersItemInterface } from './OrdersItemInterface';
@@ -11,6 +13,8 @@ const OrdersItem:React.FC<OrdersItemInterface> = (
   const convertedTimeWithTimezone = new Date(date).toLocaleString('en-GB', {
     timeZone: 'Europe/Moscow',
   });
+
+  const status = getKeyName(PaymentStatusEnum, orderPayment.status);
   return (
     <OrdersItemsStyled>
       <div
@@ -25,7 +29,7 @@ const OrdersItem:React.FC<OrdersItemInterface> = (
           </div>
           <div className="orders-top__status">
             <span>Status: </span>
-            <span>{orderPayment.status}</span>
+            <span>{status}</span>
           </div>
         </div>
         <div className="orders-top__right">
