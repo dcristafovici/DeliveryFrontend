@@ -22,7 +22,7 @@ const initialState: IAside = {
   status: false,
 };
 
-export const asideReducer = (state = initialState, action:any) => {
+export const asideReducer = (action:any, state = initialState) => {
   const { cart } = state;
   const { payload } = action;
   switch (action.type) {

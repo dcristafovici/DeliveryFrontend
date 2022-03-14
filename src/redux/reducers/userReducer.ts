@@ -12,7 +12,7 @@ const initialState: IUser = {
   authorized: false,
 };
 
-export const userReducer = (state = initialState, action:any) => {
+export const userReducer = (action:any, state = initialState) => {
   const { type, payload } = action;
   switch (type) {
     case SET_USER_DATA: {

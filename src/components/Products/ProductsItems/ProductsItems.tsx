@@ -10,8 +10,10 @@ import { ProductsItemsStyled } from './ProductsItemsStyled';
 
 const ProductsItems:React.FC<ProductsItemsInterface> = ({ categoryID }: ProductsItemsInterface) => {
   const { id: restaurantID } = useParams<{ id: string }>();
-  const { loading, data = {} } = useQuery(FIND_BY_REST_CAT_COMB,
-    { variables: { data: { restaurant: restaurantID, category: categoryID } } });
+  const { loading, data = {} } = useQuery(
+    FIND_BY_REST_CAT_COMB,
+    { variables: { data: { restaurant: restaurantID, category: categoryID } } },
+  );
   const { findByResCatCombProducts: productsItems = [] } = data;
   const { authorized } = useTypeSelector((state) => state.userReducer);
   return (

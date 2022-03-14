@@ -12,26 +12,24 @@ const AsideSummary:React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const dispatch = useDispatch();
   return (
-    <>
-      <AsideSummaryStyled>
-        <div className="aside-summary__items">
-          <div className="aside-summary__item">
-            <span>Delivery Time</span>
-            <span>{deliveryTime}</span>
-          </div>
-          <div className="aside-summary__item">
-            <span>Total</span>
-            <span>{total}</span>
-          </div>
+    <AsideSummaryStyled>
+      <div className="aside-summary__items">
+        <div className="aside-summary__item">
+          <span>Delivery Time</span>
+          <span>{deliveryTime}</span>
         </div>
-        <Button
-          disabled={total < minPrice}
-          onClickEvent={() => dispatch(openPopup(ShowControllEnum.CHECKOUT, { restaurantID: id }))}
-          name="Checkout"
-          className="full"
-        />
-      </AsideSummaryStyled>
-    </>
+        <div className="aside-summary__item">
+          <span>Total</span>
+          <span>{total}</span>
+        </div>
+      </div>
+      <Button
+        disabled={total < minPrice}
+        onClickEvent={() => dispatch(openPopup(ShowControllEnum.CHECKOUT, { restaurantID: id }))}
+        name="Checkout"
+        className="full"
+      />
+    </AsideSummaryStyled>
   );
 };
 

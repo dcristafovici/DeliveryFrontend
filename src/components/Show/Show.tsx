@@ -13,7 +13,7 @@ const Show:React.FC = () => {
     (component:ShowControllInterface) => component.id === openedID,
   )?.component;
   return (
-    <>
+    <div className="show-wrapper">
       {isOpened && (
         <>
           <OverlayStyled onClick={() => dispatch(closePopup())} />
@@ -22,7 +22,7 @@ const Show:React.FC = () => {
           </ShowStyled>
         </>
       )}
-    </>
+    </div>
   );
 };
 

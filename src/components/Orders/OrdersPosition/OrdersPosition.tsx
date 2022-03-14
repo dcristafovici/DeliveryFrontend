@@ -8,11 +8,9 @@ const OrdersPosition:React.FC<OrderPositionInterface> = (
 ) => (
   <OrderPositionStyled className="orders-position">
     <div className="orders-position__image">
-      <>
-        {product.media && product.media.small && (
-          <img src={`${serverPath}/${product.media.small}`} alt={product.name} />
-        )}
-      </>
+      {product.media && product.media.small && (
+        <img src={`${serverPath}/${product.media.small}`} alt={product.name} />
+      )}
     </div>
     <div className="orders-position__name">
       <span>

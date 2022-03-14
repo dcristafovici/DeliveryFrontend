@@ -5,9 +5,7 @@ import { InputStyled } from './InputStyled';
 const Input:React.FC<InputInterface> = (
   { name, error, disabled = false, type, ...rest }: InputInterface,
 ) => (
-  <>
-    <InputStyled disabled={disabled} type={type} name={name} autoComplete="off" {...rest} />
-  </>
+  <InputStyled disabled={disabled} type={type} name={name} autoComplete="off" {...rest} />
 );
 
 export default Input;

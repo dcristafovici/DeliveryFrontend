@@ -14,18 +14,16 @@ const Aside:React.FC = () => {
     percent,
   } = useTypeSelector((state) => state.asideReducer);
   return (
-    <>
-      <AsideStyled>
-        <AsideTitle />
-        <AsideItems />
-        <AsideLine
-          total={total}
-          minPrice={minPrice}
-          percent={percent}
-        />
-        <AsideSummary />
-      </AsideStyled>
-    </>
+    <AsideStyled>
+      <AsideTitle />
+      <AsideItems />
+      <AsideLine
+        total={total}
+        minPrice={minPrice}
+        percent={percent}
+      />
+      <AsideSummary />
+    </AsideStyled>
   );
 };
 

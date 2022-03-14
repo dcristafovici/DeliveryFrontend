@@ -25,7 +25,7 @@ const ValidationToken:React.FC = () => {
   }, [responseFromToken, errorFromToken]);
 
   return (
-    <></>
+    <div className="validation-token" />
   );
 };
 
