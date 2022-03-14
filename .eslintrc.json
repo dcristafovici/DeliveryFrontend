@@ -37,6 +37,7 @@
     "jsx-a11y/no-noninteractive-element-interactions": "off",
     "no-param-reassign": "off",
     "camelcase": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
