@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { serverPath } from '../../../utils/envMode';
 import { ProductCardPropsInterface } from './ProductCardInterface';
 import { ProductCardStyled } from './ProductCardStyled';
-import placeholder from '../../../assets/img/placeholder.svg';
 import { addProduct } from '../../../redux/actions/asideAction';
 import { openPopup } from '../../../redux/actions/showAction';
 import { ShowControllEnum } from '../../Show/ShowControll/ShowControllEnum';
@@ -25,10 +24,8 @@ const ProductCard:React.FC<ProductCardPropsInterface> = (
   return (
     <ProductCardStyled onClick={() => onAddProduct()}>
       <div className={`product-card__photo ${(media && media.medium) ? '' : 'product-photo__placeholder'}`}>
-        {(media && media.medium) ? (
+        {(media && media.medium) && (
           <img src={`${serverPath}/${media?.medium}`} alt="Product" />
-        ) : (
-          <img src={placeholder} alt="Product" />
         )}
       </div>
       <div className="product-card__content">
