@@ -23,17 +23,13 @@ const AuthPopup:React.FC = () => {
     const { phone, OTP } = values;
     if (!phoneDispatched) {
       createOTP({ variables: { data: { phone, sessionID } } })
-        .then(() => setPhoneDispatched(true))
-        .catch((err) => console.log(err));
+        .then(() => setPhoneDispatched(true));
     } else {
       authenticationUser({ variables: { data: { phone, OTP, sessionID } } })
         .then(({ data }) => {
           localStorage.setItem('token', data.authenticationUser);
           dispatch(closePopup());
           window.location.reload();
-        })
-        .catch((err) => {
-          console.log(err.message);
         });
     }
   };

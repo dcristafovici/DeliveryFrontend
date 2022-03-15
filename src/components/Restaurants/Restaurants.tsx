@@ -8,7 +8,7 @@ import { RestaurantsStyled } from './RestaurantsStyled';
 import { FIND_RESTAURANTS } from '../../GraphQL/Restaurants/RestaurantsQueries';
 
 const Restaurants:React.FC = () => {
-  const { loading, data = {} } = useQuery(FIND_RESTAURANTS);
+  const { data = {} } = useQuery(FIND_RESTAURANTS);
   const { findRestaurants = [] } = data;
   return (
     <RestaurantsStyled>

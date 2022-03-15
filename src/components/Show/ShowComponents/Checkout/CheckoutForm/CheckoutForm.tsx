@@ -51,8 +51,7 @@ const CheckoutForm:React.FC<CheckoutFormProps> = (
         const { orderPayment } = orderResult;
         const { confirmation_url } = orderPayment;
         window.location.replace(confirmation_url);
-      })
-      .catch((err) => console.log(err.message));
+      });
   };
 
   useEffect(() => {

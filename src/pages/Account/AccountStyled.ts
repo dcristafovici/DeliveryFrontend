@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { COLORS, HELPERS } from '../../constants';
+import { COLORS } from '../../constants';
 import { device } from '../../utils/breakpoints';
 
 export const AccountStyled = styled.div`

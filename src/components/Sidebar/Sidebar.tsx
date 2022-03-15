@@ -37,9 +37,7 @@ const Sidebar:React.FC = () => {
   const onSubmitHandler = (values: unknown) => {
     const updatedValues = differenceBetweenObjects(initialValues, values);
     const { id } = user;
-    updateUser({ variables: { id, data: { ...updatedValues } } })
-      .then(() => console.log('successs'))
-      .catch((err) => console.log(err));
+    updateUser({ variables: { id, data: { ...updatedValues } } });
   };
   const formik = useFormik({
     initialValues,

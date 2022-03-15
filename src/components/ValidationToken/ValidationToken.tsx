@@ -19,8 +19,6 @@ const ValidationToken:React.FC = () => {
   useEffect(() => {
     if (responseFromToken) {
       dispatch(setUserData(responseFromToken));
-    } else if (errorFromToken) {
-      console.log(errorFromToken.message, 'ValidationToken error');
     }
   }, [responseFromToken, errorFromToken]);
 
