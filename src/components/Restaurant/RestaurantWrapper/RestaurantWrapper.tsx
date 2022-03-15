@@ -8,7 +8,7 @@ import RestaurantInfo from '../RestaurantInfo';
 
 const RestaurantWrapper:React.FC = () => {
   const { id: restaurantID } = useParams<{ id: string }>();
-  const { loading, data = {} } = useQuery(FIND_BY_KEY_RES_CAT, { variables: { data: { field: 'restaurant', value: restaurantID } } });
+  const { data = {} } = useQuery(FIND_BY_KEY_RES_CAT, { variables: { data: { field: 'restaurant', value: restaurantID } } });
   const { findByKeyResCat = [] } = data;
   return (
     <>

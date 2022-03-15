@@ -8,7 +8,6 @@ import AsideTitle from './AsideTitle';
 
 const Aside:React.FC = () => {
   const {
-    checkout,
     total,
     minPrice,
     percent,

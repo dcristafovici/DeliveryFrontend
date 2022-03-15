@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Prompt, useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 import { clearAside } from '../../../redux/actions/asideAction';
 import { closePopup, openPopup } from '../../../redux/actions/showAction';
 import { useTypeSelector } from '../../../redux/reduxHooks';
@@ -8,7 +8,7 @@ import { ShowControllEnum } from '../../Show/ShowControll/ShowControllEnum';
 
 const RouteLeavingGuard: React.FC = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const { cart = [] } = useTypeSelector((state) => state.asideReducer);
 
@@ -34,11 +34,12 @@ const RouteLeavingGuard: React.FC = () => {
 
   useEffect(() => {
     if (confirmedNavigation && lastLocation) {
-      history.push(lastLocation.pathname);
+      navigate(lastLocation.pathname);
     }
   }, [confirmedNavigation, lastLocation]);
   return (
-    <Prompt when={cart.length > 0} message={handleBlockedNavigation} />
+    <h1>Route</h1>
+    // <Prompt when={cart.length > 0} message={handleBlockedNavigation} />
   );
 };
 

@@ -38,6 +38,7 @@
     "no-param-reassign": "off",
     "camelcase": "off",
     "@typescript-eslint/no-explicit-any": "off",
+    "default-param-last": "off",
     "react/function-component-definition": [
       2,
       {

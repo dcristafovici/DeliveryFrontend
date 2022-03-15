@@ -28,8 +28,6 @@ export interface TokenGuardProps {
 
 export interface DefaultGuardProps {
   component: any;
-  path: string;
-  exact: boolean;
 }
 
 export type RoutesNavigationTypes = {

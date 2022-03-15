@@ -43,7 +43,7 @@ const Suggest:React.FC<SuggestProps> = ({ mode = SuggestThemes.LIGHT }: SuggestP
     setAddress(value);
   };
 
-  const onResetHandler = (e:React.FormEvent<HTMLDivElement>) => {
+  const onResetHandler = () => {
     setAddressFromUser(false);
   };
 
@@ -57,8 +57,7 @@ const Suggest:React.FC<SuggestProps> = ({ mode = SuggestThemes.LIGHT }: SuggestP
     updateUser({ variables: { id, data: { ...combinedCoordinates } } })
       .then(() => {
         dispatch(setUserData(combinedCoordinates));
-      })
-      .catch((err) => console.log(err));
+      });
   };
 
   const onClickInput = (e: React.FormEvent<HTMLInputElement>) => {

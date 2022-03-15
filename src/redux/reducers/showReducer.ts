@@ -7,7 +7,7 @@ const initialState: IShow = {
   date: {},
 };
 
-export const showReducer = (action:any, state = initialState) => {
+export const showReducer = (state = initialState, action:any) => {
   const { type, payload } = action;
   switch (type) {
     case OPEN_POPUP:

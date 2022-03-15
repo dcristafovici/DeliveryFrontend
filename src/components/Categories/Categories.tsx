@@ -32,7 +32,7 @@ const Categories:React.FC<CategoriesInterface> = ({ categories }: CategoriesInte
       <div className="categories-points">
         {categories.slice(0, 5).map((category: ProductsPointInterface) => (
           <CategoriesPoint
-            onSetName={(name) => setMoreElement(STRINGS.MORE)}
+            onSetName={() => setMoreElement(STRINGS.MORE)}
             key={category.category.id}
             category={category.category}
           />

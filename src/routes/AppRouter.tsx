@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from '../components/Basic/Header';
 import Main from '../components/Basic/Main';
 import Footer from '../components/Footer';
@@ -9,13 +9,11 @@ const AppRouter = ({ routes }: { routes: RouteTypes[] }) => (
   <Main>
     <Router>
       <Header />
-      <Switch>
-        <Suspense fallback={<h1>Loading</h1>}>
-          {routes.map(({ name, path, exact, guard: Guard, component }: RouteTypes) => (
-            <Guard key={name} path={path} component={component} exact={exact} />
-          ))}
-        </Suspense>
-      </Switch>
+      <Routes>
+        {routes.map(({ name, path, guard: Guard, component: Component }: RouteTypes) => (
+          <Route key={name} path={path} element={Guard(Component)} />
+        ))}
+      </Routes>
       <Footer />
     </Router>
   </Main>
