@@ -12,7 +12,6 @@ ReactDOM.render(
     <Provider store={Store}>
       <ApolloProvider client={GraphqlClient}>
         <Global />
-        {console.log('this is worked code')}
         <App />
       </ApolloProvider>
     </Provider>

@@ -14,7 +14,7 @@ const Banner:React.FC = () => (
           </div>
           <div className="banner-content">
             <div className="banner-title">
-              Fast delivery of the delicious food
+              TEST1 Fast delivery of the delicious food
             </div>
           </div>
           <Suggest />
