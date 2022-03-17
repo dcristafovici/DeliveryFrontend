@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { serverPath } from '../../../utils/envMode';
 import { ProductCardPropsInterface } from './ProductCardInterface';
 import { ProductCardStyled } from './ProductCardStyled';
 import { addProduct } from '../../../redux/actions/asideAction';
@@ -25,7 +24,7 @@ const ProductCard:React.FC<ProductCardPropsInterface> = (
     <ProductCardStyled onClick={() => onAddProduct()}>
       <div className={`product-card__photo ${(media && media.medium) ? '' : 'product-photo__placeholder'}`}>
         {(media && media.medium) && (
-          <img src={`${serverPath}/${media?.medium}`} alt="Product" />
+          <img src={`${media?.medium}`} alt="Product" />
         )}
       </div>
       <div className="product-card__content">

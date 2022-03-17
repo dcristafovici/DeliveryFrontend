@@ -3,7 +3,6 @@ import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { FIND_ONE_RESTAURANT } from '../../../GraphQL/Restaurants/RestaurantsQueries';
-import { serverPath } from '../../../utils/envMode';
 import { RestaurantCardInterface } from '../../Restaurants/RestaurantCard/RestaurantCardInterface';
 import { RestaurantInfoStyled } from './RestaurantInfoStyled';
 import { setAsideData } from '../../../redux/actions/asideAction';
@@ -25,7 +24,7 @@ const RestaurantInfo:React.FC = () => {
     <RestaurantInfoStyled className={loading ? 'loading' : ''}>
       <div className="restaurant-info__photo">
         {media && media.large && (
-          <img src={`${serverPath}/${media?.large}`} alt={name} />
+          <img src={`${media?.large}`} alt={name} />
         )}
       </div>
       <div className="restaurant-info__content">

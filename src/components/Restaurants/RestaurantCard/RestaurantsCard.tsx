@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { serverPath } from '../../../utils/envMode';
 import { RestaurantCardInterface } from './RestaurantCardInterface';
 import { RestaurantCardStyled } from './RestaurantCardStyled';
 
@@ -11,7 +10,7 @@ const RestaurantCard:React.FC<RestaurantCardInterface> = (
     <Link to={{ pathname: `restaurant/${id}` }}>
       <div className="restaurant-card__top">
         <div className="card-top__photo">
-          <img src={`${serverPath}/${media.mediumLarge}`} alt={name} />
+          <img src={`${media.mediumLarge}`} alt={name} />
         </div>
         <div className="card-top__info">
           <div className="card-top__time card-top__item">{deliveryTime}</div>
