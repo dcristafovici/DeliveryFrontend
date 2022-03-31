@@ -22,10 +22,10 @@ const AuthPopup:React.FC = () => {
   const onSubmitHandler = (values: any) => {
     const { phone, OTP } = values;
     if (!phoneDispatched) {
-      createOTP({ variables: { data: { phone, sessionID } } })
+      createOTP({ variables: { data: { value: phone, sessionID, typeOfOTP: 'PHONE' } } })
         .then(() => setPhoneDispatched(true));
     } else {
-      authenticationUser({ variables: { data: { phone, OTP, sessionID } } })
+      authenticationUser({ variables: { data: { phone, code: OTP, sessionID } } })
         .then(({ data }) => {
           localStorage.setItem('token', data.authenticationUser);
           dispatch(closePopup());

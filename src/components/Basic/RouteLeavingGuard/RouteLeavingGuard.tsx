@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { clearAside } from '../../../redux/actions/asideAction';
 import { closePopup, openPopup } from '../../../redux/actions/showAction';
 import { useTypeSelector } from '../../../redux/reduxHooks';
+import { usePrompt } from '../../../utils/LeavingGuardUtils';
 import { ShowControllEnum } from '../../Show/ShowControll/ShowControllEnum';
 
 const RouteLeavingGuard: React.FC = () => {
@@ -37,9 +38,10 @@ const RouteLeavingGuard: React.FC = () => {
       navigate(lastLocation.pathname);
     }
   }, [confirmedNavigation, lastLocation]);
+  usePrompt(handleBlockedNavigation, cart.length > 0);
   return (
-    <h1>Route</h1>
-    // <Prompt when={cart.length > 0} message={handleBlockedNavigation} />
+    // TO:DO Rewrite route leaving guard for v6.
+    <h1>dssd</h1>
   );
 };
 
