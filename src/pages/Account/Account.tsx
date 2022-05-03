@@ -27,9 +27,7 @@ const Account:React.FC = () => {
           <StyledFlex justify="space-between">
             <SidebarWrapper />
             <MainAccountStyled>
-
               <Orders />
-
             </MainAccountStyled>
           </StyledFlex>
         </Container>
