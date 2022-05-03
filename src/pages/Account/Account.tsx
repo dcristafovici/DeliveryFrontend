@@ -25,9 +25,7 @@ const Account:React.FC = () => {
         <Container>
           <div className="account-title">Account</div>
           <StyledFlex justify="space-between">
-
             <SidebarWrapper />
-
             <MainAccountStyled>
               <Orders />
             </MainAccountStyled>
