@@ -10,6 +10,7 @@ const ProductCard:React.FC<ProductCardPropsInterface> = (
   { product, authorized }: ProductCardPropsInterface,
 ) => {
   const { id, name, price, description, weight, media } = product;
+  const mediaPath = media && media.medium ? media.medium : '/images/placeholder.svg';
   const dispatch = useDispatch();
 
   const onAddProduct = () => {
@@ -23,9 +24,7 @@ const ProductCard:React.FC<ProductCardPropsInterface> = (
   return (
     <ProductCardStyled onClick={() => onAddProduct()}>
       <div className={`product-card__photo ${(media && media.medium) ? '' : 'product-photo__placeholder'}`}>
-        {(media && media.medium) && (
-          <img src={`${media?.medium}`} alt="Product" />
-        )}
+        <img src={mediaPath} alt="Product" />
       </div>
       <div className="product-card__content">
         <div className="product-card__name">{name}</div>

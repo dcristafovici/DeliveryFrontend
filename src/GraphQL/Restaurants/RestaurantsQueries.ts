@@ -1,37 +1,25 @@
 import { gql } from '@apollo/client';
+import { RESTAURANT_FRAGMENT } from './RestaurantFragment';
 
 export const FIND_RESTAURANTS = gql`
-  query findRestaurants{
-  findRestaurants{
-    id,
-    name,
-    description,
-    minPrice,
-    deliveryTime,
-    rating,
-    media {
-      medium,
-      mediumLarge,
-      large
+  ${RESTAURANT_FRAGMENT}
+  query findRestaurants($data: GraphQLGeneralRequest!) {
+    findRestaurants(data: $data) {
+      list {
+        ...RestaurantFields
+      }
+      page,
+      pageSize,
+      count
     }
   }
-}
 `;
 
 export const FIND_ONE_RESTAURANT = gql`
+  ${RESTAURANT_FRAGMENT}
   query findOneRestaurant($id: String!) {
     findOneRestaurant(id: $id){
-      id,
-      name,
-      description,
-      minPrice,
-      deliveryTime,
-      rating,
-      media {
-        medium
-        mediumLarge,
-        large
-      }
+      ...RestaurantFields
     }
   } 
 `;
