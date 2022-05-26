@@ -27,7 +27,7 @@ const AuthPopup:React.FC = () => {
     } else {
       authenticationUser({ variables: { data: { phone, code: OTP, sessionID } } })
         .then(({ data }) => {
-          localStorage.setItem('token', data.authenticationUser);
+          localStorage.setItem('token', `Bearer ${data.authenticationUser}`);
           dispatch(closePopup());
           window.location.reload();
         });

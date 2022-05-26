@@ -6,7 +6,7 @@ export const Global = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "HelveticaNeueCyr", sans-serif;
+    font-family: "HelveticaNeueCyr-400", sans-serif;
     font-weight: 500;
     font-size: 14px;
     color: ${COLORS.PRIMARY_DARK};
