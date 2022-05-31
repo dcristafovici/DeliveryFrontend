@@ -5,11 +5,9 @@ import Section from '../../components/Basic/Section';
 import { MainRestaurantStyled, RestaurantStyled } from './RestaurantStyled';
 import AsideWrapper from '../../components/Aside/AsideWrapper';
 import RestaurantWrapper from '../../components/Restaurant/RestaurantWrapper';
-// import RouteLeavingGuard from '../../components/Basic/RouteLeavingGuard';
 
 const Restaurant:React.FC = () => (
   <RestaurantStyled>
-    {/* <RouteLeavingGuard /> */}
     <Section>
       <Container>
         <StyledFlex justify="space-between">

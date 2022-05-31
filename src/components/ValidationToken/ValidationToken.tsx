@@ -5,7 +5,7 @@ import { GET_USER_BY_TOKEN } from '../../GraphQL/User/UserQueries';
 import { setUserData } from '../../redux/actions/userAction';
 
 const ValidationToken:React.FC = () => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('user_token');
   const dispatch = useDispatch();
   let responseFromToken:any = null;
   let errorFromToken: ApolloError | undefined;

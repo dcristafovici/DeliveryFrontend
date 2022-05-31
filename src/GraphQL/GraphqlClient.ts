@@ -1,7 +1,7 @@
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
 import { serverPath } from '../utils/envMode';
 
-const token = localStorage.getItem('token') ? localStorage.getItem('token') : '';
+const token = localStorage.getItem('user_token') ? localStorage.getItem('user_token') : '';
 
 const httpLink = createHttpLink({
   uri: `${serverPath}/graphql`,

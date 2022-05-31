@@ -32,8 +32,8 @@ const RestaurantInfo:React.FC = () => {
           {name}
         </div>
         <div className="restaurant-content__bottom">
-          <div className="restaurant-content__price">{minPrice}</div>
-          <div className="restaurant-content__time">{deliveryTime}</div>
+          <div className="restaurant-content__price">{`${minPrice} USD`}</div>
+          <div className="restaurant-content__time">{`${deliveryTime} minutes`}</div>
           <div className="restaurant-content__link">Information about restaurant</div>
         </div>
       </div>

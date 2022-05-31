@@ -9,9 +9,6 @@ export function useBlocker(blocker:any, when = true) {
       const autoUnblockingTx = {
         ...tx,
         retry() {
-          // Automatically unblock the transition so it can play all the way
-          // through before retrying it. TODO: Figure out how to re-enable
-          // this block if the transition is cancelled for some reason.
           unblock();
           tx.retry();
         },
