@@ -23,9 +23,9 @@ pipeline {
       steps {
         sh '''
           ls -lsa
-          rm -rf /var/www/html/*
+          rm -rf /var/www/DeliveryFrontend/*
           find . -mindepth 1 -maxdepth 1 -not -name 'build' -print0 | xargs -0 -r rm -rf 
-          mv build/** /var/www/html
+          mv build/** /var/www/DeliveryFrontend
           ls -lsa
         '''
       }
