@@ -9,10 +9,13 @@ import { getSessionID } from '../../../../utils/uniqueSessionID';
 import { authOTPValidation, authPhoneValidation, authPopupInitialValues } from './AuthPopupConstants';
 import { AUTHENTICATION_USER, CREATE_OTP } from '../../../../GraphQL/OTP/OtpMutations';
 import { closePopup } from '../../../../redux/actions/showAction';
+import ErrorMessage from '../../../Basic/ErrorMessage';
+import { key } from '../../../../utils/key';
 
 const AuthPopup:React.FC = () => {
   const [phoneDispatched, setPhoneDispatched] = useState<boolean>(false);
 
+  const [error, setError] = useState<string>('');
   const sessionID = getSessionID();
   const [createOTP] = useMutation(CREATE_OTP);
   const [authenticationUser] = useMutation(AUTHENTICATION_USER);
@@ -30,6 +33,9 @@ const AuthPopup:React.FC = () => {
           localStorage.setItem('token', `Bearer ${data.authenticationUser}`);
           dispatch(closePopup());
           window.location.reload();
+        })
+        .catch((err) => {
+          setError(key(err.message));
         });
     }
   };
@@ -66,6 +72,7 @@ const AuthPopup:React.FC = () => {
             error={formik.errors.OTP}
           />
         )}
+        {error && <ErrorMessage text={error} />}
         <Button name="Submit" />
       </form>
 
