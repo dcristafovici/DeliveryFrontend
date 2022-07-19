@@ -7,14 +7,10 @@ export const authPhoneValidation = Yup.object().shape({
 });
 
 export const authOTPValidation = Yup.object().shape({
-  OTP: Yup.number()
-    .required('OTP is required.')
-    .test('len', 'Must be exactly 4 characters', (val) => {
-      if (val) {
-        return val.toString().length === 4;
-      }
-      return false;
-    }),
+  OTP: Yup.string()
+    .length(4, ' Enter correct code')
+    .matches(/[0-9]+/gi, 'Enter number only')
+    .required('OTP is required.'),
 });
 
 export const authPopupInitialValues: AuthFormPopupInterface = {
